@@ -16,40 +16,40 @@ import { Snackbar, LinearProgress } from '@mui/material';
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& input:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-input': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root': {
-    color: 'white',
+    color: 'black',
   },
   '& textarea:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& textarea:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-multiline': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root.Mui-focused': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiFormHelperText-root': {
-    color: 'white',
+    color: 'black',
   },
   '& fieldset': {
-    borderColor: 'white !important',
+    borderColor: 'black !important',
   },
 });
 
@@ -113,7 +113,7 @@ const AddSocialNetworks = () => {
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'white' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
           <LinearProgress />
         </div>
       )}
@@ -158,7 +158,7 @@ const AddSocialNetworks = () => {
             onChange={handleChange}
           />
         </Box>
-        <Button type="submit" variant="outlined" className={classes.button}>
+        <Button type="submit" variant="contained" className={classes.button}>
           {id ? 'Actualizar Datos' : 'Agregar Nuevas'}
         </Button>
       </form>

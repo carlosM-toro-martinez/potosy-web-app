@@ -7,7 +7,8 @@ import {
   TableRow,
   Box,
   Button,
-  Typography
+  Typography,
+  Paper
 } from '@mui/material';
 import { useStyles } from './EstablishmentDashbord.styles';
 import { useQuery } from 'react-query';
@@ -21,7 +22,8 @@ function EstablishmentDashbord() {
   const { data, isLoading, isError, error, refetch } = useQuery(`businessOne`, () => businessFindOne(location?.state));
   const navigate = useNavigate();
   const handleEditData = (uri, id) => {
-    navigate(`/establishmentAdmin${uri}/${id}`, { state: location?.state })
+    console.log(location.state);
+    navigate(`/establishmentAdmin${uri}/${id}`, { state: data })
   }
   const clasess = useStyles();
 
@@ -36,22 +38,22 @@ function EstablishmentDashbord() {
       <Table sx={{ width: '50rem' }} className={clasess.table}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }} className={clasess.row}>Name</TableCell>
-            <TableCell sx={{ color: 'white' }} className={clasess.row}>telefono</TableCell>
-            <TableCell sx={{ color: 'white' }} className={clasess.row}>direccion</TableCell>
-            <TableCell sx={{ color: 'white' }} className={clasess.row}>Descripcion</TableCell>
+            <TableCell sx={{ color: 'black' }} className={clasess.row}>Name</TableCell>
+            <TableCell sx={{ color: 'black' }} className={clasess.row}>telefono</TableCell>
+            <TableCell sx={{ color: 'black' }} className={clasess.row}>direccion</TableCell>
+            <TableCell sx={{ color: 'black' }} className={clasess.row}>Descripcion</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {!isLoading && !error ? data.map(item => (
-            <TableRow key={item.business_id} sx={{ color: 'white' }}>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.business_name}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.phone_number}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.address}</TableCell>
+            <TableRow key={item.business_id} sx={{ color: 'black' }}>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.business_name}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.phone_number}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.address}</TableCell>
               <TableCell sx={{
-                color: 'white', textTransform: 'capitalize', overflow: 'hidden',
+                color: 'black', textTransform: 'capitalize', overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
                 maxWidth: '300px'
@@ -62,24 +64,25 @@ function EstablishmentDashbord() {
 
         </TableBody>
       </Table>
-      <Box sx={{ display: 'flex', color: 'white', width: '50rem', gap: 5, marginBottom: '5rem' }}>
+      <Typography variant='h3' style={{ marginTop: '-2rem', fontSize: '2.5rem' }} >Actualizar</Typography>
+      <Box sx={{ display: 'flex', color: 'black', width: '50rem', gap: 5, marginBottom: '5rem' }}>
         <Button variant="contained" onClick={() => handleEditData('', location?.state)} >
-          Actualizar Datos Principales
+          Datos Principales
         </Button>
         <Button variant="contained" onClick={() => handleEditData('/socialNet', data[0]?.socialnetworks[0]?.social_networks_id)} >
-          Actualizar Redes Sociales
+          Redes Sociales
         </Button>
         <Button variant="contained" onClick={() => handleEditData('/promotions', location?.state)} >
-          Actualizar Promociones
+          Promociones
         </Button>
         <Button variant="contained" onClick={() => handleEditData('/products', location?.state)} >
-          Actualizar Productos
+          Productos
         </Button>
         <Button variant="contained" onClick={() => handleEditData('/openinghours', data[0]?.openinghours[0]?.opening_id)} >
-          Actualizar Horarios
+          Horarios
         </Button>
         <Button variant="contained" onClick={() => handleEditData('/images', location?.state)} >
-          Actualizar Imagenes
+          Imagenes
         </Button>
       </Box>
     </Box>

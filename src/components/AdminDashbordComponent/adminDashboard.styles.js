@@ -17,7 +17,6 @@ export const useStyles = makeStyles(theme => ({
         display: 'flex',
         flexDirection: 'column',
         gap: '2rem',
-        backgroundColor: 'rgba(0, 0, 0, 0.8)',
         width: '100%',
         justifyContent: 'center',
         alignItems: 'center',

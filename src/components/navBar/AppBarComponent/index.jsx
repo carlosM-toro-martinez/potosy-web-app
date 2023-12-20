@@ -11,7 +11,8 @@ import {
   Menu,
   useScrollTrigger,
   Typography,
-  Button
+  Button,
+  makeStyles
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
@@ -24,6 +25,9 @@ import { useNavigate } from 'react-router-dom';
 import newsService from '../../../async/services/newsService';
 import { useQuery } from 'react-query';
 import { MainContext } from '../../../context/MainContext';
+import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
+import mq from '../../../config/mq';
+
 
 // function HideOnScroll(props) {
 //   const { children, window, threshold } = props;
@@ -44,6 +48,7 @@ import { MainContext } from '../../../context/MainContext';
 //   window: PropTypes.func,
 //   threshold: PropTypes.number,
 // };
+
 
 export default function AppBarComponent(props) {
   const { data, isLoading, refetch, error } = useQuery(`newsAdmin`, () => newsService());
@@ -241,6 +246,29 @@ export default function AppBarComponent(props) {
           </Box>
         </Toolbar>
       </AppBar>
+      {!isLoading && !error && data?.length > 0 ? <IconButton
+        size="large"
+        color="inherit"
+        onClick={() => handleNavigate('news')}
+        style={{
+          color: 'black',
+          position: 'fixed',
+          zIndex: '1000',
+          top: 0,
+          right: 0,
+          marginTop: '5rem',
+          marginRight: '.5rem',
+          [mq('md')]: {
+            marginTop: '5rem',
+          },
+        }
+        }
+      >
+        <Badge badgeContent={!isLoading && !error ? data.length : 1} color="error">
+          {/* <NotificationsActiveIcon style={{ fontSize: '3rem' }} /> */}
+          <Typography style={{ fontSize: '2rem' }}>🔔</Typography>
+        </Badge>
+      </IconButton> : null}
       {/* </HideOnScroll> */}
       {renderMobileMenu}
       {renderMenu}

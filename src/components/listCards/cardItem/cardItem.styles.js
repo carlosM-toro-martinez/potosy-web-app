@@ -20,7 +20,7 @@ export const useStyles = makeStyles(theme => ({
   book: {
     width: '9rem',
     height: '9rem',
-    background: '#808080',
+    background: '#FF4500',
     perspective: '75rem',
     marginTop: '1rem',
     borderRadius: '3px',
@@ -53,7 +53,7 @@ export const useStyles = makeStyles(theme => ({
     width: '9rem',
     '& h4': {
       fontSize: '14px',
-      color: '#FFDAB9',
+      color: 'black',
       fontFamily: 'Roboto-bold',
       fontStyle: 'normal',
     },

@@ -14,10 +14,9 @@ import CelebrationIcon from '@mui/icons-material/Celebration';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import RouteIcon from '@mui/icons-material/Route';
 import { useQuery } from 'react-query';
 import HomeIcon from '@mui/icons-material/Home';
-import InfoIcon from '@mui/icons-material/Info';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ContactsIcon from '@mui/icons-material/Contacts';
 import AppBarComponent from './AppBarComponent';
@@ -31,6 +30,7 @@ const drawerWidth = 220;
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
+  backgroundColor: 'rgba(0, 0, 0)',
   ...theme.mixins.toolbar,
   justifyContent: 'flex-end',
 }));
@@ -108,13 +108,13 @@ const NavBar = (props) => {
               </Typography>
             </ListItemButton>
           </ListItem>
-          <ListItem sx={{ marginTop: -1, marginBottom: -1 }} onClick={() => handleNavigate('about')}>
-            <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('about')} >
+          <ListItem sx={{ marginTop: -1, marginBottom: -1 }} >
+            <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('routes')} >
               <ListItemIcon>
-                <InfoIcon sx={{ color: '#FFDAB9' }} />
+                <RouteIcon sx={{ color: '#FFDAB9' }} />
               </ListItemIcon>
               <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} >
-                Acerca de
+                Rutas Turisticas
               </Typography>
             </ListItemButton>
           </ListItem>
@@ -159,6 +159,16 @@ const NavBar = (props) => {
                 </ListItemIcon>
                 <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} >
                   Noticias
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+            <ListItem sx={{ marginTop: -2, marginBottom: -2 }}>
+              <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('admin/admins')} >
+                <ListItemIcon>
+                  <AdminPanelSettingsIcon sx={{ color: '#FFDAB9' }} />
+                </ListItemIcon>
+                <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} >
+                  Admins
                 </Typography>
               </ListItemButton>
             </ListItem>

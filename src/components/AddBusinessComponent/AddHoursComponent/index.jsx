@@ -17,42 +17,43 @@ import MuiAlert from '@mui/material/Alert';
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& input:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-input': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root': {
-    color: 'white',
+    color: 'black',
   },
   '& textarea:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& textarea:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-multiline': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root.Mui-focused': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiFormHelperText-root': {
-    color: 'white',
+    color: 'black',
   },
   '& fieldset': {
-    borderColor: 'white !important',
+    borderColor: 'black !important',
   },
 });
+
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -114,7 +115,7 @@ const AddHours = () => {
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'white' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
           <LinearProgress />
         </div>
       )}
@@ -123,7 +124,7 @@ const AddHours = () => {
       </Typography>
       <form className={classes.form} onSubmit={handleSubmit}>
         <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-          <Typography variant="h6" align="center" sx={{ color: 'white' }} > Mañana</Typography>
+          <Typography variant="h6" align="center" sx={{ color: 'black' }} > Mañana</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
             <ValidationTextField
               fullWidth
@@ -142,7 +143,7 @@ const AddHours = () => {
               helperText="Ingrese hora de cierre"
             />
           </Box>
-          <Typography variant="h6" align="center" sx={{ color: 'white' }} > Tarde</Typography>
+          <Typography variant="h6" align="center" sx={{ color: 'black' }} > Tarde</Typography>
           <Box sx={{ display: 'flex', flexDirection: 'row', gap: 2 }}>
             <ValidationTextField
               fullWidth
@@ -170,7 +171,7 @@ const AddHours = () => {
             helperText="ingrese solo si tiene algun horario especial (sabados de 8:00 - 13:00)"
           />
         </Box>
-        <Button type="submit" variant="outlined" className={classes.button}>
+        <Button type="submit" variant="contained" className={classes.button}>
           {id ? 'Actualizar Datos' : 'Agregar Nuevo'}
         </Button>
       </form>

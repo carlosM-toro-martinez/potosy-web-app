@@ -14,6 +14,7 @@ import PublicIcon from '@mui/icons-material/Public';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 import {
   Grid,
+  Snackbar,
   Table,
   TableBody,
   TableCell,
@@ -28,90 +29,96 @@ const OpeningHours = ({ openinghours }) => {
   const classes = useStyles();
   return (
     <Box className={classes.openingHours}>
-      <Typography variant="h3" component="h3">
-        {openinghours[0].morning_hours ? `Mañana:\n ${openinghours[0].morning_hours[0]} -  ${openinghours[0].morning_hours[1]}` : ''}
-      </Typography>
+      {!openinghours[0].morning_hours[0] === '' ?
+        <Typography variant="h3" component="h3">
+          {`Mañana:\n ${openinghours[0].morning_hours[0]} -  ${openinghours[0].morning_hours[1]}`}
+        </Typography>
+        : null}
       {openinghours[0].weekend ? <Typography variant="h3" component="h3">
         {openinghours[0].weekend}
       </Typography> : null}
-      <Typography variant="h3" component="h3">
-        {openinghours[0].afternoon_hours ? `Tarde:\n ${openinghours[0].afternoon_hours[0]} - ${openinghours[0].afternoon_hours[1]}` : ''}
-      </Typography>
+      {!openinghours[0].afternoon_hours[0] === '' ?
+        <Typography variant="h3" component="h3">
+          {`Tarde:\n ${openinghours[0].afternoon_hours[0]} - ${openinghours[0].afternoon_hours[1]}`}
+        </Typography>
+        : null}
     </Box>
   );
 };
 
 const BusinessContact = ({ data }) => {
+  const handleRedirect = (url) => {
+    window.open(url, '_blank');
+  };
   return (
     <Box
-      sx={{ padding: '1rem 2rem 1rem 2rem', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '1rem' }}>
       {data.website_url ?
         <Button
           key={'web'}
           variant="contained"
           style={{ backgroundColor: '#2ecc71', marginRight: '8px', color: 'black' }}
+          onClick={() => handleRedirect(data.website_url)}
           startIcon={<PublicIcon />}
         >sitio web</Button> : null}
-      <Table>
-        <TableHead>
-          <TableRow sx={{
-            color: 'white',
-          }}>
-            {data.phone_number ? <TableCell >
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, color: '#3498db' }}>
-                <PhoneIcon />
-                <Typography>
-                  Telefono
-                </Typography>
-              </Box>
-            </TableCell> : null}
 
-            {data.mail ? <TableCell>
-              <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 2, color: '#e74c3c' }}>
-                <EmailIcon />
-                <Typography>
-                  Correo
-                </Typography>
-              </Box>
-            </TableCell> : null}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow sx={{ color: 'white' }}>
-            {data.phone_number ? <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>
-              <Typography>
-                {data.phone_number}
-              </Typography>
-            </TableCell> : null}
-            {data.mail ? <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>
-              <Typography>
-                {data.mail}
-              </Typography>
-            </TableCell> : null}
-          </TableRow>
-        </TableBody>
-      </Table>
+      <Box sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-around', gap: 10, marginTop: '1rem' }} >
+        {data.phone_number ?
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography sx={{ color: '#3498db' }}>
+              <PhoneIcon />
+            </Typography>
+            <Typography>
+              {data.phone_number}
+            </Typography>
+          </Box>
+          : null}
+
+        {data.mail ?
+          <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+            <Typography sx={{ color: '#e74c3c' }}>
+              <EmailIcon />
+            </Typography>
+            <Typography>
+              {data.mail}
+            </Typography>
+          </Box>
+          : null}
+      </Box>
 
       {data.address ?
-        <Typography style={{ color: '#f39c12' }}>
-          <LocationOnIcon /> Direccion
-        </Typography> : null}
-      {data.address ?
-        <Typography >
-          {data.address}
-        </Typography> : null}
+        <>
+          <Typography style={{ color: '#f39c12', marginTop: '1rem' }}>
+            <LocationOnIcon /> Direccion
+          </Typography>
+          <Typography >
+            {data.address}
+          </Typography>
+        </>
+        : null}
     </Box>
   );
 };
 
 const SocialNetworks = ({ socialnetworks }) => {
-  const classes = useStyles();
-
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const classes = useStyles()
+  const handleRedirect = (url) => {
+    if (url) {
+      window.open(url, '_blank');
+    } else {
+      setOpenSnackbar(true);
+    }
+  };
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
+  };
   const socialNetworks = [
-    { name: 'Twitter', icon: <Twitter />, color: '#1DA1F2' },
-    { name: 'WhatsApp', icon: <WhatsApp />, color: '#25D366' },
-    { name: 'Facebook', icon: <Facebook />, color: '#1877F2' },
-    { name: 'Instagram', icon: <Instagram />, color: '#E1306C' },
+    { name: 'Twitter', icon: <Twitter />, color: '#1DA1F2', url: socialnetworks.twitter_url },
+    { name: 'WhatsApp', icon: <WhatsApp />, color: '#25D366', url: socialnetworks.whatsapp_number ? `https://wa.me/+591${socialnetworks.whatsapp_number}/` : null },
+    { name: 'Facebook', icon: <Facebook />, color: '#1877F2', url: socialnetworks.facebook_url },
+    { name: 'Instagram', icon: <Instagram />, color: '#E1306C', url: socialnetworks.instagram_url },
+
   ];
   return (
     <Box className={classes.socialNet}>
@@ -124,9 +131,10 @@ const SocialNetworks = ({ socialnetworks }) => {
             alignItems="center"
             item
             xs={6}
-            md={3}
+            md={6}
           >
             <Button
+              onClick={() => handleRedirect(network.url)}
               key={network.name}
               variant="contained"
               style={{ backgroundColor: network.color, marginRight: '8px' }}
@@ -137,6 +145,12 @@ const SocialNetworks = ({ socialnetworks }) => {
           </Grid>
         ))}
       </Grid>
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        message="El establecimiento aún no cuenta con esa red social"
+      />
     </Box>
   );
 };
@@ -148,8 +162,8 @@ const Products = ({ products }) => {
     setShowTable(!showTable);
   };
   return (
-    <Box sx={{ flex: 0.4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Button onClick={handleToggleTable} sx={{ marginBottom: '1rem' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Button onClick={handleToggleTable} sx={{ marginBottom: '1rem', color: '#FF4500' }}>
         {showTable ? 'Ocultar Productos' : 'Mostrar Productos'}
       </Button>
       {showTable && products[0]?.product_id ? <Typography variant="h4" component="h4">
@@ -158,20 +172,20 @@ const Products = ({ products }) => {
       {showTable && products[0]?.product_id ? <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }}>Detalle</TableCell>
-            <TableCell sx={{ color: 'white' }}>Precio</TableCell>
+            <TableCell sx={{ color: 'black' }}>Detalle</TableCell>
+            <TableCell sx={{ color: 'black' }}>Precio</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {products[0]?.product_id ? products.map(item => (
-            <TableRow key={item.product_id} sx={{ color: 'white' }}>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.product_details}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.price}</TableCell>
+            <TableRow key={item.product_id} sx={{ color: 'black' }}>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.product_details}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.price}</TableCell>
             </TableRow>
           ))
-            : null}
+            : <Typography variant='h4'>No extisten productos en este momento</Typography>}
         </TableBody>
       </Table> : null}
     </Box>
@@ -180,13 +194,12 @@ const Products = ({ products }) => {
 
 const Promotions = ({ promotions }) => {
   const [showTable, setShowTable] = useState(false);
-
   const handleToggleTable = () => {
     setShowTable(!showTable);
   };
   return (
-    <Box sx={{ flex: 0.4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <Button onClick={handleToggleTable} sx={{ marginBottom: '1rem', alignItems: 'center' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      <Button onClick={handleToggleTable} sx={{ marginBottom: '1rem', alignItems: 'center', color: '#FF4500' }}>
         {showTable ? 'Ocultar Promociones' : 'Mostrar Promociones'}
       </Button>
       {showTable && promotions[0]?.promotion_id ? <Typography variant="h4" component="h4">
@@ -195,26 +208,20 @@ const Promotions = ({ promotions }) => {
       {showTable && promotions[0]?.promotion_id ? <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }}>Detalle</TableCell>
-            <TableCell sx={{ color: 'white' }}>Precio</TableCell>
+            <TableCell sx={{ color: 'black' }}>Detalle</TableCell>
+            <TableCell sx={{ color: 'black' }}>Precio</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {promotions[0]?.promotion_id ? promotions.map(item => (
-            <TableRow key={item.promotion_id} sx={{ color: 'white' }}>
-              {/* <TableCell sx={{
-                    color: 'white', textTransform: 'capitalize', overflow: 'hidden',
-                    textOverflow: 'ellipsis',
-                    whiteSpace: 'nowrap',
-                    maxWidth: '300px'
-                  }}>{item?.attributes?.image?.data?.attributes?.url}</TableCell> */}
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.promotion_details}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.price}</TableCell>
+            <TableRow key={item.promotion_id} sx={{ color: 'black' }}>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.promotion_details}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.price}</TableCell>
             </TableRow>
           ))
-            : null}
+            : <Typography variant='h6'>No extisten promociones en este momento</Typography>}
         </TableBody>
       </Table> : null}
     </Box>
@@ -247,36 +254,65 @@ function Details() {
           <Typography variant="h2" component="h2">
             {data.business_name}
           </Typography>
-          <CarouselImagesDetailsComponent images={data.images} />
-          <SocialNetworks socialnetworks={data.socialnetworks[0]} />
-          <Typography variant="h3" component="h3">
-            mas informacion
+          <Box>
+            {data?.images[0]?.image_url ? <CarouselImagesDetailsComponent images={data.images} /> : null}
+          </Box>
+          <Typography component="h3">
+            información
           </Typography>
           <OpeningHours openinghours={data.openinghours} />
-          <Typography component="h6">
-            {data.business_description}
-          </Typography>
+          <Box className={classes.information}>
+            <Box sx={{ flex: 0.8 }}>
+              <Typography component="h6">
+                {data.business_description}
+              </Typography>
+            </Box>
+            <Box sx={{ flex: 0.2 }}>
+              <SocialNetworks socialnetworks={data.socialnetworks[0]} />
+            </Box>
+          </Box>
           <BusinessContact data={data} />
           <div className={classes.containerProducts} >
             <Products products={data.products} />
             <Promotions promotions={data.promotions} />
           </div>
-          <Button variant="contained" startIcon={<MapIcon />}
-            sx={{ marginBottom: '3rem', backgroundColor: '#FF4500', width: '80%', height: '3rem' }}>
+          {auth && !user ?
+            <Button variant="contained" onClick={() => handleStateChange(data)} >
+              {!data.state ? 'Agregar Establecimiento' : 'Quitar Establecimiento'}
+            </Button>
+            : null}
+          {data.coordinates ?
             <Link
               to={`/map`}
               state={{ address: data.address, coordinates: data.coordinates }}
-              style={{ color: 'white', textDecoration: 'none', fontWeight: 'bold', fontSize: '1.2rem' }}
+              style={{
+                color: 'white',
+                textDecoration: 'none',
+                fontWeight: 'bold',
+                fontSize: '1.2rem',
+                width: '55%',
+              }}
             >
-              Como Llegar
+              <Button variant="contained" startIcon={<MapIcon />}
+                sx={{
+                  marginBottom: '3rem',
+                  color: 'white',
+                  backgroundColor: '#FF4500',
+                  width: '100%',
+                  height: '3rem',
+                  marginTop: '1rem',
+                  '&:hover': {
+                    backgroundColor: '#FF4500',
+                  },
+                }}>
+
+                Como Llegar
+              </Button>
             </Link>
-          </Button>
-          {!data.state && auth && !user ? <Button variant="contained" onClick={() => handleStateChange(data)} >
-            Agregar Establecimiento
-          </Button> : null}
+            : null}
         </div>
       ))
-        : null}
+        : <Typography variant="h2" component="h2">Cargando...</Typography>}
     </Box>
   )
 }

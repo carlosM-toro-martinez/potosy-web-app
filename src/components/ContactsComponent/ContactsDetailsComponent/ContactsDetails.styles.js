@@ -3,9 +3,13 @@ import mq from '../../../config/mq';
 
 export const useStyles = makeStyles(theme => ({
     container: {
-        marginTop: '8rem',
+        marginTop: '5rem',
         marginBottom: '5rem',
-        maxWidth: '600px',
+        maxWidth: '500px',
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
         margin: 'auto',
         padding: theme.spacing(2),
         border: '1px solid #ccc',
@@ -17,6 +21,7 @@ export const useStyles = makeStyles(theme => ({
         fontSize: '1.5rem',
         fontWeight: 'bold',
         marginBottom: theme.spacing(2),
+        textTransform: 'uppercase'
     },
     label: {
         fontWeight: 'bold',
@@ -31,11 +36,23 @@ export const useStyles = makeStyles(theme => ({
         width: '10rem',
         height: '10rem',
         marginRight: theme.spacing(2),
-        borderRadius: '50%',
         overflow: 'hidden',
         marginBottom: '1rem'
     },
     description: {
         marginTop: theme.spacing(2),
     },
+    icon: {
+        padding: theme.spacing(1),
+        margin: theme.spacing(1),
+        fontSize: '5rem',
+        '&:hover': {
+            color: '#CC3700',
+            cursor: 'pointer',
+        },
+    },
+    iconContainer: {
+        display: 'flex',
+        flexDirection: 'row'
+    }
 }))

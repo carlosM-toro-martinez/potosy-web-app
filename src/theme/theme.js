@@ -1,39 +1,28 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-// import Roboto from '../assets/font/Roboto-Bold.ttf';
-// import Montserrat from '../assets/font/Montserrat-ExtraBold.otf';
-// import Montserrat_Regular from '../assets/font/Montserrat-Regular.ttf';
-// import Lato from '../assets/font/Lato-Light.ttf';
-import Lato_Black from '../assets/font/Lato-Black.ttf';
+import HankenGrotesk_SemiBoldItalic from '../assets/font/static/HankenGrotesk-SemiBoldItalic.ttf';
+import HankenGrotesk_ExtraBoldItalic from '../assets/font/static/HankenGrotesk-ExtraBoldItalic.ttf';
+import HankenGrotesk_LightItalic from '../assets/font/static/HankenGrotesk-LightItalic.ttf';
 
-const LatoBlack = {
-    fontFamily: 'Lato-Black',
-    src: `url(${Lato_Black})`
+
+
+const HankenLight = {
+    fontFamily: 'Hanken-Light',
+    src: `url(${HankenGrotesk_LightItalic})`
 }
-
-// const MontserratNormal = {
-//   fontFamily: 'Montserrat-Ligth',
-//   src: `url(${Montserrat_Regular})`
-// }
-// const RobotoRegular = {
-//   fontFamily: 'Roboto-Bold',
-//   src: `url(${Roboto})`
-// }
-// const MontserratRegular = {
-//   fontFamily: 'Montserrat-Bold',
-//   src: `url(${Montserrat})`
-// }
-// const LatoRegular = {
-//   fontFamily: 'Lato-Ligth',
-//   src: `url(${Lato})`
-// }
+const HankenSemi = {
+    fontFamily: 'Hanken-Semi',
+    src: `url(${HankenGrotesk_SemiBoldItalic})`
+}
+const HankenBold = {
+    fontFamily: 'Hanken-Bold',
+    src: `url(${HankenGrotesk_ExtraBoldItalic})`
+}
 const theme = createTheme({
     typography: {
         fontFamily: [
-            `"${LatoBlack.fontFamily}"`,
-            //   `"${MontserratNormal.fontFamily}"`,
-            //   `"${MontserratRegular.fontFamily}"`,
-            //   `"${RobotoRegular.fontFamily}"`,
-            //   `"${LatoRegular.fontFamily}"`,
+            `"${HankenBold.fontFamily}"`,
+            `"${HankenLight.fontFamily}"`,
+            `"${HankenSemi.fontFamily}"`,
         ].join(','),
     },
     palette: {
@@ -65,15 +54,13 @@ const theme = createTheme({
         MuiCssBaseline: {
             '@global': {
                 '@font-face': [
-                    LatoBlack,
-                    // MontserratNormal,
-                    // RobotoRegular,
-                    // MontserratRegular,
-                    // LatoRegular],
-                ]
+                    HankenLight,
+                    HankenSemi,
+                    HankenBold,
+                ],
             },
             body: {
-                fontFamily: ['Roboto-Regular'],
+                fontFamily: ['Roboto-bold'],
             },
             'h1, h2, h3, h4, h5, h6': {
                 margin: 0,
@@ -82,7 +69,9 @@ const theme = createTheme({
         },
     },
 })
+console.log('Tema:', theme);
 const Theme = ({ children }) => (
+
     <ThemeProvider theme={theme}>
         <CssBaseline />
         {children}

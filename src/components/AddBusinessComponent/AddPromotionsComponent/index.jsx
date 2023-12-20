@@ -24,40 +24,40 @@ import { Snackbar, LinearProgress } from '@mui/material';
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& input:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-input': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root': {
-    color: 'white',
+    color: 'black',
   },
   '& textarea:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& textarea:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-multiline': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root.Mui-focused': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiFormHelperText-root': {
-    color: 'white',
+    color: 'black',
   },
   '& fieldset': {
-    borderColor: 'white !important',
+    borderColor: 'black !important',
   },
 });
 
@@ -71,7 +71,7 @@ const AddPromotions = () => {
   const classes = useStyles();
   const { id } = useParams();
   const location = useLocation();
-  const { data, isLoading, error, refetch } = useQuery('promotions', () => promotionsService(location.state));
+  const { data, isLoading, error, refetch } = useQuery('promotions', () => promotionsService(id ? id : location.state));
   const navigation = useNavigate();
   const item = location?.state?.item;
   const [promotionsData, setPromotionsData] = useState({
@@ -128,7 +128,7 @@ const AddPromotions = () => {
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'white' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
           <LinearProgress />
         </div>
       )}
@@ -138,15 +138,15 @@ const AddPromotions = () => {
       <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }}>Detalle</TableCell>
-            <TableCell sx={{ color: 'white' }}>Precio</TableCell>
+            <TableCell sx={{ color: 'black' }}>Detalle</TableCell>
+            <TableCell sx={{ color: 'black' }}>Precio</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {!isLoading && !error ? data.map(item => (
-            <TableRow key={item.promotion_id} sx={{ color: 'white' }}>
+            <TableRow key={item.promotion_id} sx={{ color: 'black' }}>
               {/* <TableCell sx={{
                     color: 'white', textTransform: 'capitalize', overflow: 'hidden',
                     textOverflow: 'ellipsis',
@@ -154,13 +154,13 @@ const AddPromotions = () => {
                     maxWidth: '300px'
                   }}>{item?.attributes?.image?.data?.attributes?.url}</TableCell> */}
               <TableCell sx={{
-                color: 'white', textTransform: 'capitalize', overflow: 'hidden',
+                color: 'black', textTransform: 'capitalize', overflow: 'hidden',
                 textOverflow: 'ellipsis',
                 whiteSpace: 'nowrap',
                 maxWidth: '300px'
               }}>{item?.promotion_details}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.price}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.price}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>
                 <Button variant="contained" onClick={() => setPromotionsData(
                   {
                     promotion_details: item?.promotion_details,

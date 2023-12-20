@@ -24,40 +24,40 @@ import { Snackbar, LinearProgress } from '@mui/material';
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& input:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-input': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root': {
-    color: 'white',
+    color: 'black',
   },
   '& textarea:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& textarea:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-multiline': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root.Mui-focused': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiFormHelperText-root': {
-    color: 'white',
+    color: 'black',
   },
   '& fieldset': {
-    borderColor: 'white !important',
+    borderColor: 'black !important',
   },
 });
 
@@ -72,7 +72,7 @@ const AddProducts = () => {
   const { id } = useParams();
   const location = useLocation();
   const navigation = useNavigate();
-  const { data, isLoading, error, refetch } = useQuery('products', () => productsService(location.state));
+  const { data, isLoading, error, refetch } = useQuery('products', () => productsService(id ? id : location.state));
   const item = location?.state?.item;
   const [productsData, setProductsData] = useState({
     product_details: '',
@@ -128,7 +128,7 @@ const AddProducts = () => {
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'white' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
           <LinearProgress />
         </div>
       )}
@@ -138,25 +138,25 @@ const AddProducts = () => {
       <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }}>Detalle</TableCell>
-            <TableCell sx={{ color: 'white' }}>Precio</TableCell>
-            <TableCell sx={{ color: 'white' }}>Editar</TableCell>
+            <TableCell sx={{ color: 'black' }}>Detalle</TableCell>
+            <TableCell sx={{ color: 'black' }}>Precio</TableCell>
+            <TableCell sx={{ color: 'black' }}>Editar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {!isLoading && !error ? data.map(item => (
-            <TableRow key={item.product_id} sx={{ color: 'white' }}>
+            <TableRow key={item.product_id} sx={{ color: 'black' }}>
               {/* <TableCell sx={{
                     color: 'white', textTransform: 'capitalize', overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                     maxWidth: '300px'
                   }}>{item?.attributes?.image?.data?.attributes?.url}</TableCell> */}
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.product_details}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.price}</TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.product_details}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.price}</TableCell>
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>
                 <Button variant="contained" onClick={() => setProductsData(
                   {
                     product_details: item?.product_details,
@@ -190,7 +190,7 @@ const AddProducts = () => {
             onChange={handleChange}
           />
         </Box>
-        <Button type="submit" variant="outlined" className={classes.button}>
+        <Button type="submit" variant="contained" className={classes.button}>
           {id ? 'Actualizar Datos' : 'Agregar'}
         </Button>
         <Button className={classes.buttonFinish} onClick={handleNavigation}>

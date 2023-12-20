@@ -11,7 +11,7 @@ export const useStyles = makeStyles(theme => ({
         width: '50rem',
         position: 'relative',
         '& h4': {
-            color: 'white',
+            color: 'black',
             fontWeight: 'bold',
             textAlign: 'center',
             textTransform: 'uppercase',

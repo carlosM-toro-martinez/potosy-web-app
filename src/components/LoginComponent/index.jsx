@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { alpha, styled } from '@mui/material/styles';
-import { Container, Typography, TextField, Button, Box } from '@mui/material';
+import { Container, Typography, TextField, Button, Box, Paper } from '@mui/material';
 import { useStyles } from './Login.styles';
 import loginSession from '../../async/services/post/loginSession';
 import { MainContext } from '../../context/MainContext';
@@ -8,40 +8,40 @@ import { useNavigate } from 'react-router-dom';
 
 const ValidationTextField = styled(TextField)({
     '& input:valid + fieldset': {
-        borderColor: '#E0E3E7',
+        borderColor: 'black',
         borderWidth: 1,
-        color: 'white'
+        color: 'black'
     },
     '& input:invalid + fieldset': {
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
     },
     '& .MuiInputBase-input': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiInputLabel-root': {
-        color: 'white',
+        color: 'black',
     },
     '& textarea:valid + fieldset': {
-        borderColor: '#E0E3E7',
+        borderColor: 'black',
         borderWidth: 1,
-        color: 'white'
+        color: 'black'
     },
     '& textarea:invalid + fieldset': {
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
     },
     '& .MuiInputBase-multiline': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiInputLabel-root.Mui-focused': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiFormHelperText-root': {
-        color: 'white',
+        color: 'black',
     },
     '& fieldset': {
-        borderColor: 'white !important',
+        borderColor: 'black !important',
     },
 });
 
@@ -81,33 +81,37 @@ function LoginComponent() {
     };
 
     return (
-        <Box className={classes.container}>
-            <Typography variant="h4" align="center" gutterBottom>
-                Iniciar Sesión
-            </Typography>
-            <form className={classes.form} onSubmit={handleSubmit}>
-                <ValidationTextField
-                    label="Nombre de Usuario"
-                    variant="outlined"
-                    fullWidth
-                    name="username"
-                    value={formData.username}
-                    onChange={handleChange}
-                />
-                <ValidationTextField
-                    label="Contraseña"
-                    variant="outlined"
-                    fullWidth
-                    type="password"
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                />
-                <Button type="submit" variant="contained" color="primary">
-                    Iniciar Sesión
-                </Button>
-            </form>
-        </Box>
+        <>
+            <Paper elevation={8}>
+                <Box className={classes.container}>
+                    <Typography variant="h4" align="center" gutterBottom>
+                        Iniciar Sesión
+                    </Typography>
+                    <form className={classes.form} onSubmit={handleSubmit}>
+                        <ValidationTextField
+                            label="Nombre de Usuario"
+                            variant="outlined"
+                            fullWidth
+                            name="username"
+                            value={formData.username}
+                            onChange={handleChange}
+                        />
+                        <ValidationTextField
+                            label="Contraseña"
+                            variant="outlined"
+                            fullWidth
+                            type="password"
+                            name="password"
+                            value={formData.password}
+                            onChange={handleChange}
+                        />
+                        <Button type="submit" variant="contained" color="primary">
+                            Iniciar Sesión
+                        </Button>
+                    </form>
+                </Box>
+            </Paper>
+        </>
     );
 };
 

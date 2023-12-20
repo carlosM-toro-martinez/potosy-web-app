@@ -5,8 +5,8 @@ export const useStyles = makeStyles(theme => ({
     container: {
         marginTop: theme.spacing(4),
         '& h4': {
-            marginTop: '3rem',
-            color: 'white',
+            marginTop: '4.5rem',
+            color: 'black',
             fontWeight: 'bold',
             textTransform: 'uppercase'
         }

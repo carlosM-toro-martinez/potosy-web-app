@@ -13,40 +13,40 @@ import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 
 const ValidationTextField = styled(TextField)({
     '& input:valid + fieldset': {
-        borderColor: '#E0E3E7',
+        borderColor: 'black',
         borderWidth: 1,
-        color: 'white'
+        color: 'black'
     },
     '& input:invalid + fieldset': {
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
     },
     '& .MuiInputBase-input': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiInputLabel-root': {
-        color: 'white',
+        color: 'black',
     },
     '& textarea:valid + fieldset': {
-        borderColor: '#E0E3E7',
+        borderColor: 'black',
         borderWidth: 1,
-        color: 'white'
+        color: 'black'
     },
     '& textarea:invalid + fieldset': {
-        borderColor: 'white',
+        borderColor: 'black',
         borderWidth: 1,
     },
     '& .MuiInputBase-multiline': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiInputLabel-root.Mui-focused': {
-        color: 'white',
+        color: 'black',
     },
     '& .MuiFormHelperText-root': {
-        color: 'white',
+        color: 'black',
     },
     '& fieldset': {
-        borderColor: 'white !important',
+        borderColor: 'black !important',
     },
 });
 

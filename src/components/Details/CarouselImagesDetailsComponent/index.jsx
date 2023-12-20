@@ -1,56 +1,59 @@
-import React, { useState } from 'react';
-import { IconButton } from '@mui/material';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { useStyles } from './CarouselImgDetails.styles';
+import { useState } from 'react';
+import 'react-image-gallery/styles/css/image-gallery.css'
 import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
 import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import { useStyles } from './CarouselImgDetails.styles';
+import ImageGallery from "react-image-gallery";
 
-function CarouselImagesDetailsComponent({ images }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleImageLoad = () => {
-    setIsLoading(false);
-  };
-
-  const goToNextSlide = () => {
-    setIsLoading(true);
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  };
-
-  const goToPrevSlide = () => {
-    setIsLoading(true);
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  };
-
+function CarouselImagesDetailsComponent({ images, random }) {
+  const [isFullScreen, setIsFullScreen] = useState(false);
   const classes = useStyles();
-
+  const handleScreen = () => {
+    setIsFullScreen(!isFullScreen)
+  }
+  const imagesFormat = images.map((image) => ({
+    original: random ? image : image.image_url,
+    thumbnail: random ? image : image.image_url,
+  }));
   return (
-    <div className={classes.container}>
-      <IconButton onClick={goToPrevSlide}>
-        <ArrowCircleLeftIcon
-          fontSize="inherit"
-          style={{ fontSize: '5rem' }}
-          className={`${classes.icons} ${classes.prevIcons}`}
-        />
-      </IconButton>
-      {isLoading && <div className={classes.loadingText}>Cargando...</div>}
-      <div className={classes.imageContainer}>
-        <img
-          src={images[currentIndex]?.image_url}
-          alt={`Slide ${currentIndex + 1}`}
-          className={classes.img}
-          onLoad={handleImageLoad}
-        />
-      </div>
-      <IconButton onClick={goToNextSlide}>
-        <ArrowCircleRightIcon
-          fontSize="inherit"
-          style={{ fontSize: '5rem' }}
-          className={`${classes.icons} ${classes.nextIcons}`}
-        />
-      </IconButton>
+    <div className={classes.containerWrap} >
+      <ImageGallery
+        items={imagesFormat}
+        showFullscreenButton={!random ? true : false}
+        showPlayButton={true}
+        showThumbnails={!isFullScreen}
+        renderItem={(item) => {
+          return (
+            <>
+              {!isFullScreen ? <div className={classes.container}>
+                <img
+                  src={item.original}
+                  alt={item.description}
+                  style={{ width: random ? '100%' : 'auto', height: '100%' }}
+                />
+              </div> :
+                <img
+                  src={item.original}
+                  alt={item.description}
+                  style={{ width: '70%', height: 'auto' }}
+                />
+              }
+            </>
+          );
+        }}
+        renderThumbInner={(item) => {
+          return (
+            <div>
+              <img
+                src={item.thumbnail}
+                alt={item.description}
+                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+              />
+            </div>
+          );
+        }}
+        onScreenChange={handleScreen}
+      />
     </div>
   );
 }

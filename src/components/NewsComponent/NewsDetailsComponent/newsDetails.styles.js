@@ -2,6 +2,13 @@ import { makeStyles } from '@material-ui/core';
 import mq from '../../../config/mq';
 
 export const useStyles = makeStyles(theme => ({
+    box: {
+        display: 'flex',
+        backgroundColor: 'rgba(0, 0, 0, 0.2)',
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
     container: {
         display: 'flex',
         flexDirection: 'column',

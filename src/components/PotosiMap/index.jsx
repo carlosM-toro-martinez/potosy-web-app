@@ -2,28 +2,26 @@ import React from 'react';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import iconEnd from '../../assets/images/house.png';
+import iconEnd from '../../assets/icons/infotur.jpg';
 
 const PotosiMap = () => {
     const potosiCoordinates = [
-        { id: 1, position: [-19.5833, -65.7500], name: 'Location 1' },
-        { id: 2, position: [-19.5850, -65.7595], name: 'Location 2' },
-        { id: 3, position: [-19.5900, -65.7535], name: 'Location 3' },
-        { id: 4, position: [-19.5800, -65.7450], name: 'Location 4' },
-        { id: 5, position: [-19.5700, -65.7600], name: 'Location 5' },
+        { id: 1, position: [-19.5888968420165, -65.7548005653399], name: 'Torre de la Compañia de Jesús, Calle Ayacucho entre Oruro y Bustillos' },
+        { id: 2, position: [-19.557490532432098, -65.76138607945668], name: 'Nueva Terminal, Av las Banderas' },
+        { id: 3, position: [-19.589386885261078, -65.7525811721162], name: 'Boulevard, Pasaje Boulevard(calle Padilla) entre Hoyos y Linares' },
     ];
 
     const customMarkerIcon = new L.Icon({
         iconUrl: iconEnd,
-        iconSize: [42, 42],
+        iconSize: [30, 30],
         iconAnchor: [32, 32],
         popupAnchor: [0, -32],
     });
 
     return (
         <MapContainer
-            center={[-19.5833, -65.7500]}
-            zoom={14}
+            center={[-19.575250441347954, -65.76169263531871]}
+            zoom={13}
             style={{ height: '300px', width: '350px' }}
         >
             <TileLayer

@@ -10,8 +10,6 @@ function Home() {
         <>
             <NavBar />
             <BannerComponent />
-            {/* <CarouselImagesComponent listCardRef={listCardRef} /> */}
-            {/* </BannerComponent> */}
             <ListCard listCardRef={listCardRef} ref={listCardRef} />
         </>
     )

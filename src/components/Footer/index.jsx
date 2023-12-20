@@ -1,45 +1,44 @@
 import * as React from "react";
 import Typography from "@mui/material/Typography";
-import Link from "@mui/material/Link";
-import { Facebook, Instagram, Twitter } from "@mui/icons-material";
-import { Box } from "@mui/material";
+import { Box, useScrollTrigger } from "@mui/material";
 import { useStyles } from "./footer.styles";
-import footerBackground from '../../assets/images/1potosi.jpg';
 import CarouselImagesDetailsComponent from "../Details/CarouselImagesDetailsComponent";
-import imagesRandomService from '../../async/services/imagesRandomService';
+import logosRandomService from '../../async/services/logosRandomService';
 import { useQuery } from "react-query";
+import potosy from '../../assets/icons/potosy.jpg';
+import infotur from '../../assets/icons/infotur.jpg';
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const classes = useStyles();
-  const { data, isLoading, isError, error, refetch }
+  const trigger = useScrollTrigger({
+    target: window,
+    disableHysteresis: true,
+  });
+  const { data, isLoading, error }
     =
-    useQuery(`imagesRandom`, () => imagesRandomService());
+    useQuery(`imagesRandom`, () => logosRandomService());
 
   return (
-    <Box sx={{
-      backgroundImage: `url(${footerBackground})`,
-    }}
-      className={classes.container}
-    >
-      <Box
-        className={classes.wrapper}
-      >
-        <Box className={classes.mapContainer}>
-          <Typography variant="h2" component="h2">
-            Imagenes
-          </Typography>
-          {!isLoading && !error ? <CarouselImagesDetailsComponent images={data} /> : null}
+    <div className={classes.title}>
+      <Typography variant="h5" >
+        Cada dia somos más
+      </Typography>
+      {!isLoading && !error ? <CarouselImagesDetailsComponent images={data} random={true} /> : <Typography>Cargando...</Typography>}
+      <Box className={classes.containerImage}>
+        <Box>
+          <img src={potosy} alt="potosy" className={classes.image} />
         </Box>
-        <Box className={classes.textContainer}>
-          <Link href="https://www.facebook.com/" color="inherit">
-            <Facebook sx={{ fontSize: '42px', color: '#1877f2' }} />
+        <Box className={classes.containerLinks}>
+          <Typography variant="h5">
+            Enlances de interés
+          </Typography>
+          <Link to="/contacts" className={classes.link}>
+            Contáctanos
           </Link>
-          <Link href="https://www.instagram.com/" color="inherit">
-            <Instagram sx={{ fontSize: '42px', color: '#fd7e14' }} />
-          </Link>
-          <Link href="https://www.twitter.com/">
-            <Twitter sx={{ fontSize: '42px', color: '#1da1f2' }} />
-          </Link>
+        </Box>
+        <Box>
+          <img src={infotur} alt="infotur" className={classes.image} />
         </Box>
       </Box>
       <Box className={classes.footer}>
@@ -49,6 +48,7 @@ export default function Footer() {
           {"."}
         </Typography>
       </Box>
-    </Box>
+
+    </div>
   );
 }

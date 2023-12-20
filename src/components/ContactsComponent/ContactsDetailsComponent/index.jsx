@@ -1,11 +1,15 @@
 import React from 'react';
 import { useStyles } from "./ContactsDetails.styles";
 import { useLocation } from 'react-router-dom';
-import infoturLogo from '../../../assets/images/infotour.jpg'
+import infoturLogo from '../../../assets/icons/infotur.jpg';
+import { Facebook, WhatsApp, Telegram } from '@mui/icons-material';
 
 function ContactsDetailsComponent() {
     const infoturData = useLocation().state;
     const classes = useStyles();
+    const handleRedirect = (url) => {
+        window.open(url, '_blank');
+    };
     return (
         <div className={classes.container}>
             <div className={classes.title}>Infotur Información</div>
@@ -20,20 +24,17 @@ function ContactsDetailsComponent() {
 
             </div>
             <div>
-                <span className={classes.label}>Redes sociales:</span>
-                <span>{infoturData.redes_sociales.facebook}</span>
-            </div>
-            <div>
-                <span className={classes.label}>Logotipo:</span>
-                <span>{infoturData.logotipo}</span>
-            </div>
-            <div>
                 <span className={classes.label}>Dirección:</span>
                 <span>{infoturData.direccion}</span>
             </div>
             <div className={classes.description}>
                 <span className={classes.label}>Descripción Infotur:</span>
                 <p>{infoturData.descripcion}</p>
+            </div>
+            <div className={classes.iconContainer} >
+                <Facebook onClick={() => handleRedirect('https://www.facebook.com/infoturpotosi/')} className={classes.icon} sx={{ fontSize: '4rem' }} />
+                <WhatsApp onClick={() => handleRedirect('https://wa.me/+5916231021/')} className={classes.icon} sx={{ fontSize: '4rem' }} />
+                <Telegram onClick={() => handleRedirect('https://t.me/+5916231021/')} className={classes.icon} sx={{ fontSize: '4rem' }} />
             </div>
         </div>
     )

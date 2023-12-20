@@ -7,10 +7,10 @@ export const useStyles = makeStyles(theme => ({
         display: "flex",
         flexDirection: "column",
         alignItems: "flex-start",
+        justifyContent: 'center',
         marginBottom: '4rem',
-        width: '50rem',
         position: 'relative',
-
+        padding: '0 5rem 0 10rem',
         '& h4': {
             color: 'white',
             fontWeight: 'bold',
@@ -33,7 +33,7 @@ export const useStyles = makeStyles(theme => ({
     },
     form: {
         display: 'flex',
-        width: '100%',
+        width: '85%',
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',

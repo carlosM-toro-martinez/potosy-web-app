@@ -5,6 +5,7 @@ function useSection() {
     const [section, setSection] = useState(1);
     const [descSection, setDescSection] = useState('');
     const [route, setRoute] = useState();
+    const [index, setIndex] = useState(0);
 
     return {
         section,
@@ -13,6 +14,8 @@ function useSection() {
         setDescSection,
         setRoute,
         setSection,
+        index,
+        setIndex
     }
 }
 

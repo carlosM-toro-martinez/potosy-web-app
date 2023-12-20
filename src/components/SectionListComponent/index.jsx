@@ -13,7 +13,6 @@ import {
 } from '@mui/material';
 import { useStyles } from './sectionList.styles';
 import DeleteIcon from '@mui/icons-material/Delete';
-import background from '../../assets/images/background.jpg';
 import { useQuery } from 'react-query';
 import sectionsService from '../../async/services/sectionsService';
 import sectionsDeleteServices from '../../async/services/delete/sectionsDeleteServices';
@@ -43,14 +42,14 @@ function SectionList() {
     <Box className={clasess.container}>
       <TableContainer
         component={Paper}
+        elevation={8}
         sx={{
-          backgroundImage: `url(${background})`,
-          color: 'white'
+          color: 'black'
         }}>
         <Box className={clasess.box}>
           <Typography variant='h3' >apartados</Typography>
           <Button
-            variant="outlined"
+            variant="contained"
             startIcon={<AddCircleIcon />}
             className={clasess.button}
             onClick={() => handleNavigation('addSections')}
@@ -60,22 +59,22 @@ function SectionList() {
           <Table sx={{ width: '50rem' }} className={clasess.table}>
             <TableHead>
               <TableRow sx={{
-                color: 'white'
+                color: 'black'
               }}>
-                <TableCell sx={{ color: 'white' }} className={clasess.row}>id</TableCell>
-                <TableCell sx={{ color: 'white' }} className={clasess.row}>Nombre</TableCell>
-                <TableCell sx={{ color: 'white' }} className={clasess.row}>Description</TableCell>
-                <TableCell sx={{ color: 'white' }} className={clasess.row}>actualizar</TableCell>
-                <TableCell sx={{ color: 'white' }} className={clasess.row}>Eliminar</TableCell>
+                <TableCell sx={{ color: 'black' }} className={clasess.row}>id</TableCell>
+                <TableCell sx={{ color: 'black' }} className={clasess.row}>Nombre</TableCell>
+                <TableCell sx={{ color: 'black' }} className={clasess.row}>Description</TableCell>
+                <TableCell sx={{ color: 'black' }} className={clasess.row}>actualizar</TableCell>
+                <TableCell sx={{ color: 'black' }} className={clasess.row}>Eliminar</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {!isLoading && !error ? data?.map(item => (
-                <TableRow sx={{ color: 'white' }}>
-                  <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.section_id}</TableCell>
-                  <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>{item?.title}</TableCell>
-                  <TableCell className={clasess.cellDesc} sx={{ color: 'white' }}>{item?.description}</TableCell>
-                  <TableCell sx={{ color: 'white' }}>
+                <TableRow sx={{ color: 'black' }}>
+                  <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.section_id}</TableCell>
+                  <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.title}</TableCell>
+                  <TableCell className={clasess.cellDesc} sx={{ color: 'black' }}>{item?.description}</TableCell>
+                  <TableCell sx={{ color: 'black' }}>
                     <Button
                       variant="outlined">
                       <Link
@@ -86,7 +85,7 @@ function SectionList() {
                       </Link>
                     </Button>
                   </TableCell>
-                  <TableCell sx={{ color: 'white' }}>
+                  <TableCell sx={{ color: 'black' }}>
                     <Button
                       variant="outlined"
                       startIcon={<DeleteIcon />}

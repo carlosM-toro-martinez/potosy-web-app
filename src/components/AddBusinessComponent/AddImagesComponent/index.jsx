@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { styled } from '@mui/material/styles';
 import {
-  TextField,
   Button,
   Container,
   Typography,
@@ -19,6 +17,7 @@ import imagesAddServices from '../../../async/services/post/imagesAddServices';
 import loginSession from '../../../async/services/post/loginSession';
 import { MainContext } from '../../../context/MainContext';
 import imagesOneBusiness from '../../../async/services/imagesOneBusiness';
+import imagesDeleteServices from '../../../async/services/delete/imagesDeleteServices';
 import { useQuery } from 'react-query';
 
 const AddImages = () => {
@@ -26,7 +25,8 @@ const AddImages = () => {
   const { setAuth, setToken, user } = useContext(MainContext);
   const { id } = useParams();
   const location = useLocation();
-  const { data, isLoading, error, refetch } = useQuery('imagesOneBusiness', () => imagesOneBusiness(location.state));
+  const { data, isLoading, error, refetch } =
+    useQuery('imagesOneBusiness', () => imagesOneBusiness(id ? id : location.state));
   const navigation = useNavigate();
   const [imagesData, setImagesData] = useState({
     image: null,
@@ -46,7 +46,7 @@ const AddImages = () => {
     try {
       const formData = new FormData();
       formData.append('image', imagesData.image);
-      formData.append('business_id', location.state);
+      formData.append('business_id', id ? id : location.state);
       await imagesAddServices(formData);
       alert('Imagen agregada correctamente');
       event.target.reset();
@@ -65,8 +65,20 @@ const AddImages = () => {
     navigation('/establishmentAdmin/home', { state: location?.state });
   };
 
-  if (!location.state) {
+  if (!location.state || !user) {
     return <Navigate to="/establishmentAdmin" />;
+  }
+
+  const deleteImage = async (idImage, url) => {
+    try {
+      const fileName = url.substring(url.lastIndexOf('/') + 1);
+      await imagesDeleteServices(idImage, fileName);
+      alert('La imagen se elimino correctamente');
+      refetch();
+    } catch (error) {
+      console.error('Error deleting image:', error);
+      alert('La imagen no se pudo eliminar');
+    }
   }
 
   return (
@@ -77,20 +89,20 @@ const AddImages = () => {
       <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
         <TableHead>
           <TableRow sx={{
-            color: 'white'
+            color: 'black'
           }}>
-            <TableCell sx={{ color: 'white' }}>Imagen</TableCell>
-            <TableCell sx={{ color: 'white' }}>Eliminar Imagen</TableCell>
+            <TableCell sx={{ color: 'black' }}>Imagen</TableCell>
+            <TableCell sx={{ color: 'black' }}>Eliminar Imagen</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {!isLoading && !error ? data.map(item => (
-            <TableRow key={item.image_id} sx={{ color: 'white' }}>
+            <TableRow key={item.image_id} sx={{ color: 'black' }}>
               <TableCell>
                 <img src={item.image_url} alt={`Image ${item.image_id}`} style={{ width: '150px', height: '150px', objectFit: 'cover' }} />
               </TableCell>
-              <TableCell sx={{ color: 'white', textTransform: 'capitalize' }}>
-                <Button variant="contained" >
+              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>
+                <Button variant="contained" onClick={() => deleteImage(item.image_id, item.image_url)} >
                   Eliminar Imagen
                 </Button>
               </TableCell>
@@ -107,10 +119,10 @@ const AddImages = () => {
             onChange={handleChange}
             name="image"
             required
-            style={{ marginBottom: '30px', color: 'white' }}
+            style={{ marginBottom: '30px', color: 'black' }}
           />
         </Box>
-        <Button type="submit" variant="outlined" className={classes.button}>
+        <Button type="submit" variant="contained" className={classes.button}>
           Agregar Nueva
         </Button>
         <Button className={classes.buttonFinish} onClick={handleNavigation}>

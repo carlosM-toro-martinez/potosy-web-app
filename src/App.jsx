@@ -6,8 +6,6 @@ import Details from './components/Details';
 import SectionContextProvider from './context/SectionContextProvider';
 import MapContextProvider from './context/MapContextProvider';
 import Home from './pages/Home';
-import AboutComponent from './components/AboutComponent';
-import BackgroundComponent from './components/BackgroundComponent';
 import ContactsComponent from './components/ContactsComponent';
 import NewsComponent from './components/NewsComponent';
 import Footer from './components/Footer';
@@ -30,10 +28,13 @@ import EstablishmentDashbord from './components/EstablishmentDashbordComponent';
 import PrivateAdminRoute from './PrivateAdminRoute/Index';
 import ContactsDetailsComponent from './components/ContactsComponent/ContactsDetailsComponent';
 import NewsDetailsComponent from './components/NewsComponent/NewsDetailsComponent';
-import MapInfo from './components/ContactsComponent/MapInfoComponent';
 import ChutillosComponent from './components/ChutillosComponent';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
-
+import TouristRouterComponent from './components/TouristRoutersComponent';
+import ImageTextComponent from './components/ImageTextComponent';
+import ImageTextLeft from './components/ImageTextLeft';
+import AdminControlComponent from './components/AdminControlComponent';
+import AddAdminComponent from './components/AdminControlComponent/AddAdminComponent';
 
 const AdminRoutes = () => {
   return (
@@ -48,9 +49,7 @@ const AdminRoutes = () => {
       <Route path='detailBusiness/:id' element={
         <>
           <NavBar />
-          <BackgroundComponent>
-            <Details />
-          </BackgroundComponent>
+          <Details />
           <Footer />
         </>
       } />
@@ -63,40 +62,46 @@ const AdminRoutes = () => {
       } />
       <Route path='addSections' element={<>
         <NavBar />
-        <BackgroundComponent>
-          <AddSection />
-        </BackgroundComponent>
+        <AddSection />
         <Footer />
 
       </>} />
       <Route path='addSections/:id' element={<>
         <NavBar />
-        <BackgroundComponent>
-          <AddSection />
-        </BackgroundComponent>
+        <AddSection />
         <Footer />
 
       </>} />
       <Route path='news' element={<>
         <NavBar />
-        <BackgroundComponent>
-          <NewsAdminComponent />
-        </BackgroundComponent>
+        <NewsAdminComponent />
         <Footer />
       </>} />
       <Route path='addNews' element={<>
         <NavBar />
-        <BackgroundComponent>
-          <AddNewsComponent />
-        </BackgroundComponent>
+        <AddNewsComponent />
         <Footer />
 
       </>} />
       <Route path='addNews/:id' element={<>
         <NavBar />
-        <BackgroundComponent>
-          <AddNewsComponent />
-        </BackgroundComponent>
+        <AddNewsComponent />
+        <Footer />
+
+      </>} />
+      <Route path='admins' element={<>
+        <NavBar />
+        <AdminControlComponent />
+        <Footer />
+      </>} />
+      <Route path='addAdmins' element={<>
+        <NavBar />
+        <AddAdminComponent />
+        <Footer />
+      </>} />
+      <Route path='addAdmins/:id' element={<>
+        <NavBar />
+        <AddAdminComponent />
         <Footer />
 
       </>} />
@@ -113,197 +118,166 @@ function App() {
     <Theme>
       <QueryClientProvider client={queryClient}>
         <MainContextProvider>
-          <BrowserRouter>
-            <ScrollToTop />
-            <Routes>
-              <Route path='/' element={<>
-                <SectionContextProvider>
+          <SectionContextProvider>
+            <BrowserRouter>
+              <ScrollToTop />
+              <Routes>
+                <Route path='/' element={<>
                   <Home />
-                </SectionContextProvider>
-                <Footer />
-              </>} />
-              <Route path='/datails/:id' element={<>
-                <NavBar />
-                <BackgroundComponent>
+                  <ImageTextComponent />
+                  <ImageTextLeft />
+                  <Footer />
+                </>} />
+                <Route path='/datails/:id' element={<>
+                  <NavBar />
                   <Details />
-                </BackgroundComponent>
-                <Footer />
-              </>} />
-              <Route path='/about' element={<>
-                <NavBar />
-                <AboutComponent />
-                <Footer />
-              </>} />
-              <Route path='/chutillos' element={<>
-                <NavBar />
-                <ChutillosComponent />
-                <Footer />
-              </>} />
-              <Route path='/contacts'>
-                <Route path='' element={<>
+                  <ImageTextComponent />
+                  <ImageTextLeft />
+                  <Footer />
+                </>} />
+                <Route path='/chutillos' element={<>
                   <NavBar />
-                  <BackgroundComponent>
+                  <ChutillosComponent />
+                  <ImageTextComponent />
+                  <ImageTextLeft />
+                  <Footer />
+                </>} />
+                <Route path='/routes' element={<>
+                  <NavBar />
+                  <TouristRouterComponent />
+                  <ImageTextComponent />
+                  <ImageTextLeft />
+                  <Footer />
+                </>} />
+                <Route path='/contacts'>
+                  <Route path='' element={<>
+                    <NavBar />
                     <ContactsComponent />
-                  </BackgroundComponent>
-                  <MapInfo />
-                  <Footer />
-                </>} />
-                <Route path='details' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <ImageTextComponent />
+                    <ImageTextLeft />
+                    <Footer />
+                  </>} />
+                  <Route path='details' element={<>
+                    <NavBar />
                     <ContactsDetailsComponent />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-              </Route>
-              <Route path='/news'>
-                <Route path='' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <Footer />
+                  </>} />
+                </Route>
+                <Route path='/news'>
+                  <Route path='' element={<>
+                    <NavBar />
                     <NewsComponent />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='details' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <Footer />
+                  </>} />
+                  <Route path='details' element={<>
+                    <NavBar />
                     <NewsDetailsComponent />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-              </Route>
-              <Route path='/map' element={<>
-                <MapContextProvider>
-                  <NavBar />
-                  <Map />
-                </MapContextProvider>
-              </>} />
-              <Route path="/admin/*" element={
-                <PrivateAdminRoute
-                  redirectPath="/"
-                >
-                  <AdminRoutes />
-                </PrivateAdminRoute>
-              } />
-              <Route path='/establishmentAdmin'>
-                <Route path='' element={
-                  <>
-                    <NavBar />
-                    <BackgroundComponent>
-                      <AddBusinessComponent />
-                    </BackgroundComponent>
                     <Footer />
-                  </>
-                } />
-                <Route path='home' element={
-                  <>
+                  </>} />
+                </Route>
+                <Route path='/map' element={<>
+                  <MapContextProvider>
                     <NavBar />
-                    <BackgroundComponent>
+                    <Map />
+                  </MapContextProvider>
+                </>} />
+                <Route path="/admin/*" element={
+                  <PrivateAdminRoute
+                    redirectPath="/"
+                  >
+                    <AdminRoutes />
+                  </PrivateAdminRoute>
+                } />
+                <Route path='/establishmentAdmin'>
+                  <Route path='' element={
+                    <>
+                      <NavBar />
+                      <AddBusinessComponent />
+                      <Footer />
+                    </>
+                  } />
+                  <Route path='home' element={
+                    <>
+                      <NavBar />
                       <EstablishmentDashbord />
-                    </BackgroundComponent>
-                    <Footer />
-                  </>
-                } />
-                <Route path='socialNet' element={
-                  <>
-                    <NavBar />
-                    <BackgroundComponent>
+                      <Footer />
+                    </>
+                  } />
+                  <Route path='socialNet' element={
+                    <>
+                      <NavBar />
                       <AddSocialNetworks />
-                    </BackgroundComponent>
-                    <Footer />
-                  </>
-                } />
-                <Route path='promotions' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
-                    <AddPromotions />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='products' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
-                    <AddProducts />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='openinghours' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
-                    <AddHours />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='images' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
-                    <AddImages />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path=':id' element={
-                  <>
+                      <Footer />
+                    </>
+                  } />
+                  <Route path='promotions' element={<>
                     <NavBar />
-                    <BackgroundComponent>
+                    <AddPromotions />
+                    <Footer />
+                  </>} />
+                  <Route path='products' element={<>
+                    <NavBar />
+                    <AddProducts />
+                    <Footer />
+                  </>} />
+                  <Route path='openinghours' element={<>
+                    <NavBar />
+                    <AddHours />
+                    <Footer />
+                  </>} />
+                  <Route path='images' element={<>
+                    <NavBar />
+                    <AddImages />
+                    <Footer />
+                  </>} />
+                  <Route path=':id' element={
+                    <>
+                      <NavBar />
                       <AddBusinessComponent />
-                    </BackgroundComponent>
-                    <Footer />
-                  </>
-                } />
-                <Route path='socialNet/:id' element={
-                  <>
-                    <NavBar />
-                    <BackgroundComponent>
+                      <Footer />
+                    </>
+                  } />
+                  <Route path='socialNet/:id' element={
+                    <>
+                      <NavBar />
                       <AddSocialNetworks />
-                    </BackgroundComponent>
-                    <Footer />
-                  </>
-                } />
-                <Route path='promotions/:id' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                      <Footer />
+                    </>
+                  } />
+                  <Route path='promotions/:id' element={<>
+                    <NavBar />
                     <AddPromotions />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='products/:id' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <Footer />
+                  </>} />
+                  <Route path='products/:id' element={<>
+                    <NavBar />
                     <AddProducts />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='openinghours/:id' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <Footer />
+                  </>} />
+                  <Route path='openinghours/:id' element={<>
+                    <NavBar />
                     <AddHours />
-                  </BackgroundComponent>
-                  <Footer />
-                </>} />
-                <Route path='images/:id' element={<>
-                  <NavBar />
-                  <BackgroundComponent>
+                    <Footer />
+                  </>} />
+                  <Route path='images/:id' element={<>
+                    <NavBar />
                     <AddImages />
-                  </BackgroundComponent>
+                    <Footer />
+                  </>} />
+                </Route>
+                <Route path='/login' element={<>
+                  <NavBar />
+                  <LoginComponent />
                   <Footer />
                 </>} />
-              </Route>
-              <Route path='/login' element={<>
-                <NavBar />
-                <BackgroundComponent>
-                  <LoginComponent />
-                </BackgroundComponent>
-                <Footer />
-              </>} />
-              <Route path='/signup' element={<>
-                <NavBar />
-                <BackgroundComponent>
+                <Route path='/signup' element={<>
+                  <NavBar />
                   <SignupComponent />
-                </BackgroundComponent>
-                <Footer />
-              </>} />
-            </Routes>
-          </BrowserRouter>
+                  <Footer />
+                </>} />
+              </Routes>
+            </BrowserRouter>
+          </SectionContextProvider>
         </MainContextProvider>
       </QueryClientProvider>
     </Theme>

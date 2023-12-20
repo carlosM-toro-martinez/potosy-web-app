@@ -8,40 +8,40 @@ import sectionsUpdateServices from '../../async/services/put/sectionsUpdateServi
 
 const ValidationTextField = styled(TextField)({
   '& input:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& input:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-input': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root': {
-    color: 'white',
+    color: 'black',
   },
   '& textarea:valid + fieldset': {
-    borderColor: '#E0E3E7',
+    borderColor: 'black',
     borderWidth: 1,
-    color: 'white'
+    color: 'black'
   },
   '& textarea:invalid + fieldset': {
-    borderColor: 'white',
+    borderColor: 'black',
     borderWidth: 1,
   },
   '& .MuiInputBase-multiline': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiInputLabel-root.Mui-focused': {
-    color: 'white',
+    color: 'black',
   },
   '& .MuiFormHelperText-root': {
-    color: 'white',
+    color: 'black',
   },
   '& fieldset': {
-    borderColor: 'white !important',
+    borderColor: 'black !important',
   },
 });
 
@@ -78,6 +78,9 @@ const AddSection = () => {
           formData.append(key, sectionData[key]);
         }
       }
+      for (const pair of formData.entries()) {
+        console.log(pair[0], pair[1]);
+      }
       const promiseResult = await id ?
         sectionsUpdateServices(id, formData) :
         sectionsAddServices(formData)
@@ -97,7 +100,7 @@ const AddSection = () => {
         {id ? 'editar sección' : 'Agregar Nueva Sección'}
       </Typography>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: '2rem', alignItems: 'center' }}>
-        <label htmlFor="logoInput" style={{ marginBottom: '8px', color: 'white' }}>
+        <label htmlFor="logoInput" style={{ marginBottom: '8px', color: 'black' }}>
           Por favor, introduce su imagen promocional:
         </label>
         <input
@@ -107,7 +110,7 @@ const AddSection = () => {
           onChange={handleChange}
           name="image"
           //required
-          style={{ marginBottom: '16px', color: 'white' }}
+          style={{ marginBottom: '16px', color: 'black' }}
         />
       </Box>
       <form className={classes.form} onSubmit={handleSubmit}>
@@ -139,7 +142,7 @@ const AddSection = () => {
         />
         <Button
           type='submit'
-          variant="outlined"
+          variant="contained"
           className={classes.button}
         >
           {id ? 'ACTUALIZAR DATOS' : 'AGREGAR NUEVO'}
