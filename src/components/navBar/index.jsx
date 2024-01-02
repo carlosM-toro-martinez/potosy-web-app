@@ -1,5 +1,3 @@
-import { useStyles } from './navBar.styles';
-import sectionsService from '../../async/services/sectionsService';
 import React, { useContext } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -15,7 +13,6 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import RouteIcon from '@mui/icons-material/Route';
-import { useQuery } from 'react-query';
 import HomeIcon from '@mui/icons-material/Home';
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import ContactsIcon from '@mui/icons-material/Contacts';
@@ -36,9 +33,6 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 const NavBar = (props) => {
-  const { children } = props;
-  const classes = useStyles();
-  const { data, isLoading, isError, error } = useQuery('sections', () => sectionsService());
   const { auth, user } = useContext(MainContext);
   const theme = useTheme();
   const [open, setOpen] = React.useState(auth ? true : false);

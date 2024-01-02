@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import Grid from '@mui/material/Grid';
 import { useStyles } from './listCards.styles';
 import CardItem from './cardItem';
@@ -11,9 +11,18 @@ import CarrouselImages from './carouselImages'
 import { Box } from '@mui/material';
 
 function ListCard({ listCardRef }) {
+  const [items, setItems] = useState([]);
   const classes = useStyles();
   const { section, route, descSection } = useContext(SectionContext);
-  const { data, isLoading, isError, error } = useQuery(`section${section}`, () => businessOneService(section));
+  const { data, isLoading, error } = useQuery(`section${section}`, () => businessOneService(section));
+
+  useEffect(() => {
+    if (!isLoading && !error) {
+      const filtered = data.filter(item => item.state === true);
+      setItems(filtered);
+    }
+  }, [isLoading])
+
   return (
     <>
       <Grid style={{ backgroundColor: '#D9D9D9' }}>
@@ -22,16 +31,16 @@ function ListCard({ listCardRef }) {
           {route ?
             <Box className={classes.descriptionSection}>
               <Typography variant="h5" >{route}</Typography>
-              <Typography variant="h4">
+              <Typography variant="h6">
                 {descSection}
               </Typography>
             </Box> : null}
           {route ? <div className={classes.containerDesktop} >
             <ImageList cols={3} gap={50}>
-              {isLoading && error ? <h1>Cargando...</h1> : data?.map(item => (
+              {isLoading && error ? <h1>Cargando...</h1> : items?.map(item => (
                 <div key={item.business_id}>
                   <ImageListItem sx={{ width: '18rem' }}>
-                    {item.state === true ? <CardItem data={item} /> : null}
+                    <CardItem data={item} />
                   </ImageListItem>
                 </div>
 
@@ -41,7 +50,7 @@ function ListCard({ listCardRef }) {
           </div> : null}
           {route ? <div className={classes.containerMovil} >
             <ImageList sx={{ justifyContent: 'center', textAlign: 'center' }} cols={2} gap={25}>
-              {isLoading && error ? <h1>Cargando...</h1> : data?.map(item => (
+              {isLoading && error ? <h1>Cargando...</h1> : items?.map(item => (
                 <div key={item.business_id}>
                   <ImageListItem sx={{ width: '18rem' }}>
                     <CardItem data={item} />

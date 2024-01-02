@@ -1,7 +1,38 @@
 {
   "routes": [
     {
-      "title": "Ruta 1",
+      "title": "Circuito 1 Plaza 10 de Noviembre",
+      "points": [
+        [
+          -19.589565480874867,
+          -65.75380201331768
+        ],
+        [
+          -19.588908470256406,
+          -65.75383688203478
+        ],
+        [
+          -19.588880673594208,
+          -65.75319315187288
+        ],
+        [
+          -19.589484618174197,
+          -65.75315023652874
+        ]
+      ],
+      "color": "#3e4eb8",
+      "destinos": [
+        "Plaza 10 de Noviembre(antigua Plaza del Regocijo)",
+        "Estatua de la Libertad.",
+        "1ra Casa de Moneda.",
+        "Cajas Reales.",
+        "Cabildo.",
+        "Catedral Santiago Apóstol.",
+        "Club Internacional."
+      ]
+    },
+    {
+      "title": "Circuito 2  Barrio Andaluz",
       "points": [
         [
           -19.588902152821746,
@@ -42,13 +73,23 @@
       ],
       "color": "#3e4eb8",
       "destinos": [
-        "Punto A",
-        "Punto B",
-        "Punto C"
+        "Plaza 10 de Noviembre.",
+        "2da Casa de Moneda.",
+        "Colegio Santa Rosa (antiguo Corral de Comedias y Convento del Recogimiento)",
+        "Torre de la Compañía de Jesús y ex convento Jesuítico.",
+        "Calle Ayacucho (fachadas de casonas de los azogueros)",
+        "Iglesia y Convento de Santa Teresa.",
+        "Arco Magdalena de Cobija.",
+        "Iglesia y convento de Santo Domingo de Guzmán.",
+        "Portada de la oración. ",
+        "Tambo de la Cruz.",
+        "Callejón de la Oreja.",
+        "U. E. Modesto Omiste (antigua Mansión de Antonio López de Quiroga)",
+        "Plaza 10 de Noviembre."
       ]
     },
     {
-      "title": "Ruta 2",
+      "title": "CIRCUITO 3 Barrio Castellano",
       "points": [
         [
           -19.58887688311453,
@@ -81,13 +122,25 @@
       ],
       "color": "#83b83c",
       "destinos": [
-        "Punto D",
-        "Punto E",
-        "Punto F"
+        "Plaza 10 de Noviembre.",
+        "Calle Tarija (antigua Calle Imperial o el Empedradillo)",
+        "Iglesia y Convento de San Francisco.",
+        "Calle Nogales (Antigua calle de Cantu Mayu)",
+        "Calle Millares (Antigua calle de la Pelota y de la Manzanilla)",
+        "Portada de los Leones Rampantes.",
+        "facultad Técnica (Antigua Portada del Convento y Hospital San Juan de Dios.",
+        "Plaza 25 de mayo (antigua Plaza del Rayo)",
+        "Plaza 16 de Julio (Antigua plaza Pichincha o del Carbón)",
+        "Iglesia y Convento de La Merced.",
+        "Plaza Alonso de Ibáñez y pasaje Boulevard.",
+        "Plaza 6 de agosto. (Antigua Plaza de la Coca y de la Fruta)",
+        "Teatro Modesto Omiste. (Antigua Iglesia de Belén)",
+        " Colegio Nal. Pichincha (antiguo Hospital Real de la Veracruz)",
+        "Plaza 10 de Noviembre."
       ]
     },
     {
-      "title": "Ruta 3",
+      "title": "Circuito 4 Barrios Vascongados",
       "points": [
         [
           -19.588910997173006,
@@ -144,13 +197,27 @@
       ],
       "color": "#d65e2a",
       "destinos": [
-        "Punto G",
-        "Punto H",
-        "Punto I"
+        "Plaza 10 de Noviembre",
+        "Calle Hoyos (Antigua calle del Toril)",
+        "Mansión de los Condes de Casa Real de Moneda.",
+        "Calle La Paz (antigua calle Negropila)",
+        "Balcón del Ahorcado.",
+        "Barrio de Canchas viejas.",
+        "Calle Simón Chacón (antigua calle Pilima)",
+        "Iglesia y Convento de Santa Mónica.",
+        "Calle Bolívar (antigua calle de los Césares)",
+        "Calle Sucre (antigua calle Larga o de las Tabernas)",
+        "Mercado artesanal (antigua plaza del Carbón)",
+        "Calle Omiste( antigua calle del Sol o Aullagas)",
+        "Balcón esquinero (Llama cancha)",
+        "Calle Quijarro (antigua calle de la Ollería.",
+        "Iglesia de San Agustín.",
+        "Calle Quijarro (antigua calle del Baratillo)",
+        "Plaza 10 de Noviembre."
       ]
     },
     {
-      "title": "Ruta 4",
+      "title": "Circuito 5 Barrios Mestizos",
       "points": [
         [
           -19.58890725351123,
@@ -219,13 +286,26 @@
       ],
       "color": "#aa3d8b",
       "destinos": [
-        "Punto J",
-        "Punto K",
-        "Punto L"
+        "Plaza 10 de Noviembre.",
+        "Calle Ayacucho.",
+        "Convento de Santa Teresa.",
+        " Avenida Camacho (antigua calle del Panteón)",
+        "Iglesia de San Bernardo.",
+        "IV Centenario.",
+        "Caja Nacional de Salud.",
+        " Universidad Autónoma Tomás Frías.",
+        "Iglesia Nuestra Señora de Jerusalén.",
+        "Calle Oruro. (Antigua calle del Rastro)",
+        "Pasaje Héroes del Chaco.",
+        "Iglesia San Lorenzo de Carangas.",
+        "Mercado Central (antigua Recoba)",
+        "Calle Bolívar.",
+        "Calle Quijarro.",
+        "Plaza 10 de Noviembre."
       ]
     },
     {
-      "title": "Ruta 5",
+      "title": "Recorrido San Pedro",
       "points": [
         [
           -19.592015395518164,
@@ -266,13 +346,21 @@
       ],
       "color": "#5e8bd8",
       "destinos": [
-        "Punto M",
-        "Punto N",
-        "Punto O"
+        "Calle Padilla.",
+        "Plazuela Godínez.",
+        "Plazuela La Riva.",
+        "Calle Jaime Molins.",
+        "Calle de la Amargura.",
+        "Calle San Pedro.",
+        "Casa donde pernoctó Bolívar.",
+        "Casa con balcones de piedra.",
+        "Iglesia de San Pedro.",
+        "Plazuela San Pedro.",
+        "Plazuela el Minero."
       ]
     },
     {
-      "title": "Ruta 6",
+      "title": "Recorrido Concepción",
       "points": [
         [
           -19.592275701692746,
@@ -309,9 +397,18 @@
       ],
       "color": "#e3c921",
       "destinos": [
-        "Punto P",
-        "Punto Q",
-        "Punto R"
+        "Ingenio San Marcos.",
+        "Calle La Paz (antigua calle del Bombón)",
+        "Plazuela Ballivián (antiguo mercado de carne)",
+        "Casa de Alonso de Ibáñez (Museo Humberto Iporre)",
+        "Calle Nogales (antigua calle del Cantu Mayu)",
+        "Calle Porco (antiguo paraje de los Arquillos)",
+        "Plazuela de la Bruja.",
+        "U.E. Benicio Montero Mallo (antiguo ingenio Huaylla Wasi)",
+        "Casona de doña Teresa.",
+        "Calle Hernández (Antigua calle de la Pólvora.",
+        " Iglesia de la Concepción.",
+        "Capillas urbanas (Antiguas Aya samanis)"
       ]
     }
   ]

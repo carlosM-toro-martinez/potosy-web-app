@@ -1,31 +1,24 @@
 import * as React from 'react';
-import { styled, alpha } from '@mui/material/styles';
 import {
   Box,
   AppBar,
   Toolbar,
   IconButton,
-  InputBase,
   Badge,
   MenuItem,
   Menu,
-  useScrollTrigger,
   Typography,
   Button,
-  makeStyles
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import HomeIcon from '@mui/icons-material/Home';
 import MoreIcon from '@mui/icons-material/MoreVert';
-import { Slide } from '@material-ui/core';
-import PropTypes from 'prop-types';
 import { useNavigate } from 'react-router-dom';
 import newsService from '../../../async/services/newsService';
 import { useQuery } from 'react-query';
 import { MainContext } from '../../../context/MainContext';
-import NotificationsActiveIcon from '@mui/icons-material/NotificationsActive';
 import mq from '../../../config/mq';
 
 

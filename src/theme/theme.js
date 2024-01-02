@@ -1,28 +1,16 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@material-ui/core';
-import HankenGrotesk_SemiBoldItalic from '../assets/font/static/HankenGrotesk-SemiBoldItalic.ttf';
-import HankenGrotesk_ExtraBoldItalic from '../assets/font/static/HankenGrotesk-ExtraBoldItalic.ttf';
-import HankenGrotesk_LightItalic from '../assets/font/static/HankenGrotesk-LightItalic.ttf';
+import NotoSerifDisplay_ExtraCondensed from '../assets/font/NotoSerifDisplay_ExtraCondensed-BlackItalic.ttf';
 
 
 
-const HankenLight = {
-    fontFamily: 'Hanken-Light',
-    src: `url(${HankenGrotesk_LightItalic})`
-}
-const HankenSemi = {
-    fontFamily: 'Hanken-Semi',
-    src: `url(${HankenGrotesk_SemiBoldItalic})`
-}
-const HankenBold = {
-    fontFamily: 'Hanken-Bold',
-    src: `url(${HankenGrotesk_ExtraBoldItalic})`
+const NotoSerifDisplayExtraCondensed = {
+    fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
+    src: `url(${NotoSerifDisplay_ExtraCondensed})`
 }
 const theme = createTheme({
     typography: {
         fontFamily: [
-            `"${HankenBold.fontFamily}"`,
-            `"${HankenLight.fontFamily}"`,
-            `"${HankenSemi.fontFamily}"`,
+            `"${NotoSerifDisplayExtraCondensed.fontFamily}"`,
         ].join(','),
     },
     palette: {
@@ -54,9 +42,7 @@ const theme = createTheme({
         MuiCssBaseline: {
             '@global': {
                 '@font-face': [
-                    HankenLight,
-                    HankenSemi,
-                    HankenBold,
+                    NotoSerifDisplayExtraCondensed
                 ],
             },
             body: {
@@ -69,7 +55,6 @@ const theme = createTheme({
         },
     },
 })
-console.log('Tema:', theme);
 const Theme = ({ children }) => (
 
     <ThemeProvider theme={theme}>

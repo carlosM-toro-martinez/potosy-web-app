@@ -24,7 +24,7 @@ function SwiperCarousel({ slidesData, listCardRef }) {
       <div className='wrapper'>
         <div className="container">
           <Swiper
-            spaceBetween={30}
+            spaceBetween={20}
             effect={'coverflow'}
             grabCursor={true}
             centeredSlides={true}

@@ -21,7 +21,7 @@ export const useStyles = makeStyles(theme => ({
         [mq('md')]: {
             '& h3': {
                 marginTop: '1rem',
-                fontSize: '4rem',
+                fontSize: '2.8rem',
                 letterSpacing: '.2rem',
                 fontWeight: 'bold',
             },

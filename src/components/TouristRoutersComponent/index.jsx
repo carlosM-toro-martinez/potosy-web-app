@@ -1,12 +1,11 @@
 import { Box, Button } from '@mui/material';
 import React, { useState } from 'react';
-import { MapContainer, TileLayer, Polyline, Popup, useMap, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, Popup, useMap } from 'react-leaflet';
 import RouteIcon from '@mui/icons-material/Route';
 import routesData from '../../JSON/routesTourist.json';
 import { useStyles } from './touristRouters';
 import { Typography } from '@material-ui/core';
 import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
@@ -35,11 +34,10 @@ function TouristRouterComponent() {
       <Typography className={classes.title}>Rutas Turisticas Potosi</Typography>
       <Box className={classes.container} >
         <div className={classes.seccionRoutes}>
-          <h2>Seleccione una ruta:</h2>
+          <h2>Seleccione un circuito: <RouteIcon /></h2>
           {routesData.routes.map((route, index) => (
             <Button
               variant="outlined"
-              startIcon={<RouteIcon />}
               active
               key={index} onClick={() => handleRouteChange(index, route.destinos, route.title)}>
               {route.title}
@@ -50,14 +48,14 @@ function TouristRouterComponent() {
           <Table sx={{ width: 300 }} aria-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell>Paradas {title}</TableCell>
+                <TableCell>{title}</TableCell>
               </TableRow>
             </TableHead>
-            {destination ? destination.map((row) => (
+            {destination ? destination.map((row, index) => (
               <TableRow
-                key={row}
+                key={index}
               >
-                <TableCell key={row} component="th">
+                <TableCell component="th">
                   {row}
                 </TableCell>
               </TableRow>

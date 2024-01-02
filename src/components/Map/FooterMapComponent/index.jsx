@@ -1,4 +1,3 @@
-import { Link } from '@mui/material'
 import React from 'react'
 
 function FooterMapComponent({ calle, coordinates }) {

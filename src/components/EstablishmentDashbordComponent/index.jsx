@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext } from 'react';
 import {
   Table,
   TableBody,
@@ -7,8 +7,7 @@ import {
   TableRow,
   Box,
   Button,
-  Typography,
-  Paper
+  Typography
 } from '@mui/material';
 import { useStyles } from './EstablishmentDashbord.styles';
 import { useQuery } from 'react-query';
@@ -17,9 +16,9 @@ import { MainContext } from '../../context/MainContext';
 import businessFindOne from '../../async/services/businessFindOneService';
 
 function EstablishmentDashbord() {
-  const { user, setUser, token } = useContext(MainContext);
+  const { user } = useContext(MainContext);
   const location = useLocation();
-  const { data, isLoading, isError, error, refetch } = useQuery(`businessOne`, () => businessFindOne(location?.state));
+  const { data, isLoading, error } = useQuery(`businessOne`, () => businessFindOne(location?.state));
   const navigate = useNavigate();
   const handleEditData = (uri, id) => {
     console.log(location.state);

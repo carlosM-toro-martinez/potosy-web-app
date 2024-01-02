@@ -29,6 +29,7 @@ function useMap() {
     return {
         location,
         positionStart,
+        error,
         setPositionStart
     }
 }

@@ -8,7 +8,6 @@ import {
   TableRow,
   Paper,
   Box,
-  IconButton,
   Button
 } from '@mui/material';
 import { useStyles } from './sectionList.styles';
@@ -22,7 +21,7 @@ import { Link, useNavigate } from 'react-router-dom';
 
 function SectionList() {
   const navigation = useNavigate();
-  const { data, isLoading, isError, error, refetch } = useQuery(`sectionsAdmin`, () => sectionsService());
+  const { data, isLoading, error, refetch } = useQuery(`sectionsAdmin`, () => sectionsService());
 
   const handleNavigation = (route) => {
     navigation(`/admin/${route}`)

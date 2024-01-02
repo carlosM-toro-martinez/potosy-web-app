@@ -14,14 +14,14 @@ export const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
-    '& h4': {
+    '& h6': {
       width: '100%',
       fontSize: '.7rem',
       color: '#5B5B5B',
-      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       textAlign: 'center',
       padding: '1.5rem 1.5rem 0 1.5rem',
-      textTransform: 'uppercase'
+      fontFamily: 'arial',
+      textTransform: 'capitalze'
     },
     '& h5': {
       fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
@@ -37,7 +37,7 @@ export const useStyles = makeStyles(theme => ({
 
     },
     [mq('md')]: {
-      '& h4': {
+      '& h6': {
         fontSize: '1.3rem',
       },
       '& h5': {

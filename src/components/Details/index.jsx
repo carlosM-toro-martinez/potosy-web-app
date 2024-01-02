@@ -29,7 +29,7 @@ const OpeningHours = ({ openinghours }) => {
   const classes = useStyles();
   return (
     <Box className={classes.openingHours}>
-      {!openinghours[0].morning_hours[0] === '' ?
+      {!openinghours[0].morning_hours[0] == '' ?
         <Typography variant="h3" component="h3">
           {`Mañana:\n ${openinghours[0].morning_hours[0]} -  ${openinghours[0].morning_hours[1]}`}
         </Typography>
@@ -37,7 +37,7 @@ const OpeningHours = ({ openinghours }) => {
       {openinghours[0].weekend ? <Typography variant="h3" component="h3">
         {openinghours[0].weekend}
       </Typography> : null}
-      {!openinghours[0].afternoon_hours[0] === '' ?
+      {!openinghours[0].afternoon_hours[0] == '' ?
         <Typography variant="h3" component="h3">
           {`Tarde:\n ${openinghours[0].afternoon_hours[0]} - ${openinghours[0].afternoon_hours[1]}`}
         </Typography>

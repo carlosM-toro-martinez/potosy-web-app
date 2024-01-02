@@ -1,7 +1,5 @@
 import { useState } from 'react';
 import 'react-image-gallery/styles/css/image-gallery.css'
-import ArrowCircleLeftIcon from '@mui/icons-material/ArrowCircleLeft';
-import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
 import { useStyles } from './CarouselImgDetails.styles';
 import ImageGallery from "react-image-gallery";
 
@@ -16,7 +14,7 @@ function CarouselImagesDetailsComponent({ images, random }) {
     thumbnail: random ? image : image.image_url,
   }));
   return (
-    <div className={classes.containerWrap} >
+    <div className={!random ? classes.containerWrap : classes.containerWrapFooter} >
       <ImageGallery
         items={imagesFormat}
         showFullscreenButton={!random ? true : false}
@@ -25,13 +23,15 @@ function CarouselImagesDetailsComponent({ images, random }) {
         renderItem={(item) => {
           return (
             <>
-              {!isFullScreen ? <div className={classes.container}>
-                <img
-                  src={item.original}
-                  alt={item.description}
-                  style={{ width: random ? '100%' : 'auto', height: '100%' }}
-                />
-              </div> :
+              {!isFullScreen ?
+                <div className=
+                  {!random ? classes.container : classes.containerFooter}>
+                  <img
+                    src={item.original}
+                    alt={item.description}
+                    style={{ width: random ? '100%' : 'auto', height: '100%' }}
+                  />
+                </div> :
                 <img
                   src={item.original}
                   alt={item.description}
@@ -43,11 +43,11 @@ function CarouselImagesDetailsComponent({ images, random }) {
         }}
         renderThumbInner={(item) => {
           return (
-            <div>
+            <div style={{ width: '70px', height: '50px' }}>
               <img
                 src={item.thumbnail}
                 alt={item.description}
-                style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                style={{ width: '100%', height: '100%' }}
               />
             </div>
           );

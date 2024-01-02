@@ -1,10 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Container, Typography, TextField, Button, IconButton } from '@mui/material';
 import { useStyles } from './Signup.styles';
 import registerSession from '../../async/services/post/registerSession';
-import { useLocation, useNavigate, Redirect, Navigate } from 'react-router-dom';
-import loginSession from '../../async/services/post/loginSession';
+import { useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { MainContext } from '../../context/MainContext';
 import MuiAlert from '@mui/material/Alert';
 import { Snackbar, LinearProgress, InputAdornment } from '@mui/material';

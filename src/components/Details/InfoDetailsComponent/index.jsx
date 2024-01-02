@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Chip } from '@mui/material';
+import { Typography } from '@mui/material';
 import EventIcon from '@mui/icons-material/Event';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import LocationOnIcon from '@mui/icons-material/LocationOn';

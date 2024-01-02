@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
-import { alpha, styled } from '@mui/material/styles';
-import { Container, Typography, TextField, Button, Box, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { Typography, TextField, Button, Box, Paper } from '@mui/material';
 import { useStyles } from './Login.styles';
 import loginSession from '../../async/services/post/loginSession';
 import { MainContext } from '../../context/MainContext';
@@ -46,7 +46,8 @@ const ValidationTextField = styled(TextField)({
 });
 
 function LoginComponent() {
-    const { setToken, setAuth, token, user, auth, setUser } = useContext(MainContext);
+    const [loading, setLoading] = useState(false);
+    const { setToken, setAuth, setUser } = useContext(MainContext);
     const navigate = useNavigate()
 
     const classes = useStyles();
@@ -62,11 +63,13 @@ function LoginComponent() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         try {
             const newData = formData;
             const promiseResult = await loginSession(newData);
             setToken(promiseResult.token);
             setAuth(true);
+            setLoading(false);
             if (promiseResult?.user?.business_id) {
                 setUser(promiseResult?.user);
                 navigate('/establishmentAdmin/home', { state: promiseResult?.user?.business_id })
@@ -76,6 +79,8 @@ function LoginComponent() {
             }
 
         } catch (error) {
+            alert('Usuario o contraseña incorrecta');
+            setLoading(false);
             console.error(error);
         }
     };
@@ -105,8 +110,12 @@ function LoginComponent() {
                             value={formData.password}
                             onChange={handleChange}
                         />
-                        <Button type="submit" variant="contained" color="primary">
-                            Iniciar Sesión
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            disabled={loading ? true : false}>
+                            {loading ? 'Cargando...' : 'Iniciar Sesión'}
                         </Button>
                     </form>
                 </Box>
