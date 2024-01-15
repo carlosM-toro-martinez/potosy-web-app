@@ -20,7 +20,7 @@ yarn-debug.log*
 yarn-error.log*
 
 docs
-.env
+#.env
 build
 colors
 chutillos
