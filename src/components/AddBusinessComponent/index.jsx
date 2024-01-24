@@ -24,6 +24,38 @@ import { useQuery } from 'react-query';
 import sectionsService from '../../async/services/sectionsService';
 import MuiAlert from '@mui/material/Alert';
 import { MainContext } from '../../context/MainContext';
+import MapModal from './MapModalComponent';
+
+const CoordinateMap = ({ selectedCoords, setSelectedCoords }) => {
+  const [isMapOpen, setMapOpen] = useState(false);
+
+  const handleOpenMap = () => {
+    setMapOpen(true);
+  };
+
+  const handleCloseMap = () => {
+    setMapOpen(false);
+  };
+
+  const handleAcceptMap = (coordinates) => {
+    console.log('Coordenadas seleccionadas:', coordinates);
+    setSelectedCoords(coordinates);
+  };
+
+  return (
+    <div style={{ marginBottom: '2rem' }}>
+      <button onClick={handleOpenMap} >
+        Selecciona Coordenadas
+      </button>
+      <MapModal
+        isOpen={isMapOpen}
+        onClose={handleCloseMap}
+        onAccept={handleAcceptMap}
+      />
+      <Typography>Coordenadas seleccionadas: {selectedCoords.join(', ')}</Typography>
+    </div>
+  );
+};
 
 
 const ValidationTextField = styled(TextField)({
@@ -71,6 +103,7 @@ function Alert(props) {
 
 const AddBusinessComponent = () => {
   const { user, setUser, token } = useContext(MainContext);
+  const [selectedCoords, setSelectedCoords] = useState([0, 0]);
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data, isLoading, isError, error, refetch } = useQuery(`sectionsAdmin`, () => sectionsService());
@@ -132,7 +165,7 @@ const AddBusinessComponent = () => {
     event.preventDefault();
     try {
       setLoading(true);
-      const NewData = { ...businessData, coordinates: `(${businessData.latitude},${businessData.longitude})`, state: false }
+      const NewData = { ...businessData, coordinates: `(${selectedCoords[0]},${selectedCoords[1]})`, state: false }
       const formData = new FormData();
       for (const key in NewData) {
         if (key === 'image' && NewData[key] !== null) {
@@ -168,15 +201,15 @@ const AddBusinessComponent = () => {
             <LinearProgress />
           </div>
         )}
-        <Typography variant="h4" align="center" style={{ color: 'black', marginTop: '5rem' }}>
+        <Typography variant="h4" align="center" style={{ color: 'black', margin: '5rem 0 2rem 0', fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic' }}>
           {id ? 'editar Establecimiento' : 'Agregar Nuevo Establecimiento'}
         </Typography>
         <form className={classes.form} onSubmit={handleSubmit}>
           <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-between' }}>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2, marginBottom: '2rem', alignItems: 'center' }}>
-              <label htmlFor="logoInput" style={{ marginBottom: '8px', color: 'black' }}>
+              <Typography htmlFor="logoInput" style={{ marginBottom: '8px', color: 'black' }}>
                 Por favor, introduce el icono de su establecimiento:
-              </label>
+              </Typography>
               <input
                 id="logoInput"
                 type="file"
@@ -271,7 +304,8 @@ const AddBusinessComponent = () => {
               sx={{ marginBottom: 2 }}
               helperText="Ingrese la dirección física de su negocio."
             />
-            <Grid container spacing={2}>
+            <CoordinateMap selectedCoords={selectedCoords} setSelectedCoords={setSelectedCoords} />
+            <Grid container spacing={2} style={{display: 'none'}}>
               <Grid item xs={6}>
                 <ValidationTextField
                   fullWidth
