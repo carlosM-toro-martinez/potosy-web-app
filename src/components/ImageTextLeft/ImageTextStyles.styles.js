@@ -13,7 +13,7 @@ export const useStyles = makeStyles(theme => ({
       margin: '10px',
    },
    h2: {
-      fontFamily: 'Lato-Black, sans-serif',
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       fontSize: '1.5rem',
       marginBottom: '0.5rem',
       color: '#CC3700',
@@ -25,6 +25,7 @@ export const useStyles = makeStyles(theme => ({
 
    },
    h3: {
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       fontSize: '1.5rem',
       marginTop: '0.5rem',
    },

@@ -54,7 +54,7 @@ export const useStyles = makeStyles(theme => ({
     '& h4': {
       fontSize: '14px',
       color: 'black',
-      fontFamily: 'Roboto-bold',
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       fontStyle: 'normal',
     },
     [mq('md')]: {

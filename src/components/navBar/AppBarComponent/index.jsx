@@ -133,7 +133,7 @@ export default function AppBarComponent(props) {
         </IconButton>
         <p>Inicio</p>
       </MenuItem>
-      <MenuItem onClick={() => handleNavigate('news')}>
+      {/* <MenuItem onClick={() => handleNavigate('news')}>
         <IconButton
           size="large"
           color="inherit">
@@ -142,7 +142,7 @@ export default function AppBarComponent(props) {
           </Badge>
         </IconButton>
         <p>Noticias Y Novedades</p>
-      </MenuItem>
+      </MenuItem> */}
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
           size="large"
@@ -153,7 +153,7 @@ export default function AppBarComponent(props) {
         >
           <AccountCircle />
         </IconButton>
-        <p>Perfil</p>
+        <p>Sesion</p>
       </MenuItem>
     </Menu>
   );
@@ -188,7 +188,7 @@ export default function AppBarComponent(props) {
               </Badge>
               <Typography textAlign="center" sx={{ marginLeft: '0.7rem', fontWeight: 'bold', color: '#FFDAB9' }}>INICIO</Typography>
             </IconButton>
-            <IconButton
+            {/* <IconButton
               size="large"
               color="inherit"
               onClick={() => handleNavigate('news')}
@@ -197,7 +197,7 @@ export default function AppBarComponent(props) {
                 <NotificationsIcon />
               </Badge>
               <Typography textAlign="center" sx={{ marginLeft: '0.7rem', fontWeight: 'bold', color: '#FFDAB9' }}>Noticias y Novedades</Typography>
-            </IconButton>
+            </IconButton> */}
             <IconButton
               size="large"
               edge="end"

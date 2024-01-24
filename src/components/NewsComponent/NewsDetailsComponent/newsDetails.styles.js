@@ -34,4 +34,8 @@ export const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
         marginBottom: theme.spacing(1),
     },
+    backButton: {
+        position: 'absolute',
+        width: '8rem'
+    },
 }))

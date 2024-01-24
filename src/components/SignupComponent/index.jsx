@@ -148,7 +148,7 @@ function SignupComponent() {
                             </InputAdornment>
                         ),
                     }}
-                    helperText="Ingrese su contraseña. Debe contener al menos 8 caracteres"
+                    helperText="Ingrese su contraseña. Debe contener al menos 6 caracteres"
                 />
                 <Button type="submit" variant="contained" color="primary">
                     Registrarse

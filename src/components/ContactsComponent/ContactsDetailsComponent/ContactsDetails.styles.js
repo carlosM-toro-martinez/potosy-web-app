@@ -54,5 +54,12 @@ export const useStyles = makeStyles(theme => ({
     iconContainer: {
         display: 'flex',
         flexDirection: 'row'
-    }
+    },
+    backButton: {
+        color: 'white',
+        backgroundColor: 'white',
+        position: 'absolute',
+        width: '8rem',
+        marginRight: theme.spacing(5),
+    },
 }))

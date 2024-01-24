@@ -69,13 +69,13 @@ export const useStyles = makeStyles(theme => ({
         fontWeight: 'bold',
         margin: '0 0 2rem 0',
         textAlign: 'center', // Justificar el texto
-        fontFamily: 'Lato-Black, sans-serif', // Nueva tipografía
+        fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       },
       '& h6': {
         fontSize: '1.5rem',
         marginTop: '1rem',
         padding: '0 3rem 0 3rem',
-        fontFamily: 'Lato-Black, sans-serif', // Nueva tipografía
+        fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       },
     }
   },

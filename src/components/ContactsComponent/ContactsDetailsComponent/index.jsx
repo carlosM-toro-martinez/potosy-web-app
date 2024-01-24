@@ -1,17 +1,30 @@
 import React from 'react';
+import { Typography, Box, Paper, IconButton } from '@mui/material';
 import { useStyles } from "./ContactsDetails.styles";
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import infoturLogo from '../../../assets/icons/infotur.jpg';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { Facebook, WhatsApp, Telegram } from '@mui/icons-material';
 
 function ContactsDetailsComponent() {
+    const navigate = useNavigate();
     const infoturData = useLocation().state;
     const classes = useStyles();
     const handleRedirect = (url) => {
         window.open(url, '_blank');
     };
+
+    const handleGoBack = () => {
+        navigate('/contacts');
+    };
     return (
         <div className={classes.container}>
+            <IconButton onClick={handleGoBack} className={classes.backButton} style={{ marginRight: '20rem', }}>
+                <ArrowBackIcon style={{ marginRight: '.5rem', color: '#D1D1D1' }} />
+                <Typography variant="h6" style={{ color: '#C1C1C1' }}>
+                    Volver
+                </Typography>
+            </IconButton>
             <div className={classes.title}>Infotur Información</div>
             <div className={classes.logo}>
                 <img src={infoturLogo} alt="Logo de Infotur" width="100%" height="100%" />

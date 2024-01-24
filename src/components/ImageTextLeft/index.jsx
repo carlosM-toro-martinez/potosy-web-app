@@ -47,8 +47,14 @@ const ImageTextLeft = () => {
           <div className={`${classes.tourContainer} ${showAnimation ? classes.showAnimation : ''}`}>
             <div className={classes.tourDetails}>
               <h2 className={classes.h2}>{tourData.title}</h2>
-              <p>{tourData.description}</p>
-              <p>{tourData.description2}</p>
+              <p style={{
+                fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
+                color: '#5B5B5B'
+              }} >{tourData.description}</p>
+              <p style={{
+                fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
+                color: '#5B5B5B'
+              }} >{tourData.description2}</p>
             </div>
             <div className={classes.tourImage}>
               <img src={patrimonio} alt={tourData.title} />

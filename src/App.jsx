@@ -131,30 +131,22 @@ function App() {
                 <Route path='/datails/:id' element={<>
                   <NavBar />
                   <Details />
-                  <ImageTextComponent />
-                  <ImageTextLeft />
                   <Footer />
                 </>} />
                 <Route path='/chutillos' element={<>
                   <NavBar />
                   <ChutillosComponent />
-                  <ImageTextComponent />
-                  <ImageTextLeft />
                   <Footer />
                 </>} />
                 <Route path='/routes' element={<>
                   <NavBar />
                   <TouristRouterComponent />
-                  <ImageTextComponent />
-                  <ImageTextLeft />
                   <Footer />
                 </>} />
                 <Route path='/contacts'>
                   <Route path='' element={<>
                     <NavBar />
                     <ContactsComponent />
-                    <ImageTextComponent />
-                    <ImageTextLeft />
                     <Footer />
                   </>} />
                   <Route path='details' element={<>

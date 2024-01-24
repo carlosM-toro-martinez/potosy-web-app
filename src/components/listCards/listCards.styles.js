@@ -20,7 +20,7 @@ export const useStyles = makeStyles(theme => ({
       color: '#5B5B5B',
       textAlign: 'center',
       padding: '1.5rem 1.5rem 0 1.5rem',
-      fontFamily: 'arial',
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       textTransform: 'capitalze'
     },
     '& h5': {

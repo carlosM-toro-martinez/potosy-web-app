@@ -82,7 +82,7 @@ const NavBar = (props) => {
         </DrawerHeader>
         <Divider sx={{ backgroundColor: 'white' }} />
         <List>
-          <ListItem sx={{ marginTop: -1, marginBottom: -1 }} >
+          {/* <ListItem sx={{ marginTop: -1, marginBottom: -1 }} >
             <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('')} >
               <ListItemIcon>
                 <HomeIcon sx={{ color: '#FFDAB9' }} />
@@ -91,7 +91,7 @@ const NavBar = (props) => {
                 Inicio
               </Typography>
             </ListItemButton>
-          </ListItem>
+          </ListItem> */}
           <ListItem sx={{ marginTop: -1, marginBottom: -1 }} >
             <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('chutillos')} >
               <ListItemIcon>
