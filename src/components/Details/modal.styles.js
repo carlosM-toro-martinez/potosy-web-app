@@ -29,6 +29,7 @@ export const useStyles = makeStyles(theme => ({
       textAlign: 'center',
     },
     '& h3': {
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       fontSize: '1.5rem',
       marginTop: '1rem',
       textAlign: 'center',
@@ -60,6 +61,7 @@ export const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     justifyContent: 'center',
     '& h6': {
+      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
       marginTop: '1.5rem',
       marginBottom: '.5rem',
       fontSize: '.7rem',
