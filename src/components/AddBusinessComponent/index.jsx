@@ -44,9 +44,9 @@ const CoordinateMap = ({ selectedCoords, setSelectedCoords }) => {
 
   return (
     <div style={{ marginBottom: '2rem' }}>
-      <button onClick={handleOpenMap} >
+      <Button onClick={handleOpenMap} >
         Selecciona Coordenadas
-      </button>
+      </Button>
       <MapModal
         isOpen={isMapOpen}
         onClose={handleCloseMap}
@@ -161,27 +161,43 @@ const AddBusinessComponent = () => {
     }));
   };
 
+  const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+  // const handleEmailChange = (value) => {
+  //   // Verifica si el nuevo valor cumple con la expresión regular
+  //   if (emailRegex.test(value) || value === '') {
+  //     handleChange(value);
+  //     console.log('entre');
+  //   }
+  // };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      setLoading(true);
       const NewData = { ...businessData, coordinates: `(${selectedCoords[0]},${selectedCoords[1]})`, state: false }
-      const formData = new FormData();
-      for (const key in NewData) {
-        if (key === 'image' && NewData[key] !== null) {
-          formData.append(key, NewData[key]);
-        } else {
-          formData.append(key, NewData[key]);
+      //handleEmailChange(NewData.mail);
+      if (emailRegex.test(NewData.mail)) {
+        setLoading(true);
+        const formData = new FormData();
+        for (const key in NewData) {
+          if (key === 'image' && NewData[key] !== null) {
+            formData.append(key, NewData[key]);
+          } else {
+            formData.append(key, NewData[key]);
+          }
         }
+        const promiseResult = await id ?
+          businessUpdateServices(id, formData) :
+          businessAddService(formData);
+        promiseResult.then((data) => {
+          navigation('/signup', { state: data.business_id })
+        }).catch((error) => {
+          console.error('Error al resolver la promesa:', error);
+        });
+      } else {
+        console.error('error en el email');
+        alert('Corrige el formato de email');
       }
-      const promiseResult = await id ?
-        businessUpdateServices(id, formData) :
-        businessAddService(formData);
-      promiseResult.then((data) => {
-        navigation('/signup', { state: data.business_id })
-      }).catch((error) => {
-        console.error('Error al resolver la promesa:', error);
-      });
     } catch (error) {
       console.error(error);
       setSnackbarOpen(true);
@@ -293,6 +309,10 @@ const AddBusinessComponent = () => {
               onChange={handleChange}
               sx={{ marginBottom: 2 }}
               helperText="Ingrese la dirección de correo electrónico de su negocio."
+              inputProps={{
+                pattern: emailRegex.source,
+                title: 'Por favor, ingrese un formato de correo electrónico válido.',
+              }}
             />
             <ValidationTextField
               fullWidth
@@ -305,13 +325,12 @@ const AddBusinessComponent = () => {
               helperText="Ingrese la dirección física de su negocio."
             />
             <CoordinateMap selectedCoords={selectedCoords} setSelectedCoords={setSelectedCoords} />
-            <Grid container spacing={2} style={{display: 'none'}}>
+            <Grid container spacing={2} style={{ display: 'none' }}>
               <Grid item xs={6}>
                 <ValidationTextField
                   fullWidth
                   label="Latitud"
                   name="latitude"
-                  required
                   value={businessData.latitude}
                   onChange={handleChange}
                   sx={{ marginBottom: 2 }}
@@ -323,7 +342,6 @@ const AddBusinessComponent = () => {
                   fullWidth
                   label="Longitud"
                   name="longitude"
-                  required
                   value={businessData.longitude}
                   onChange={handleChange}
                   sx={{ marginBottom: 2 }}
