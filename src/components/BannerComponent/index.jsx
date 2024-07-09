@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
-import { useStyles } from './bannerComponent.styles.js';
-import imageBackground from '../../assets/images/5potosi.jpg'
-import { Typography } from '@material-ui/core';
-import { Slide } from '@mui/material';
-import potosy from '../../assets/icons/potosy.jpg';
-import unesco from '../../assets/icons/unesco.jpg';
-
+import React, { useContext, useState } from "react";
+import { useStyles } from "./bannerComponent.styles.js";
+import { Typography } from "@material-ui/core";
+import { Slide, Zoom } from "@mui/material";
+import unesco from "../../assets/icons/unesco.jpg";
+import potosy from "../../assets/icons/potosy.jpg";
+import BannerCarouselComponent from "./BannerCarouselComponent/index.jsx";
 
 function BannerComponent({ children }) {
   const [imageLoaded, setImageLoaded] = useState(false);
@@ -16,35 +15,33 @@ function BannerComponent({ children }) {
 
   const classes = useStyles();
   return (
-    <div
-      style={{ backgroundImage: `url(${imageBackground})` }}
-      className={classes.containerStyle}
-    >
-      <img
-        src={imageBackground}
-        alt="Background"
-        className={classes.backgroundImage}
-        onLoad={handleImageLoad}
-        style={{ display: 'none' }}
-      />
-      {imageLoaded ? <div className={classes.shadow}>
+    <div className={classes.containerStyle}>
+      <div className={classes.shadow}>
+        <div>
+          <Zoom direction="right" in={true} timeout={500}>
+            <img src={unesco} alt="UNESCO" className={classes.logoUnesco} />
+          </Zoom>
+          <Zoom direction="right" in={true} timeout={500}>
+            <img src={potosy} alt="UNESCO" className={classes.logoUnesco} />
+          </Zoom>
+        </div>
         <Slide direction="right" in={true} timeout={500}>
-          <Typography variant='h4' className={classes.title} >
+          <Typography variant="h4" className={classes.title}>
             ¡Bienvenido! - Potosi Patrimonio Cultural De La Humanidad
           </Typography>
         </Slide>
-        <Typography variant="h4" className={classes.title}>
-          Ahora En La Red
-        </Typography>
-        <Slide direction="up" in={true} timeout={1500}>
-          <div className={classes.logosContainer}>
-            <img src={potosy} alt="Potosy" className={classes.logoPotosy} />
-            <img src={unesco} alt="UNESCO" className={classes.logoUnesco} />
-          </div>
+        <Slide direction="right" in={true} timeout={500}>
+          <Typography variant="h5" className={classes.title}>
+            Potosy más que Historia - Descubre los Tesoros Turísticos de Potosí,
+            Bolivia
+          </Typography>
         </Slide>
-      </div> : null}
+      </div>
+      <div className={classes.carouselContainer}>
+        <BannerCarouselComponent />
+      </div>
     </div>
-  )
+  );
 }
 
-export default BannerComponent
+export default BannerComponent;

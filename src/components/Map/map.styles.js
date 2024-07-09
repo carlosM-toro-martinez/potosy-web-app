@@ -1,30 +1,39 @@
-import { makeStyles } from '@material-ui/core';
-import mq from '../../config/mq';
+import { makeStyles } from "@material-ui/core";
+import mq from "../../config/mq";
 
-export const useStyles = makeStyles(theme => ({
-
-    //#833601 cafe
-    //#556B2F green
-    //#C0C0C0 gris
-    //#FFDAB9 texto claro
-    container: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        height: '90vh',
-        width: '100%',
-        marginTop: '4rem',
-        [mq('md')]: {
-            height: '100vh',
-            width: '100%',
-            marginTop: '4rem',
-        }
+export const useStyles = makeStyles((theme) => ({
+  wrapper: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: "3rem",
+    gap: 10,
+    [mq("md")]: {
+      flexDirection: "row",
+      justifyContent: "space-around",
+      alignItems: "center",
     },
-    map: {
-        height: '85vh',
-        width: '95%',
-        [mq('md')]: {
-            width: '100%',
-        }
-    }
-}))
+  },
+  container: {
+    flex: 0.5,
+    width: "100%",
+    height: "50vh",
+    margin: "1rem 0 1rem 1rem",
+    [mq("md")]: {
+      width: "20rem",
+      height: "20rem",
+    },
+  },
+  footerContainer: {
+    flex: 0.5,
+  },
+  map: {
+    height: "50vh",
+    width: "95%",
+    [mq("md")]: {
+      height: "80vh",
+      width: "100%",
+    },
+  },
+}));

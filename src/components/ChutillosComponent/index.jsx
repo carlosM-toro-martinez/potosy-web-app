@@ -1,32 +1,28 @@
-import React from 'react'
-import { Box, Paper, Typography } from '@mui/material';
-import { useStyles } from './chutillosComponent.styles';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/effect-coverflow';
-import 'swiper/css/pagination';
-import { EffectCoverflow, Pagination } from 'swiper/modules';
+import React from "react";
+import { Box, Paper, Typography } from "@mui/material";
+import { useStyles } from "./chutillosComponent.styles";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
 
 function ChutillosComponent() {
-  const videoId = 'Nd1ROm0bXcg?si=TBvYhvQl_Ix_WMok';
+  const videoId = "Nd1ROm0bXcg?si=TBvYhvQl_Ix_WMok";
   const classes = useStyles();
   const imageNumbers = Array.from({ length: 7 }, (_, i) => i + 1);
   return (
-
-    <Box
-      className={classes.container}>
-      <Paper elevation={8} >
+    <Box className={classes.container}>
+      <Paper elevation={8}>
         <div className={classes.box}>
           <Box className={classes.textContainer}>
-            <Typography variant="h4" >
-              Chutillos la fiesta grande
-            </Typography>
+            <Typography variant="h4">Chutillos la fiesta grande</Typography>
             <Box className={classes.newBox}>
               <Swiper
-                effect={'coverflow'}
+                effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
-                slidesPerView={'auto'}
+                slidesPerView={"auto"}
                 coverflowEffect={{
                   rotate: 50,
                   stretch: 0,
@@ -36,7 +32,10 @@ function ChutillosComponent() {
                 }}
                 initialSlide={3}
                 pagination={true}
-                modules={[EffectCoverflow, Pagination]}
+                autoplay={{
+                  delay: 2500,
+                }}
+                modules={[EffectCoverflow, Pagination, Autoplay]}
                 className={classes.swiper}
               >
                 {imageNumbers.map((number) => (
@@ -47,14 +46,26 @@ function ChutillosComponent() {
               </Swiper>
             </Box>
             <Box className={classes.textWrapper}>
-              <Typography variant="h5" >
+              <Typography variant="h5">
                 Ch’utilos, patrimonio cultural e inmaterial de la humanidad.
               </Typography>
-              <Typography variant="h6" >
-                Potosí celebra con júbilo que la “Festividad de San Bartolomé y San Ignacio de Loyola Ch’utillos” fue declarada como patrimonio inmaterial de la humanidad en la XVIII SESIÓN DEL Comité intergubernamental  para la Salvaguarda del Patrimonio Cultural e Inmaterial de la UNESCO (Organización de las Naciones Unidas para la Educación, la Ciencia y la Cultura, que se desarrolló el Botsuana el 6 de diciembre.
+              <Typography variant="h6">
+                Potosí celebra con júbilo que la “Festividad de San Bartolomé y
+                San Ignacio de Loyola Ch’utillos” fue declarada como patrimonio
+                inmaterial de la humanidad en la XVIII SESIÓN DEL Comité
+                intergubernamental para la Salvaguarda del Patrimonio Cultural e
+                Inmaterial de la UNESCO (Organización de las Naciones Unidas
+                para la Educación, la Ciencia y la Cultura, que se desarrolló el
+                Botsuana el 6 de diciembre.
               </Typography>
-              <Typography variant="h6" >
-                Ya sea con la ritualidad, la muestra de la cultura potosina en repostería, gastronomía, usos y costumbres, la festividad de Ch’utillos tiene elementos religiosos, como la visita al santuario de La Puerta, donde están las imágenes de San Bartolomé y San Ignacio de Loyola, mientras en la capital se desarrollan las entradas autóctonas y folclóricas a finales del mes de agosto.
+              <Typography variant="h6">
+                Ya sea con la ritualidad, la muestra de la cultura potosina en
+                repostería, gastronomía, usos y costumbres, la festividad de
+                Ch’utillos tiene elementos religiosos, como la visita al
+                santuario de La Puerta, donde están las imágenes de San
+                Bartolomé y San Ignacio de Loyola, mientras en la capital se
+                desarrollan las entradas autóctonas y folclóricas a finales del
+                mes de agosto.
               </Typography>
             </Box>
             <div>
@@ -72,7 +83,7 @@ function ChutillosComponent() {
         </div>
       </Paper>
     </Box>
-  )
+  );
 }
 
-export default ChutillosComponent
+export default ChutillosComponent;

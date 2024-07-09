@@ -1,171 +1,173 @@
 .center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 100%;
-    width: 120rem;
-    margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 100%;
+  width: 120rem;
+  margin-top: 2rem;
 }
 
 @media (max-width: 767px) {
-    .center {
-        display: flex;
-        align-items: center;
-        width: 100%;
-    }
+  .center {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    .wrapper {
-        transform: scale(0.5);
-    }
+  .wrapper {
+    transform: scale(0.5);
+  }
 }
 
 .wrapper {
-    transform-origin: top;
-    height: 500px;
-
+  transform-origin: top;
+  height: 500px;
 }
 
 @media (max-width: 767px) {
-    .wrapper {
-        transform: scale(0.4);
-        height: 260px;
-    }
+  .wrapper {
+    transform: scale(0.4);
+    height: 260px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    .wrapper {
-        transform: scale(0.5);
-    }
+  .wrapper {
+    transform: scale(0.5);
+  }
 }
 
 /* md */
 
 @media (min-width: 1024px) {
-    .wrapper {
-        transform: scale(0.65);
-
-    }
+  .wrapper {
+    transform: scale(0.65);
+  }
 }
 
-
-.container {
-    max-width: 120rem;
+@media (min-width: 1200px) and (max-width: 1900px) {
+  .container {
+    max-width: 117rem;
     width: 100%;
     padding: 0px;
     margin: 0px;
+  }
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+  .container {
+    max-width: 107rem;
 
+    /* max-width: 107rem; */
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+  }
 }
 
 @media (max-width: 767px) {
-    .container {
-        max-width: 64.5rem;
-        padding: 0px;
-        margin: 0px;
-
-    }
+  .container {
+    max-width: 64.5rem;
+    padding: 0px;
+    margin: 0px;
+  }
 }
 
 .swiper_container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50rem;
 }
 
 .swiper-slide {
-    max-width: 40rem;
-    height: 38rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+  max-width: 40rem;
+  height: 38rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @media (max-width: 500px) {
-    .swiper_container {
-        height: 47rem;
-        width: 60rem;
-    }
+  .swiper_container {
+    height: 47rem;
+    width: 60rem;
+  }
 
-    .swiper-slide {
-        width: 28rem !important;
-        height: 36rem !important;
-    }
+  .swiper-slide {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
 
-    .swiper-slide img {
-        width: 28rem !important;
-        height: 36rem !important;
-    }
+  .swiper-slide img {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
 }
 
-
 .swiper-slide img {
-    width: 34rem;
-    height: 38rem;
-    border-radius: 2rem;
-    object-fit: cover;
+  width: 34rem;
+  height: 38rem;
+  border-radius: 2rem;
+  object-fit: cover;
 }
 
 .swiper-slide-shadow-left,
 .swiper-slide-shadow-right {
-    display: none;
+  display: none;
 }
 
 .swiper-navigation {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    gap: 20rem;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 20rem;
 }
 
-
 .title {
-    text-align: center;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 2.3rem;
-    margin-top: 1rem;
-    cursor: default;
-    color: black;
-    transition: color 0.3s ease;
-    font-family: NotoSerifDisplay_ExtraCondensed-BlackItalic;
+  text-align: center;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 2.3rem;
+  margin-top: 1rem;
+  cursor: default;
+  color: black;
+  transition: color 0.3s ease;
+  font-family: NotoSerifDisplay_ExtraCondensed-BlackItalic;
 }
 
 .title:hover {
-    color: #FF4500;
-    cursor: pointer;
+  color: #ff4500;
+  cursor: pointer;
 }
 
 @media (max-width: 768px) {
-
-    .title {
-        font-size: 1.5rem;
-        margin-top: 0.5rem;
-    }
+  .title {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
 }
-
-
 
 .custom-swiper-button-prev,
 .custom-swiper-button-next {
-    cursor: pointer;
-    transition: transform 0.3s ease, background-color 0.3s ease, border-radius 0.3s ease;
-    border-radius: 50%;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease,
+    border-radius 0.3s ease;
+  border-radius: 50%;
 }
 
 .custom-swiper-button-prev:hover,
 .custom-swiper-button-next:hover {
-    transform: scale(1.1);
-    background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.1);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .custom-swiper-button-prev:active,
 .custom-swiper-button-next:active {
-    transform: scale(0.9);
-    /* Hace que el icono se encoja ligeramente al hacer clic */
-    background-color: rgba(0, 0, 0, 0.2);
-    /* Ajusta el fondo negro al hacer clic */
+  transform: scale(0.9);
+  /* Hace que el icono se encoja ligeramente al hacer clic */
+  background-color: rgba(0, 0, 0, 0.2);
+  /* Ajusta el fondo negro al hacer clic */
 }

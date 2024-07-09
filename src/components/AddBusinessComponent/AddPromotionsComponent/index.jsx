@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useState } from "react";
+import { styled } from "@mui/material/styles";
 import {
   Table,
   TableBody,
@@ -12,52 +12,59 @@ import {
   Container,
   Typography,
   Box,
-} from '@mui/material';
-import { useStyles } from './AddPromotions.styles';
-import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useQuery } from 'react-query';
-import promotionsUpdateService from '../../../async/services/put/promotionsUpdateService';
-import promotionsAddServices from '../../../async/services/post/promotionsAddServices';
-import promotionsService from '../../../async/services/promotionsService';
-import MuiAlert from '@mui/material/Alert';
-import { Snackbar, LinearProgress } from '@mui/material';
+} from "@mui/material";
+import { useStyles } from "./AddPromotions.styles";
+import DeleteIcon from "@mui/icons-material/Delete";
+import {
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import { useQuery } from "react-query";
+import promotionsUpdateService from "../../../async/services/put/promotionsUpdateService";
+import promotionsAddServices from "../../../async/services/post/promotionsAddServices";
+import promotionsService from "../../../async/services/promotionsService";
+import promotionsDeleteServices from "../../../async/services/delete/promotionsDeleteServices";
+import MuiAlert from "@mui/material/Alert";
+import { Snackbar, LinearProgress } from "@mui/material";
 
 const ValidationTextField = styled(TextField)({
-  '& input:valid + fieldset': {
-    borderColor: 'black',
+  "& input:valid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
-    color: 'black'
+    color: "black",
   },
-  '& input:invalid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  '& .MuiInputBase-input': {
-    color: 'black',
-  },
-  '& .MuiInputLabel-root': {
-    color: 'black',
-  },
-  '& textarea:valid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-    color: 'black'
-  },
-  '& textarea:invalid + fieldset': {
-    borderColor: 'black',
+  "& input:invalid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
   },
-  '& .MuiInputBase-multiline': {
-    color: 'black',
+  "& .MuiInputBase-input": {
+    color: "black",
   },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: 'black',
+  "& .MuiInputLabel-root": {
+    color: "black",
   },
-  '& .MuiFormHelperText-root': {
-    color: 'black',
+  "& textarea:valid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+    color: "black",
   },
-  '& fieldset': {
-    borderColor: 'black !important',
+  "& textarea:invalid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+  },
+  "& .MuiInputBase-multiline": {
+    color: "black",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "black",
+  },
+  "& .MuiFormHelperText-root": {
+    color: "black",
+  },
+  "& fieldset": {
+    borderColor: "black !important",
   },
 });
 
@@ -71,16 +78,18 @@ const AddPromotions = () => {
   const classes = useStyles();
   const { id } = useParams();
   const location = useLocation();
-  const { data, isLoading, error, refetch } = useQuery('promotions', () => promotionsService(id ? id : location.state));
+  const { data, isLoading, error, refetch } = useQuery("promotions", () =>
+    promotionsService(id ? id : location.state)
+  );
   const navigation = useNavigate();
   const item = location?.state?.item;
   const [promotionsData, setPromotionsData] = useState({
-    promotion_details: '',
-    price: '',
+    promotion_details: "",
+    price: "",
   });
 
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
@@ -99,17 +108,21 @@ const AddPromotions = () => {
     try {
       setLoading(true);
       const newData = { ...promotionsData, business_id: location.state };
-      const promiseResult = await id ? promotionsUpdateService(id, newData) : promotionsAddServices(newData);
-      promiseResult.then((data) => {
-        setLoading(false);
-        refetch();
-        setPromotionsData({
-          promotion_details: '',
-          price: '',
+      const promiseResult = (await id)
+        ? promotionsUpdateService(id, newData)
+        : promotionsAddServices(newData);
+      promiseResult
+        .then((data) => {
+          setLoading(false);
+          refetch();
+          setPromotionsData({
+            promotion_details: "",
+            price: "",
+          });
         })
-      }).catch((error) => {
-        console.error('Error al resolver la promesa:', error);
-      });
+        .catch((error) => {
+          console.error("Error al resolver la promesa:", error);
+        });
     } catch (error) {
       console.error(error);
       setSnackbarOpen(true);
@@ -117,67 +130,100 @@ const AddPromotions = () => {
   };
 
   const handleNavigation = () => {
-    id ? navigation('/establishmentAdmin/home') : navigation('/establishmentAdmin/products', { state: location.state })
+    id
+      ? navigation("/establishmentAdmin/home")
+      : navigation("/establishmentAdmin/products", { state: location.state });
   };
 
   if (!location.state) {
     return <Navigate to="/establishmentAdmin" />;
   }
 
+  const deletePromotion = async (idProduct) => {
+    try {
+      await promotionsDeleteServices(idProduct);
+      alert("La promocion se elimino correctamente");
+      refetch();
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      alert("La promocion no se pudo eliminar");
+    }
+  };
   return (
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: "black" }} variant="h6">
+            Cargando...
+          </Typography>
           <LinearProgress />
         </div>
       )}
       <Typography variant="h4" align="center" gutterBottom>
-        {id ? 'Editar Promoción' : 'Agregar Nueva Promoción'}
+        {id ? "Editar Promoción" : "Agregar Nueva Promoción"}
       </Typography>
-      <Table sx={{ marginBottom: '3rem', justifyContent: 'center', alignItems: 'center' }}>
+      <Table
+        sx={{
+          marginBottom: "3rem",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <TableHead>
-          <TableRow sx={{
-            color: 'black'
-          }}>
-            <TableCell sx={{ color: 'black' }}>Detalle</TableCell>
-            <TableCell sx={{ color: 'black' }}>Precio</TableCell>
+          <TableRow
+            sx={{
+              color: "black",
+            }}
+          >
+            <TableCell sx={{ color: "black" }}>Detalle</TableCell>
+            <TableCell sx={{ color: "black" }}>Precio</TableCell>
+            <TableCell sx={{ color: "black" }}>Eliminar</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {!isLoading && !error ? data.map(item => (
-            <TableRow key={item.promotion_id} sx={{ color: 'black' }}>
-              {/* <TableCell sx={{
+          {!isLoading && !error
+            ? data.map((item) => (
+                <TableRow key={item.promotion_id} sx={{ color: "black" }}>
+                  {/* <TableCell sx={{
                     color: 'white', textTransform: 'capitalize', overflow: 'hidden',
                     textOverflow: 'ellipsis',
                     whiteSpace: 'nowrap',
                     maxWidth: '300px'
                   }}>{item?.attributes?.image?.data?.attributes?.url}</TableCell> */}
-              <TableCell sx={{
-                color: 'black', textTransform: 'capitalize', overflow: 'hidden',
-                textOverflow: 'ellipsis',
-                whiteSpace: 'nowrap',
-                maxWidth: '300px'
-              }}>{item?.promotion_details}</TableCell>
-              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>{item?.price}</TableCell>
-              <TableCell sx={{ color: 'black', textTransform: 'capitalize' }}>
-                <Button variant="contained" onClick={() => setPromotionsData(
-                  {
-                    promotion_details: item?.promotion_details,
-                    promotion_id: item?.promotion_id,
-                    price: item?.price,
-                  }
-                )} >
-                  Actualizar Imagenes
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))
+                  <TableCell
+                    sx={{
+                      color: "black",
+                      textTransform: "capitalize",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      maxWidth: "300px",
+                    }}
+                  >
+                    {item?.promotion_details}
+                  </TableCell>
+                  <TableCell
+                    sx={{ color: "black", textTransform: "capitalize" }}
+                  >
+                    {item?.price}
+                  </TableCell>
+                  <TableCell
+                    sx={{ color: "black", textTransform: "capitalize" }}
+                  >
+                    <Button
+                      color="error"
+                      onClick={() => deletePromotion(item?.promotion_id)}
+                    >
+                      <DeleteIcon />
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))
             : null}
         </TableBody>
       </Table>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <ValidationTextField
             fullWidth
             label="Detalles de la Promoción"
@@ -195,7 +241,7 @@ const AddPromotions = () => {
           />
         </Box>
         <Button type="submit" variant="contained" className={classes.button}>
-          {id ? 'Actualizar Datos' : 'Agregar'}
+          {id ? "Actualizar Datos" : "Agregar"}
         </Button>
         <Button className={classes.buttonFinish} onClick={handleNavigation}>
           Siguiente
@@ -205,7 +251,7 @@ const AddPromotions = () => {
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleSnackbarClose} severity="error">
           Error al ingresar las promociones.
