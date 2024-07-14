@@ -28,7 +28,7 @@ export default function SocialNetworksComponent({
           className={`${classes.iconButton} ${classes.facebook}`}
           onClick={() => handleRedirect(face)}
         >
-          <FacebookRounded className={classes.icon} />
+          <FacebookRounded className={`${classes.icon} ${classes.facebook}`} />
         </div>
       ) : null}
       {wpp ? (
@@ -36,7 +36,7 @@ export default function SocialNetworksComponent({
           className={`${classes.iconButton} ${classes.whatsapp}`}
           onClick={() => handleRedirect(wpp)}
         >
-          <WhatsApp className={classes.icon} />
+          <WhatsApp className={`${classes.icon} ${classes.whatsapp}`} />
         </div>
       ) : null}
       {inst ? (
@@ -44,7 +44,7 @@ export default function SocialNetworksComponent({
           className={`${classes.iconButton} ${classes.instagram}`}
           onClick={() => handleRedirect(inst)}
         >
-          <Instagram className={classes.icon} />
+          <Instagram className={`${classes.icon} ${classes.instagram}`} />
         </div>
       ) : null}
       {tube ? (
@@ -52,7 +52,7 @@ export default function SocialNetworksComponent({
           className={`${classes.iconButton} ${classes.youtube}`}
           onClick={() => handleRedirect(tube)}
         >
-          <YouTube className={classes.icon} />
+          <YouTube className={`${classes.icon} ${classes.youtube}`} />
         </div>
       ) : null}
       {twit ? (
@@ -60,7 +60,7 @@ export default function SocialNetworksComponent({
           className={`${classes.iconButton} ${classes.X}`}
           onClick={() => handleRedirect(twit)}
         >
-          <Twitter className={classes.icon} />
+          <Twitter className={`${classes.icon} ${classes.X}`} />
         </div>
       ) : null}
     </div>

@@ -24,11 +24,11 @@ const CarouselImagesComponent = ({ listCardRef }) => {
       {!isLoading && !error ? (
         <div className={classes.container}>
           <Paper
-            style={{ marginTop: idParam ? "4rem" : "0rem" }}
+            style={{ marginTop: idParam ? ".6rem" : "0rem" }}
             className={classes.container}
             elevation={5}
           >
-            <Typography variant="h3">Secciones</Typography>
+            <Typography variant="h3">Apartados</Typography>
             <SwiperCarousel slidesData={data} listCardRef={listCardRef} />
           </Paper>
         </div>

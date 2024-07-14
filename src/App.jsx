@@ -215,7 +215,7 @@ function App() {
                     </>
                   }
                 />
-                <Route path="/contacts">
+                {/* <Route path="/contacts">
                   <Route
                     path=""
                     element={
@@ -236,7 +236,7 @@ function App() {
                       </>
                     }
                   />
-                </Route>
+                </Route> */}
                 <Route path="/news">
                   <Route
                     path=""

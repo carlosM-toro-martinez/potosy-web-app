@@ -15,6 +15,7 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     listStylePosition: "inside",
+    color: "#000",
   },
   navItem: {
     marginBottom: "0.1rem",

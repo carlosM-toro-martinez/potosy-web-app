@@ -11,11 +11,12 @@ export const useStyles = makeStyles((theme) => ({
       textAlign: "center",
       fontWeight: "bold",
       color: "black",
-      textTransform: "uppercase",
+      textTransform: "capitalize",
     },
     [mq("md")]: {
       "& h5": {
-        fontSize: 35,
+        fontSize: 30,
+        marginBottom: "2rem",
       },
     },
   },
@@ -31,10 +32,9 @@ export const useStyles = makeStyles((theme) => ({
   },
   footer: {
     display: "flex",
-    //backgroundColor: "#FF4500",
     width: "100%",
     height: "3rem",
-    justifyContent: "center",
+    justifyContent: "space-around",
     alignItems: "center",
     backgroundColor: "rgba(0, 0, 0, 0.9)",
   },
@@ -49,7 +49,6 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    minHeight: "32vh",
     [mq("md")]: {
       flexDirection: "row",
       justifyContent: "space-around",
@@ -60,16 +59,16 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "space-around",
     alignItems: "center",
-    justifyContent: "space-around",
     flexDirection: "row",
+    backgroundColor: "#3C3C3C",
   },
   image: {
     width: "150px",
     height: "auto",
     borderRadius: "10px",
     [mq("md")]: {
-      width: "280px",
-      height: "auto",
+      width: "200px",
+      height: "180px",
     },
   },
   link: {

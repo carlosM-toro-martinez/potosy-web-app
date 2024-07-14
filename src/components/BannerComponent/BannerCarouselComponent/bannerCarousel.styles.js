@@ -1,22 +1,22 @@
 import { makeStyles } from "@material-ui/core";
 import mq from "../../../config/mq";
+import { BackHand } from "@mui/icons-material";
 
 export const useStyles = makeStyles((theme) => ({
   app: {
     display: "none",
-    height: "70vh",
     [mq("sm")]: {
       marginTop: "2rem",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "100vh",
     },
   },
   swiper: {
     width: "22rem",
     [mq("md")]: {
       width: "30rem",
+      height: "25rem",
     },
   },
   swiperSlide: {
@@ -24,21 +24,21 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: "18px",
+    border: ".15rem solid #000",
     fontSize: "22px",
     fontWeight: "bold",
     color: "#fff",
     [mq("md")]: {
-      height: "83vh",
+      width: "32rem",
+      height: "25rem",
     },
   },
   image: {
-    borderRadius: "18px",
     width: "5rem",
     height: "5rem",
     [mq("md")]: {
-      width: "90%",
-      height: "auto",
+      width: "32rem",
+      height: "25rem",
     },
   },
 }));

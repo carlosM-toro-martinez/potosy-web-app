@@ -83,8 +83,9 @@
 }
 
 .swiper-slide {
-  max-width: 40rem;
-  height: 38rem;
+  max-width: 25rem;
+  height: 40rem;
+  border-radius: 0.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -96,21 +97,21 @@
     width: 60rem;
   }
 
-  .swiper-slide {
+  .swiper-slide-container {
     width: 28rem !important;
     height: 36rem !important;
   }
 
-  .swiper-slide img {
+  .swiper-slide-container img {
     width: 28rem !important;
     height: 36rem !important;
   }
 }
 
-.swiper-slide img {
-  width: 34rem;
-  height: 38rem;
-  border-radius: 2rem;
+.swiper-slide-container img {
+  width: 25rem;
+  height: 18rem;
+  border-radius: 0.5rem;
   object-fit: cover;
 }
 
@@ -129,18 +130,41 @@
 .title {
   text-align: center;
   font-weight: bold;
-  text-transform: uppercase;
-  font-size: 2.3rem;
-  margin-top: 1rem;
+  text-transform: capitalize;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
   cursor: default;
   color: black;
   transition: color 0.3s ease;
+  width: 23rem;
   font-family: NotoSerifDisplay_ExtraCondensed-BlackItalic;
+}
+.description {
+  font-size: 1rem;
+  padding: 0 1rem 0 1rem;
+  text-align: center;
 }
 
 .title:hover {
   color: #ff4500;
   cursor: pointer;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #000;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  width: 23rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
+}
+.card-container:hover {
+  cursor: pointer;
+  border: 1px solid #ff4500;
+  box-shadow: 0 4px 8px rgba(255, 69, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
 @media (max-width: 768px) {
@@ -167,7 +191,5 @@
 .custom-swiper-button-prev:active,
 .custom-swiper-button-next:active {
   transform: scale(0.9);
-  /* Hace que el icono se encoja ligeramente al hacer clic */
   background-color: rgba(0, 0, 0, 0.2);
-  /* Ajusta el fondo negro al hacer clic */
 }

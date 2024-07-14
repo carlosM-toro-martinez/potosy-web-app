@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    margin: "6rem 0 2rem 0rem",
+    margin: "3rem 0 2rem 0rem",
     "& h4": {
       fontSize: "1.5rem",
       margin: "0 0 2rem 0",
@@ -30,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     [mq("md")]: {
-      margin: "5rem 0 8rem 2rem",
+      margin: "2rem 0 8rem 2rem",
       maxWidth: "90rem",
       "& h4": {
         fontSize: "4rem",
@@ -49,9 +49,9 @@ export const useStyles = makeStyles((theme) => ({
       color: "#CC3700",
       fontWeight: "bold",
       padding: "0 2rem 0 2rem",
-      textAlign: "center", // Justificar el texto
-      textTransform: "uppercase",
-      //fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
+      textAlign: "center",
+      textTransform: "capitalize",
+      fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     "& h6": {
       fontSize: "1rem",
@@ -63,18 +63,16 @@ export const useStyles = makeStyles((theme) => ({
     },
     [mq("md")]: {
       "& h5": {
-        fontSize: "2rem",
+        fontSize: "1.5rem",
         padding: "1rem 8rem 0rem 8rem",
         fontWeight: "bold",
         margin: "0 0 2rem 0",
-        textAlign: "center", // Justificar el texto
-        //fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
+        textAlign: "center",
+        letterSpacing: 0.5,
       },
       "& h6": {
-        fontSize: "1.5rem",
-        marginTop: "1rem",
-        padding: "0 3rem 0 3rem",
-        //fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
+        fontSize: "1rem",
+        padding: "0 5rem 0 5rem",
       },
     },
   },
@@ -150,5 +148,12 @@ export const useStyles = makeStyles((theme) => ({
         width: "1400px",
       },
     },
+  },
+  swiperContiner: {
+    borderRadius: "1rem",
+  },
+
+  image: {
+    borderRadius: "1rem",
   },
 }));

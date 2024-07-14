@@ -22,6 +22,7 @@ function ChutillosComponent() {
                 effect={"coverflow"}
                 grabCursor={true}
                 centeredSlides={true}
+                loop={true}
                 slidesPerView={"auto"}
                 coverflowEffect={{
                   rotate: 50,
@@ -39,8 +40,11 @@ function ChutillosComponent() {
                 className={classes.swiper}
               >
                 {imageNumbers.map((number) => (
-                  <SwiperSlide key={number}>
-                    <img src={require(`../../assets/images/${number}.jpg`)} />
+                  <SwiperSlide key={number} className={classes.swiperContiner}>
+                    <img
+                      src={require(`../../assets/images/${number}.jpg`)}
+                      className={classes.image}
+                    />
                   </SwiperSlide>
                 ))}
               </Swiper>

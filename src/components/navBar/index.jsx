@@ -26,8 +26,8 @@ const drawerWidth = 220;
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   backgroundColor: "rgba(0, 0, 0)",
-  ...theme.mixins.toolbar,
   justifyContent: "flex-end",
+  height: "3rem",
 }));
 
 const NavBar = (props) => {
@@ -54,6 +54,7 @@ const NavBar = (props) => {
       <Drawer
         sx={{
           width: drawerWidth,
+          height: "2rem",
           "& .MuiDrawer-paper": {
             backgroundColor: "rgba(0, 0, 0, 0.97)",
             width: drawerWidth,
@@ -65,7 +66,7 @@ const NavBar = (props) => {
         open={open}
       >
         <DrawerHeader>
-          <img
+          {/* <img
             src={potosyBlack}
             width="50px"
             height="50px"
@@ -74,7 +75,7 @@ const NavBar = (props) => {
               overflow: "hidden",
               marginTop: "0.5rem",
             }}
-          />
+          /> */}
           <IconButton
             onClick={handleDrawerClose}
             style={{ color: "white", marginLeft: "6.5rem" }}
@@ -131,7 +132,9 @@ const NavBar = (props) => {
           <ListItem sx={{ marginTop: -1, marginBottom: -1 }}>
             <ListItemButton
               sx={{ color: "#FFDAB9" }}
-              onClick={() => handleNavigate("contacts")}
+              component="a"
+              href="#footer"
+              // onClick={() => handleNavigate("footer")}
             >
               <ListItemIcon>
                 <ContactsIcon sx={{ color: "#FFDAB9" }} />

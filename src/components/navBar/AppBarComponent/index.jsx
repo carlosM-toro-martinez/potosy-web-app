@@ -12,7 +12,9 @@ import {
   Button,
   useScrollTrigger,
   Slide,
+  Zoom,
 } from "@mui/material";
+import encuentra from "../../../assets/logos/light-bg.png";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -23,7 +25,6 @@ import newsService from "../../../async/services/newsService";
 import { useQuery } from "react-query";
 import { MainContext } from "../../../context/MainContext";
 import mq from "../../../config/mq";
-import { FacebookRounded, WhatsApp, Instagram } from "@mui/icons-material";
 import { useStyles } from "./AppBar.styles.js";
 import SocialNetworksComponent from "../../Footer/SocialNetworksComponent/index.jsx";
 function HideOnScroll(props) {
@@ -138,7 +139,11 @@ export default function AppBarComponent(props) {
         </IconButton>
         <p>Inicio</p>
       </MenuItem>
-      <MenuItem onClick={() => handleNavigate("contacts")}>
+      <MenuItem
+        component="a"
+        href="#footer"
+        //onClick={() => handleNavigate("contacts")}
+      >
         <IconButton size="large" color="inherit">
           <Badge color="error">
             <HomeIcon />
@@ -176,19 +181,35 @@ export default function AppBarComponent(props) {
         <AppBar
           open={open}
           sx={{
-            backgroundColor: "rgba(255, 255, 255, .8 )",
-            //height: "4rem",
+            backgroundColor: "rgba(0, 0, 0, .85)",
           }}
         >
-          <Toolbar sx={{ justifyContent: "space-between" }}>
+          <Box
+            sx={{
+              display: "flex",
+              height: "3rem",
+              justifyContent: "space-between",
+              paddingLeft: "1rem",
+              backgroundColor: "rgba(0, 0, 0, .85)",
+            }}
+          >
             <IconButton
               size="large"
               edge="start"
-              color="black"
+              color="#fff"
               onClick={handleDrawerOpen}
               aria-label="open drawer"
             >
-              <MenuIcon sx={{ color: "#000" }} />
+              <MenuIcon sx={{ color: "#fff" }} />
+            </IconButton>
+            <IconButton
+              size="large"
+              edge="start"
+              color="#fff"
+              onClick={() => handleNavigate("")}
+              aria-label="open drawer"
+            >
+              <img src={encuentra} alt="encuentra" width="150px" />
             </IconButton>
             <SocialNetworksComponent
               face="https://www.facebook.com/infoturpotosi/"
@@ -197,14 +218,19 @@ export default function AppBarComponent(props) {
               tube="https://wa.me/+5916231021/"
               twit="https://t.me/+5916231021/"
             />
-            <Box sx={{ display: { xs: "none", md: "flex" }, mr: "2rem" }}>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                mr: "2rem",
+              }}
+            >
               <IconButton
                 size="large"
                 sx={{
-                  color: "black",
+                  color: "#fff",
                   borderRadius: 0,
                   "&:hover": {
-                    borderBottom: "4px solid black",
+                    borderBottom: "2px solid #FF4500",
                   },
                 }}
                 onClick={() => handleNavigate("")}
@@ -212,49 +238,49 @@ export default function AppBarComponent(props) {
                 <Typography
                   sx={{
                     fontWeight: "bold",
-                    fontSize: ".8rem",
                     height: "80%",
-                    color: "#000",
+                    fontSize: ".8rem",
+                    color: "#fff",
                   }}
                 >
                   INICIO
                 </Typography>
               </IconButton>
-
-              {/* <IconButton
-                size="large"
-                sx={{
-                  color: "black",
-                  borderRadius: 0,
-                  "&:hover": {
-                    borderBottom: "4px solid black",
-                  },
-                }}
-                onClick={() => handleNavigate("section/1")}
-              >
-                <Typography
-                  textAlign="center"
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: ".8rem",
-                    height: "80%",
-                    color: "#000",
-                  }}
-                >
-                  SECCIONES
-                </Typography>
-              </IconButton> */}
-
               <IconButton
                 size="large"
                 sx={{
-                  color: "black",
+                  color: "#fff",
                   borderRadius: 0,
                   "&:hover": {
-                    borderBottom: "4px solid black",
+                    borderBottom: "2px solid #FF4500",
                   },
                 }}
-                onClick={() => handleNavigate("contacts")}
+                onClick={() => handleNavigate("")}
+              >
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    height: "80%",
+                    fontSize: ".8rem",
+                    color: "#fff",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Quienes Somos
+                </Typography>
+              </IconButton>
+              <IconButton
+                size="large"
+                component="a"
+                href="#footer"
+                sx={{
+                  color: "#fff",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #FF4500",
+                  },
+                }}
+                //onClick={() => handleNavigate("contacts")}
               >
                 <Typography
                   textAlign="center"
@@ -262,18 +288,18 @@ export default function AppBarComponent(props) {
                     fontWeight: "bold",
                     fontSize: ".8rem",
                     height: "80%",
-                    color: "#000",
+                    color: "#fff",
                   }}
                 >
                   CONTACTOS
                 </Typography>
               </IconButton>
-              <Button
+              {/* <Button
                 variant="contained"
                 onClick={() => navigate("/establishmentAdmin")}
                 sx={{
                   backgroundColor: "#FF4500",
-                  color: "#000",
+                  color: "#fff",
                   fontWeight: "bold",
                   //height: "90%",
                   fontSize: ".8rem",
@@ -293,7 +319,7 @@ export default function AppBarComponent(props) {
                 >
                   REGISTRA TU ESTABLECIMIENTO
                 </Typography>
-              </Button>
+              </Button> */}
               <IconButton
                 size="large"
                 edge="end"
@@ -301,8 +327,8 @@ export default function AppBarComponent(props) {
                 aria-controls={menuId}
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
-                color="black"
-                style={{ marginLeft: "1.5rem", color: "#000" }}
+                color="#fff"
+                style={{ marginLeft: "1.5rem", color: "#fff" }}
               >
                 <PersonIcon />
               </IconButton>
@@ -314,12 +340,12 @@ export default function AppBarComponent(props) {
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
-                color="black"
+                color="#fff"
               >
                 <MoreIcon />
               </IconButton>
             </Box>
-          </Toolbar>
+          </Box>
         </AppBar>
       </HideOnScroll>
       {!isLoading && !error && data?.length > 0 ? (
@@ -328,9 +354,9 @@ export default function AppBarComponent(props) {
           color="inherit"
           onClick={() => handleNavigate("news")}
           style={{
-            color: "black",
+            color: "#fff",
             position: "fixed",
-            zIndex: "1000",
+            zIndex: "800",
             top: 0,
             right: 0,
             marginTop: "5rem",
