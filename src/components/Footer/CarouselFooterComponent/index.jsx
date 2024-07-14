@@ -1,19 +1,9 @@
 import ImageGallery from "react-image-gallery";
-import potosy from "../../../assets/images/2potosi.jpg";
-import unesco from "../../../assets/images/5potosi.jpg";
-import a from "../../../assets/images/1.jpg";
-import b from "../../../assets/images/2.jpg";
-
+import { useStyles } from "./CarouselFooter.styles";
 function CarouselFooterComponent({ images }) {
+  const classes = useStyles();
   return (
-    <div
-      style={{
-        width: "100%",
-        display: "flex",
-        justifyContent: "center",
-        marginBottom: "1rem",
-      }}
-    >
+    <div className={classes.containerStyle}>
       <ImageGallery
         items={images}
         autoPlay={true}
@@ -25,12 +15,8 @@ function CarouselFooterComponent({ images }) {
         showNav={false}
         renderItem={(item) => {
           return (
-            <div style={{ width: "20rem", height: "40vh" }}>
-              <img
-                src={item}
-                alt={""}
-                style={{ width: "100%", height: "50vh" }}
-              />
+            <div className={classes.containerImage}>
+              <img src={item} alt="carrusel" className={classes.image} />
             </div>
           );
         }}

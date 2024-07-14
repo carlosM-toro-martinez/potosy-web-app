@@ -4,22 +4,8 @@
   justify-content: center;
   align-items: center;
   max-width: 100%;
-  width: 120rem;
+  width: 130rem;
   margin-top: 2rem;
-}
-
-@media (max-width: 767px) {
-  .center {
-    display: flex;
-    align-items: center;
-    width: 100%;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .wrapper {
-    transform: scale(0.5);
-  }
 }
 
 .wrapper {
@@ -27,52 +13,11 @@
   height: 500px;
 }
 
-@media (max-width: 767px) {
-  .wrapper {
-    transform: scale(0.4);
-    height: 260px;
-  }
-}
-
-@media (min-width: 768px) and (max-width: 1023px) {
-  .wrapper {
-    transform: scale(0.5);
-  }
-}
-
-/* md */
-
-@media (min-width: 1024px) {
-  .wrapper {
-    transform: scale(0.65);
-  }
-}
-
-@media (min-width: 1200px) and (max-width: 1900px) {
-  .container {
-    max-width: 117rem;
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-  }
-}
-@media (min-width: 768px) and (max-width: 1200px) {
-  .container {
-    max-width: 107rem;
-
-    /* max-width: 107rem; */
-    width: 100%;
-    padding: 0px;
-    margin: 0px;
-  }
-}
-
-@media (max-width: 767px) {
-  .container {
-    max-width: 64.5rem;
-    padding: 0px;
-    margin: 0px;
-  }
+.container {
+  max-width: 108rem;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .swiper_container {
@@ -89,23 +34,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-@media (max-width: 500px) {
-  .swiper_container {
-    height: 47rem;
-    width: 60rem;
-  }
-
-  .swiper-slide-container {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
-
-  .swiper-slide-container img {
-    width: 28rem !important;
-    height: 36rem !important;
-  }
 }
 
 .swiper-slide-container img {
@@ -132,23 +60,26 @@
   font-weight: bold;
   text-transform: capitalize;
   font-size: 1.5rem;
-  margin-top: 0.5rem;
+  margin-top: 3rem;
   cursor: default;
   color: black;
   transition: color 0.3s ease;
   width: 23rem;
   font-family: NotoSerifDisplay_ExtraCondensed-BlackItalic;
 }
-.description {
-  font-size: 1rem;
-  padding: 0 1rem 0 1rem;
-  text-align: center;
-}
 
 .title:hover {
   color: #ff4500;
   cursor: pointer;
 }
+
+.description {
+  margin-top: -1rem;
+  font-size: 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+
 .card-container {
   display: flex;
   flex-direction: column;
@@ -161,17 +92,30 @@
   width: 23rem;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
+
 .card-container:hover {
   cursor: pointer;
   border: 1px solid #ff4500;
   box-shadow: 0 4px 8px rgba(255, 69, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19);
 }
 
-@media (max-width: 768px) {
-  .title {
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-  }
+.image-container {
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
+  position: absolute;
+  border: solid 2px #e0e0e0;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-color: #fff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3), 0 12px 30px rgba(0, 0, 0, 0.19);
+}
+
+.image-container img {
+  width: 120px;
+  height: 120px;
+  border-radius: 120px;
 }
 
 .custom-swiper-button-prev,
@@ -192,4 +136,75 @@
 .custom-swiper-button-next:active {
   transform: scale(0.9);
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* Media queries */
+
+@media (max-width: 767px) {
+  .center {
+    width: 100%;
+  }
+
+  .wrapper {
+    transform: scale(0.4);
+    height: 260px;
+  }
+
+  .container {
+    max-width: 64.5rem;
+  }
+
+  .swiper_container {
+    height: 47rem;
+    width: 60rem;
+  }
+
+  .swiper-slide-container {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+
+  .swiper-slide-container img {
+    width: 28rem !important;
+    height: 36rem !important;
+  }
+
+  .title {
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .image-container {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 200px !important;
+  }
+
+  .image-container img {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 200px !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .wrapper {
+    transform: scale(0.5);
+  }
+
+  .container {
+    max-width: 107rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .wrapper {
+    transform: scale(0.65);
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1900px) {
+  .container {
+    max-width: 117rem;
+  }
 }

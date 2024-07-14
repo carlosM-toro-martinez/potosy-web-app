@@ -2,6 +2,7 @@ import { useState } from "react";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { useStyles } from "./CarouselImgDetails.styles";
 import ImageGallery from "react-image-gallery";
+import { width } from "@mui/system";
 
 function CarouselImagesDetailsComponent({ images, random }) {
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -34,16 +35,26 @@ function CarouselImagesDetailsComponent({ images, random }) {
                   <img
                     src={item.original}
                     alt={item.description}
-                    style={{ width: random ? "100%" : "auto", height: "100%" }}
+                    className={classes.imageFullScreen}
                   />
                 </div>
               ) : (
                 <div className={classes.imageContainerFullScreen}>
-                  <img
-                    src={item.original}
-                    alt={item.description}
-                    className={classes.image}
-                  />
+                  <div
+                    display={{
+                      height: "100%",
+                      width: "100%",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <img
+                      src={item.original}
+                      alt={item.description}
+                      className={classes.image}
+                    />
+                  </div>
                 </div>
               )}
             </>

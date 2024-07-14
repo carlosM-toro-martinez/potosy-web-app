@@ -70,31 +70,8 @@ function SwiperCarousel({ slidesData, listCardRef }) {
                     )
                   }
                 >
-                  <div
-                    style={{
-                      width: "125px",
-                      height: "125px",
-                      borderRadius: "125px",
-                      position: "absolute",
-                      top: 0,
-                      border: "solid 2px #e0e0e0",
-                      display: "flex",
-                      justifyContent: "center",
-                      alignContent: "center",
-                      backgroundColor: "#fff",
-                      boxShadow:
-                        "0 4px 8px rgba(0, 0, 0, 0.2), 0 6px 20px rgba(0, 0, 0, 0.19)",
-                    }}
-                  >
-                    <img
-                      src={slide.icon_url}
-                      alt={slide.icon_url}
-                      style={{
-                        width: "120px",
-                        height: "120px",
-                        borderRadius: "120px",
-                      }}
-                    />
+                  <div className="image-container">
+                    <img src={slide.icon_url} alt={slide.icon_url} />
                   </div>
                   <img src={slide.image_url} alt={slide.image_url} />
                   <p className="title">{slide.title}</p>

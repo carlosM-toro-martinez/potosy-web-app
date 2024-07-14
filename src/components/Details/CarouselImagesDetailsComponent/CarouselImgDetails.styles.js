@@ -6,10 +6,10 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "41vh",
-    margin: "auto",
+    height: "20rem",
+    margin: "1rem 0 0 0",
     [mq("md")]: {
-      margin: "1rem 0 0 0",
+      margin: "2rem 0 0 0",
       height: "96vh",
       width: "100%",
     },
@@ -50,14 +50,27 @@ export const useStyles = makeStyles((theme) => ({
   },
   imageContainerFullScreen: {
     width: "100%",
-    height: "100vh",
+    height: "100%",
     overflow: "hidden",
     display: "flex",
     justifyContent: "center",
+    alignItems: "cemter",
+    [mq("md")]: {
+      width: "100%",
+      height: "100vh",
+    },
   },
   image: {
-    width: "auto",
-    height: "100vh",
+    width: "100%",
+    height: "auto",
     display: "block",
+    [mq("md")]: {
+      width: "auto",
+      height: "100%",
+    },
+  },
+  imageFullScreen: {
+    width: "auto",
+    height: "100%",
   },
 }));

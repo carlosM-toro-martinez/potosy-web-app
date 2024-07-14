@@ -211,13 +211,15 @@ export default function AppBarComponent(props) {
             >
               <img src={encuentra} alt="encuentra" width="150px" />
             </IconButton>
-            <SocialNetworksComponent
-              face="https://www.facebook.com/infoturpotosi/"
-              wpp="https://wa.me/+5916231021/"
-              inst="https://t.me/+5916231021/"
-              tube="https://wa.me/+5916231021/"
-              twit="https://t.me/+5916231021/"
-            />
+            <Box sx={{ display: { xs: "none", md: "flex" } }}>
+              <SocialNetworksComponent
+                face="https://www.facebook.com/infoturpotosi/"
+                wpp="https://wa.me/+5916231021/"
+                inst="https://t.me/+5916231021/"
+                tube="https://wa.me/+5916231021/"
+                twit="https://t.me/+5916231021/"
+              />
+            </Box>
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
@@ -341,6 +343,7 @@ export default function AppBarComponent(props) {
                 aria-haspopup="true"
                 onClick={handleMobileMenuOpen}
                 color="#fff"
+                style={{ color: "#fff" }}
               >
                 <MoreIcon />
               </IconButton>
@@ -362,7 +365,7 @@ export default function AppBarComponent(props) {
             marginTop: "5rem",
             marginRight: ".5rem",
             [mq("md")]: {
-              marginTop: "5rem",
+              marginTop: "4rem",
             },
           }}
         >

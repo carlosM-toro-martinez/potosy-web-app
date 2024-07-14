@@ -8,13 +8,21 @@ export const useStyles = makeStyles((theme) => ({
     padding: "1rem",
   },
   carouselContainer: {
+    display: "none",
     flex: 0.5,
+    [mq("md")]: {
+      display: "flex",
+      flex: 0.5,
+    },
   },
   dataContainer: {
-    flex: 0.5,
-    display: "flex",
+    flex: 1,
+    width: "100%",
     flexDirection: "column",
     alignItems: "center",
+    [mq("md")]: {
+      flex: 0.5,
+    },
   },
   h2: {
     fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
@@ -46,8 +54,25 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   card: {
-    width: "80%",
-    textAlign: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    [mq("md")]: {
+      width: "90%",
+    },
+  },
+  title: {
+    fontSize: "1.2rem",
+    fontWeight: "bold",
+    textTransform: "uppercase",
+  },
+  description: {
+    fontSize: ".7rem",
+  },
+  font: {
+    marginBottom: "1rem",
   },
   closeButton: {
     marginTop: "1rem",

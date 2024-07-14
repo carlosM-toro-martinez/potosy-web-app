@@ -3,8 +3,8 @@ import mq from "../../../config/mq";
 
 export const useStyles = makeStyles((theme) => ({
   breadcrumbContainer: {
-    marginTop: "4rem",
-    marginBottom: "-3rem",
+    marginTop: "2rem",
+    marginBottom: "-1rem",
     [mq("sm")]: {
       marginTop: "1.5rem",
       marginBottom: "-1.5rem",

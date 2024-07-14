@@ -20,8 +20,8 @@ export const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     margin: "3rem 0 2rem 0rem",
     "& h4": {
-      fontSize: "1.5rem",
-      margin: "0 0 2rem 0",
+      fontSize: "1.8rem",
+      margin: "0 0 4rem 0",
       color: "black",
       fontWeight: "bold",
       padding: "0 1.5rem 0 1.5rem",
@@ -44,7 +44,7 @@ export const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
     alignItems: "center",
     "& h5": {
-      fontSize: "1.5rem",
+      fontSize: "1rem",
       margin: "1rem 0 0 0",
       color: "#CC3700",
       fontWeight: "bold",
@@ -54,7 +54,7 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     "& h6": {
-      fontSize: "1rem",
+      fontSize: ".7rem",
       marginTop: ".5rem",
       padding: "0 1rem 0 1rem",
       textAlign: "justify",

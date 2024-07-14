@@ -64,14 +64,22 @@ const ImageTextComp = () => {
           <Fade in={!!selectedTour}>
             <Card className={classes.card}>
               <CardMedia
-                sx={{ height: 250 }}
+                sx={{ height: 250, width: 400 }}
                 image={`${selectedTour.image}`}
                 title={`${selectedTour.titulo}`}
               />
-              <CardContent>
-                <p>{selectedTour.titulo}</p>
-                <p>{selectedTour.descripcion}</p>
-                <p>Fuente: {selectedTour.fuente}</p>
+              <CardContent sx={{ width: "100%" }}>
+                <p className={classes.title}>{selectedTour.titulo}</p>
+                <p className={classes.description}>
+                  {selectedTour.descripcion}
+                </p>
+                <a
+                  href={selectedTour.fuente}
+                  target="_blank"
+                  className={classes.font}
+                >
+                  Fuente: {selectedTour.fuente}
+                </a>
                 <Button
                   variant="contained"
                   onClick={handleCloseClick}

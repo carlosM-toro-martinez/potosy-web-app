@@ -5,7 +5,7 @@ export const useStyles = makeStyles((theme) => ({
   container: {
     "& h2": {
       fontWeight: "bold",
-      marginTop: "4rem",
+      marginTop: "2rem",
       color: "black",
       fontSize: "3rem",
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
@@ -42,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     [mq("md")]: {
-      marginTop: "4rem",
+      marginTop: "1rem",
       padding: "0 1rem 0 1rem",
       alignItems: "center",
       "& h2": {
