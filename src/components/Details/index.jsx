@@ -388,6 +388,7 @@ function Details() {
                   address: data.address,
                   coordinates: data.coordinates,
                   logo_url: data.logo_url,
+                  name: data.business_name,
                 }}
                 style={{
                   color: "white",

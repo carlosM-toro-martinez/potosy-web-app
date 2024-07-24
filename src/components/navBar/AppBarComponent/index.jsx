@@ -14,7 +14,9 @@ import {
   Slide,
   Zoom,
 } from "@mui/material";
-import encuentra from "../../../assets/logos/light-bg.png";
+import encuentra from "../../../assets/logos/1.png";
+import encuentraLogo from "../../../assets/logos/CircleLogo/0.png";
+
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -181,7 +183,7 @@ export default function AppBarComponent(props) {
         <AppBar
           open={open}
           sx={{
-            backgroundColor: "rgba(0, 0, 0, .85)",
+            backgroundColor: "rgba(0, 0, 0, .5)",
           }}
         >
           <Box
@@ -190,10 +192,10 @@ export default function AppBarComponent(props) {
               height: "3rem",
               justifyContent: "space-between",
               paddingLeft: "1rem",
-              backgroundColor: "rgba(0, 0, 0, .85)",
+              backgroundColor: "rgba(0, 0, 0, .5)",
             }}
           >
-            <IconButton
+            {/* <IconButton
               size="large"
               edge="start"
               color="#fff"
@@ -201,16 +203,28 @@ export default function AppBarComponent(props) {
               aria-label="open drawer"
             >
               <MenuIcon sx={{ color: "#fff" }} />
-            </IconButton>
-            <IconButton
-              size="large"
-              edge="start"
-              color="#fff"
-              onClick={() => handleNavigate("")}
-              aria-label="open drawer"
-            >
-              <img src={encuentra} alt="encuentra" width="150px" />
-            </IconButton>
+            </IconButton> */}
+            <img
+              src={encuentra}
+              alt="encuentra"
+              width="50px"
+              //onClick={() => handleNavigate("")}
+              style={{
+                borderRadius: "1rem",
+                hover: {
+                  cursor: "pointer",
+                },
+              }}
+            />
+            {/* <img
+              src={encuentraLogo}
+              alt="encuentra"
+              width="110px"
+              style={{
+                borderRadius: "1rem",
+              }}
+            /> */}
+
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <SocialNetworksComponent
                 face="https://www.facebook.com/infoturpotosi/"
@@ -239,13 +253,35 @@ export default function AppBarComponent(props) {
               >
                 <Typography
                   sx={{
-                    fontWeight: "bold",
                     height: "80%",
-                    fontSize: ".8rem",
+                    fontSize: ".93rem",
                     color: "#fff",
+                    textTransform: "capitalize",
                   }}
                 >
-                  INICIO
+                  Inicio
+                </Typography>
+              </IconButton>
+              <IconButton
+                size="large"
+                sx={{
+                  color: "#fff",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #FF4500",
+                  },
+                }}
+                onClick={() => handleNavigate("section/1")}
+              >
+                <Typography
+                  sx={{
+                    height: "80%",
+                    fontSize: ".93rem",
+                    color: "#fff",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  Apartados
                 </Typography>
               </IconButton>
               <IconButton
@@ -261,14 +297,57 @@ export default function AppBarComponent(props) {
               >
                 <Typography
                   sx={{
-                    fontWeight: "bold",
                     height: "80%",
-                    fontSize: ".8rem",
+                    fontSize: ".93rem",
                     color: "#fff",
-                    textTransform: "uppercase",
+                    textTransform: "capitalize",
                   }}
                 >
                   Quienes Somos
+                </Typography>
+              </IconButton>
+              <IconButton
+                size="large"
+                sx={{
+                  color: "#fff",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #FF4500",
+                  },
+                }}
+                onClick={() => handleNavigate("chutillos")}
+              >
+                <Typography
+                  sx={{
+                    height: "80%",
+                    fontSize: ".93rem",
+                    color: "#fff",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  Chutillos
+                </Typography>
+              </IconButton>
+              <IconButton
+                size="large"
+                sx={{
+                  color: "#fff",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #FF4500",
+                  },
+                }}
+                onClick={() => handleNavigate("routes")}
+              >
+                <Typography
+                  sx={{
+                    height: "80%",
+                    fontSize: ".93rem",
+                    color: "#fff",
+                    textTransform: "capitalize",
+                  }}
+                >
+                  Rutas
                 </Typography>
               </IconButton>
               <IconButton
@@ -287,13 +366,13 @@ export default function AppBarComponent(props) {
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontWeight: "bold",
-                    fontSize: ".8rem",
+                    fontSize: ".93rem",
                     height: "80%",
                     color: "#fff",
+                    textTransform: "capitalize",
                   }}
                 >
-                  CONTACTOS
+                  Contactos
                 </Typography>
               </IconButton>
               {/* <Button
@@ -302,9 +381,9 @@ export default function AppBarComponent(props) {
                 sx={{
                   backgroundColor: "#FF4500",
                   color: "#fff",
-                  fontWeight: "bold",
+                  
                   //height: "90%",
-                  fontSize: ".8rem",
+                  fontSize: ".93rem",
                   marginLeft: "1rem",
                   padding: " 0 .5rem 0 .5rem",
                   "&:hover": {
@@ -315,8 +394,8 @@ export default function AppBarComponent(props) {
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontWeight: "bold",
-                    fontSize: ".8rem",
+                    
+                    fontSize: ".93rem",
                   }}
                 >
                   REGISTRA TU ESTABLECIMIENTO

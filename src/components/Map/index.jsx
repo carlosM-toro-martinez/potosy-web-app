@@ -15,7 +15,7 @@ function Map() {
   const [currentLocation, setCurrentLocation] = useState(null);
   const { positionStart, setPositionStart, location } = useContext(MapContext);
   const positionEnd = [51.51, -0.1];
-  const { address, coordinates, logo_url } = useLocation().state;
+  const { address, coordinates, logo_url, name } = useLocation().state;
   useEffect(() => {
     const getLocation = () => {
       if (navigator.geolocation) {
@@ -116,6 +116,7 @@ function Map() {
           calle={address}
           coordinates={coordinates}
           logo_url={logo_url}
+          name={name}
         />
       </div>
     </div>

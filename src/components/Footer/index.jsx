@@ -23,11 +23,11 @@ export default function Footer() {
   return (
     <div className={classes.title} id="footer">
       <Typography variant="h5">Cada dia somos más</Typography>
-      {!isLoading && !error ? (
+      {/* {!isLoading && !error ? (
         <CarouselFooterComponent images={data} />
       ) : (
         <Typography>Cargando...</Typography>
-      )}
+      )} */}
       <Box className={classes.footer}>
         <SocialNetworksComponent
           face="https://www.facebook.com/infoturpotosi/"

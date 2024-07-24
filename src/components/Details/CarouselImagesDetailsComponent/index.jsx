@@ -2,7 +2,6 @@ import { useState } from "react";
 import "react-image-gallery/styles/css/image-gallery.css";
 import { useStyles } from "./CarouselImgDetails.styles";
 import ImageGallery from "react-image-gallery";
-import { width } from "@mui/system";
 
 function CarouselImagesDetailsComponent({ images, random }) {
   const [isFullScreen, setIsFullScreen] = useState(false);

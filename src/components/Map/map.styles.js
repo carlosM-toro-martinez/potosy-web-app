@@ -5,19 +5,17 @@ export const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "3rem",
+    marginTop: "2rem",
     gap: 10,
     [mq("md")]: {
       flexDirection: "row",
-      justifyContent: "space-around",
-      alignItems: "center",
     },
   },
   container: {
-    flex: 0.5,
-    width: "100%",
+    top: 0,
+    zIndex: 1,
+    flex: 1,
+    width: "90%",
     height: "50vh",
     margin: "1rem 0 1rem 1rem",
     [mq("md")]: {
@@ -26,10 +24,12 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   footerContainer: {
-    flex: 0.5,
+    width: "40rem",
   },
   map: {
-    height: "50vh",
+    marginTop: "1rem",
+    zIndex: 1,
+    height: "100vh",
     width: "95%",
     [mq("md")]: {
       height: "80vh",

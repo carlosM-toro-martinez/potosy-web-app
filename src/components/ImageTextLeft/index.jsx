@@ -1,91 +1,116 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useStyles } from "./ImageTextStyles.styles";
-import { useTheme } from "@emotion/react";
-import patrimonio from "../../assets/images/2potosi.jpg";
+import { Divider, Slide, Zoom } from "@mui/material";
+import useOnScreen from "../../hocks/useOnScreen";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Autoplay } from "swiper/modules";
+import CardReviewComponent from "./CardReviewComponent";
+import cerro from "../../assets/images/cerro.jpg";
+import santaTeresa from "../../assets/images/santaTeresa.jpg";
+import plaza from "../../assets/images/plazaNoviembre.jpg";
+import sanFrancisco from "../../assets/images/sanFrancisco.jpg";
+import moneda from "../../assets/images/moneda.jpg";
 
 const ImageTextLeft = () => {
-  const theme = useTheme();
-  const classes = useStyles(theme);
-  const [showAnimation, setShowAnimation] = useState(false);
-  const showAnimationRef = useRef(showAnimation);
+  const classes = useStyles();
+  const ref = useRef();
+  const isVisible = useOnScreen(ref);
 
-  useEffect(() => {
-    showAnimationRef.current = showAnimation;
-  }, [showAnimation]);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const componentElement = document.getElementById("tuComponente");
-      if (componentElement) {
-        const componentTop = componentElement.getBoundingClientRect().top;
-        if (
-          componentTop < window.innerHeight * 0.8 &&
-          !showAnimationRef.current
-        ) {
-          setShowAnimation(true);
-        }
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const tourData = {
-    imageUrl:
-      "https://images.myguide-cdn.com/bolivia/events/large/festivity-of-chutillos-in-potosi-1425778.jpeg",
-    title: "¿Sabías que?",
-    description:
-      "El Patrimonio Cultural de la Humanidad es una distinción otorgada por la UNESCO a sitios que poseen un valor cultural, histórico, arquitectónico, científico o natural excepcional. Estos lugares son considerados como legados irremplazables que pertenecen a toda la humanidad.",
-    description2:
-      "Potosí, en Bolivia, es uno de esos tesoros reconocidos por la UNESCO. Su título de Patrimonio Cultural de la Humanidad se debe en gran medida a la riqueza histórica que yace en sus entrañas. Esta ciudad altiplánica, emplazada a más de 4,000 metros sobre el nivel del mar, fue en tiempos coloniales el epicentro de la fiebre de la plata en América Latina.",
-    subtitle: "Tour Increible",
-  };
+  const reviewData = [
+    {
+      place: "Cerro Rico",
+      opinion:
+        "Hay bastantes agencias donde contratar visitas a las minas del Cerro Rico, casi todas están enfrente de la Casa de la Moneda. Es preferible preguntar precios, no varían mucho pero si en cuanto al recorrido. Todas te dan el equipo necesario para visitar las minas.",
+      name: "adolfo s",
+      placeReviewer: "Cochabamba, Bolivia",
+      date: "abril 9, 2020",
+      source:
+        "https://www.tripadvisor.es/Attraction_Review-g295431-d316591-Reviews-Cerro_Rico-Potosi_Potosi_Department.html#REVIEWS",
+      image: cerro,
+    },
+    {
+      place: "Convento Santa Teresa",
+      opinion:
+        "Una visita muy interesante no solo por la increíble riqueza de numerosas piezas que tiene este museo, pero también por las explicaciones de la guía.",
+      name: "Gérard T",
+      placeReviewer: "Águilas, España",
+      date: "abr 2, 2019",
+      source:
+        "https://www.tripadvisor.es/Attraction_Review-g295431-d318886-Reviews-Santa_Teresa_Convent_Museum_Convento_Museo_Santa_Teresa-Potosi_Potosi_Department.html#REVIEWS",
+      image: santaTeresa,
+    },
+    {
+      place: "Convento San Francisco de potosí",
+      opinion:
+        "Para mi, junto a la Casa de la Moneda, lo más destacado en Potosí. Pagando la entrada, barata, se accede a los techos de la iglesia y desde allí se observa la maravilla de construcción colonial y una vista a 360 grados de la ciudad y el Cerro Rico. Es mágico, ajustando la vista y el sentido puede uno transportarse en el tiempo y sentir los tiempos idos, retocando las fotos tomadas desde allí, me dan ganas de volver.",
+      name: "jemrcb",
+      placeReviewer: "Buenos Aires, Argentina",
+      date: "Noviembre, 2021",
+      source:
+        "https://www.tripadvisor.es/ShowUserReviews-g295431-d318888-r819442321-San_Francisco_of_Potosi_Convent_and_Temple-Potosi_Potosi_Department.html",
+      image: sanFrancisco,
+    },
+    {
+      place: "Plaza 10 de Noviembre",
+      opinion:
+        "Se respira Historia. Hermoso lugar para respirar un poco de Historia en la fresca mañana de Enero en el Centro Histórico de Potosí",
+      name: "GJ_pu",
+      placeReviewer: "Maracaibo, Venezuela",
+      date: "julio de 2022",
+      source:
+        "https://www.tripadvisor.es/ShowUserReviews-g295431-d555124-r895154455-Plaza_10_de_Noviembre-Potosi_Potosi_Department.html",
+      image: plaza,
+    },
+    {
+      place: "Casa Nacional de Moneda",
+      opinion:
+        "Es un lugar genial, pero quede con gusto a poco al no permitirnos tomar fotografias en el interior, me habria gustado tener en digital algunas de las hermosas obras que se exiben.",
+      name: "Hernán Briones",
+      placeReviewer: "Santiago, Chile",
+      date: "julio de 2022",
+      source:
+        "https://www.tripadvisor.es/Attraction_Review-g295431-d318885-Reviews-Casa_Nacional_de_la_Moneda-Potosi_Potosi_Department.html#REVIEWS",
+      image: moneda,
+    },
+  ];
 
   return (
-    <div
-      id="tuComponente"
-      className={`${classes.container} ${
-        showAnimation ? classes.showAnimation : ""
-      }`}
-    >
-      <div className={classes.box}>
-        <div className={classes.textContainer}>
-          <div
-            className={`${classes.tourContainer} ${
-              showAnimation ? classes.showAnimation : ""
-            }`}
+    <div className={classes.container} ref={ref}>
+      <Divider />
+      <Zoom direction="up" in={isVisible} timeout={1000}>
+        <div className={classes.wrapper}>
+          <h2 className={classes.h2}>Opiniones de nuestros visitantes</h2>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={10}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            modules={[Autoplay]}
+            className={classes.swiperOpinions}
           >
-            <div className={classes.tourDetails}>
-              <h2 className={classes.h2}>{tourData.title}</h2>
-              <p
-                style={{
-                  color: "#5B5B5B",
-                }}
-              >
-                {tourData.description}
-              </p>
-              <p
-                style={{
-                  color: "#5B5B5B",
-                }}
-              >
-                {tourData.description2}
-              </p>
-            </div>
-            <div className={classes.tourImage}>
-              <img
-                src={patrimonio}
-                alt={tourData.title}
-                className={classes.image}
-              />
-            </div>
-          </div>
+            {reviewData.map((review, index) => (
+              <SwiperSlide className={classes.swiperSlideOpinions}>
+                <CardReviewComponent
+                  key={index}
+                  place={review.place}
+                  opinion={review.opinion}
+                  name={review.name}
+                  placeReviewer={review.placeReviewer}
+                  date={review.date}
+                  source={review.source}
+                  image={review.image}
+                />
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
-      </div>
+      </Zoom>
     </div>
   );
 };

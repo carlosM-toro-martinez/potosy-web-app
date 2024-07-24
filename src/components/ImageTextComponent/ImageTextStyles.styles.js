@@ -2,10 +2,18 @@ import { makeStyles } from "@material-ui/core";
 import mq from "../../config/mq";
 
 export const useStyles = makeStyles((theme) => ({
+  wrapper: {
+    display: "flex",
+    justifyContent: "center",
+    padding: "1rem 0 2rem 0",
+    backgroundColor: "#F3F3F3",
+    overflowX: "hidden",
+  },
   container: {
     display: "flex",
     justifyContent: "space-around",
     padding: "1rem",
+    maxWidth: "68rem",
   },
   carouselContainer: {
     display: "none",
@@ -28,7 +36,7 @@ export const useStyles = makeStyles((theme) => ({
     fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     fontSize: "1.5rem",
     marginBottom: "0.5rem",
-    color: "#CC3700",
+    color: "#000",
     textAlign: "center",
     textTransform: "capitalize",
     [mq("md")]: {
@@ -73,6 +81,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   font: {
     marginBottom: "1rem",
+    marginRight: "1rem",
   },
   closeButton: {
     marginTop: "1rem",

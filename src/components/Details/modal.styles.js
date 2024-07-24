@@ -42,7 +42,7 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     [mq("md")]: {
-      marginTop: "1rem",
+      marginTop: "2.5rem",
       padding: "0 1rem 0 1rem",
       alignItems: "center",
       "& h2": {

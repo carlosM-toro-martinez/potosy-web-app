@@ -16,7 +16,6 @@ import RouteIcon from "@mui/icons-material/Route";
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import AppBarComponent from "./AppBarComponent";
-import potosyBlack from "../../assets/images/iconPotosy.jpg";
 import { useNavigate } from "react-router-dom";
 import { MainContext } from "../../context/MainContext";
 import { Typography } from "@mui/material";
@@ -54,7 +53,6 @@ const NavBar = (props) => {
       <Drawer
         sx={{
           width: drawerWidth,
-          height: "2rem",
           "& .MuiDrawer-paper": {
             backgroundColor: "rgba(0, 0, 0, 0.97)",
             width: drawerWidth,

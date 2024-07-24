@@ -15,8 +15,8 @@ export const useStyles = makeStyles((theme) => ({
   swiper: {
     width: "22rem",
     [mq("md")]: {
-      width: "30rem",
-      height: "25rem",
+      width: "13rem",
+      height: "15rem",
     },
   },
   swiperSlide: {
@@ -24,21 +24,22 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    border: ".15rem solid #000",
     fontSize: "22px",
     fontWeight: "bold",
     color: "#fff",
+    borderRadius: "1rem",
     [mq("md")]: {
-      width: "32rem",
-      height: "25rem",
+      width: "13rem",
+      height: "15rem",
     },
   },
   image: {
     width: "5rem",
     height: "5rem",
+    borderRadius: "1rem",
     [mq("md")]: {
-      width: "32rem",
-      height: "25rem",
+      width: "13rem",
+      height: "15rem",
     },
   },
 }));

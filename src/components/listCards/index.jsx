@@ -37,7 +37,9 @@ function ListCard({ listCardRef }) {
           {route && idParam ? (
             <Box className={classes.descriptionSection}>
               <Typography variant="h5">{route}</Typography>
-              <Typography variant="h6">{descSection}</Typography>
+              <Typography variant="body" className={classes.description}>
+                {descSection}
+              </Typography>
             </Box>
           ) : null}
           {route && idParam ? (

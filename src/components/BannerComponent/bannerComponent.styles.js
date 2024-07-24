@@ -1,11 +1,16 @@
 import { makeStyles } from "@material-ui/core";
 import mq from "../../config/mq";
-import backgroundImage from "../../assets/images/cerro.jpg";
 
 export const useStyles = makeStyles((theme) => ({
   containerStyle: {
-    position: "absolute",
-    backgroundImage: `url(${backgroundImage})`,
+    height: "19.5rem",
+    [mq("md")]: {
+      height: "100vh",
+      flexDirection: "row",
+    },
+    position: "relative",
+  },
+  background: {
     top: 0,
     left: 0,
     width: "100%",
@@ -13,12 +18,11 @@ export const useStyles = makeStyles((theme) => ({
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
     height: "19.5rem",
-    filter: "blur(2px)",
-    zIndex: 0,
     [mq("md")]: {
-      height: "34.5rem",
+      height: "100vh",
       flexDirection: "row",
     },
+    position: "relative",
   },
   backgroundImage: {
     overflowX: "hidden",
@@ -26,27 +30,20 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
-    gap: "3rem",
+    alignItems: "center",
     height: "18rem",
     width: "100%",
-    backgroundColor: "rgba(255, 255, 255, .2)",
-    borderBottom: ".8rem solid #FF4500",
-    zIndex: 1,
     [mq("md")]: {
-      height: "33rem",
+      height: "100vh",
     },
   },
   shadow: {
-    marginTop: "4rem",
-    width: "100%",
-    height: "100%",
+    overflowX: "hidden",
     display: "flex",
-    alignItems: "center",
     flex: 1,
-    flexDirection: "row",
     justifyContent: "center",
-    gap: ".5rem",
-    zIndex: 1,
+    gap: "3rem",
+    margin: "1.5rem 0 1rem 0",
     "& h4": {
       fontSize: "1rem",
       color: "#fff",
@@ -57,35 +54,52 @@ export const useStyles = makeStyles((theme) => ({
     },
     [mq("md")]: {
       gap: "3rem",
-      marginTop: "3rem",
       "& h4": {
         fontSize: "1.5rem",
       },
     },
   },
   containerTitle: {
-    zIndex: 1,
-    margin: "2.5rem 0 0 3rem",
+    position: "absolute",
+    margin: "4rem 0 0 2rem",
+    zIndex: 100,
     "& h4": {
-      fontWeight: "bold",
+      fontSize: "1rem",
+      color: "#fff",
       textAlign: "center",
-      fontSize: "2rem",
-      textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
+      fontWeight: "bold",
       textTransform: "capitalize",
+      textShadow: "4px 4px 6px rgba(0, 0, 0, 0.7)",
+    },
+    "& h3": {
+      fontSize: "1rem",
+      color: "#fff",
+      textAlign: "center",
+      fontWeight: "bold",
+      textTransform: "capitalize",
+      textShadow: "4px 4px 6px rgba(0, 0, 0, 0.7)",
     },
     [mq("md")]: {
-      margin: "1.5rem 0 0 3rem",
+      gap: "3rem",
       "& h4": {
         fontSize: "3rem",
       },
+      "& h3": {
+        fontSize: "1.5rem",
+      },
     },
   },
-  title: {
-    fontWeight: "bold",
+  start: {
+    position: "absolute",
+    zIndex: 150,
+    bottom: "30%",
+    left: "50%",
+  },
+  subTitle: {
     textAlign: "center",
-    fontSize: "3rem",
-    textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-    textTransform: "capitalize",
+    display: "inline-block",
+    marginTop: "2rem",
+    padding: "0 2rem 0 2rem",
   },
   titleHighlight: {
     color: "#FF4500",
@@ -93,7 +107,6 @@ export const useStyles = makeStyles((theme) => ({
   },
   imageContainer: {
     display: "flex",
-    alignItems: "center",
   },
   imageCard: {
     width: "6rem",
@@ -106,16 +119,15 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "-10rem",
     position: "relative",
     [mq("md")]: {
-      width: "14rem",
-      height: "17rem",
+      width: "9rem",
+      height: "11rem",
     },
   },
   iconContainer: {
-    width: "30px",
-    height: "30px",
+    width: "20px",
+    height: "20px",
     borderRadius: "30px",
     bottom: 0,
     position: "absolute",
@@ -125,19 +137,19 @@ export const useStyles = makeStyles((theme) => ({
     marginBottom: "-1.5rem",
     backgroundColor: "#fff",
     [mq("md")]: {
-      width: "70px",
-      height: "70px",
+      width: "45px",
+      height: "45px",
       borderRadius: "70px",
       display: "flex",
     },
   },
   iconImage: {
-    width: "25px",
-    height: "25px",
+    width: "20px",
+    height: "20px",
     borderRadius: "25px",
     [mq("md")]: {
-      width: "65px",
-      height: "65px",
+      width: "40px",
+      height: "40px",
       borderRadius: "65px",
     },
   },
@@ -145,5 +157,20 @@ export const useStyles = makeStyles((theme) => ({
     width: "90px",
     height: "90px",
     borderRadius: "100%",
+  },
+  "@global": {
+    ".image-gallery-bullets .image-gallery-bullet": {
+      backgroundColor: "rgba(255, 255, 255, 0.7)",
+    },
+    ".image-gallery-bullets .image-gallery-bullet:hover, .image-gallery-bullets .image-gallery-bullet.active":
+      {
+        backgroundColor: "#FF4500",
+      },
+    ".image-gallery-icon:hover": {
+      color: "#FF4500",
+    },
+    ".image-gallery-left-nav:hover, .image-gallery-right-nav:hover": {
+      color: "#FF4500",
+    },
   },
 }));

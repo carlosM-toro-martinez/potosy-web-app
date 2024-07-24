@@ -30,10 +30,10 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     [mq("md")]: {
-      margin: "2rem 0 8rem 2rem",
+      margin: "3rem 0 8rem 2rem",
       maxWidth: "90rem",
       "& h4": {
-        fontSize: "4rem",
+        fontSize: "3rem",
         padding: "1rem 0 1rem 0",
       },
     },
@@ -72,7 +72,7 @@ export const useStyles = makeStyles((theme) => ({
       },
       "& h6": {
         fontSize: "1rem",
-        padding: "0 5rem 0 5rem",
+        padding: "0 15rem 0 15rem",
       },
     },
   },
@@ -94,12 +94,11 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   newBox: {
-    marginTop: "100px",
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    marginTop: "-5rem",
+    marginTop: "-1rem",
   },
 
   swiper: {

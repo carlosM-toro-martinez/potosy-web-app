@@ -1,7 +1,7 @@
-import { makeStyles } from '@material-ui/core';
-import mq from '../../../config/mq';
+import { makeStyles } from "@material-ui/core";
+import mq from "../../../config/mq";
 
-export const useStyles = makeStyles(theme => ({
+export const useStyles = makeStyles((theme) => ({
   // box: {
   //     width: '20rem',
   // },
@@ -18,50 +18,54 @@ export const useStyles = makeStyles(theme => ({
   //     }
   // },
   book: {
-    width: '9rem',
-    height: '9rem',
-    background: '#FF4500',
-    perspective: '75rem',
-    marginTop: '1rem',
-    borderRadius: '3px',
-    [mq('md')]: {
-      width: '18rem',
-      height: '18rem',
+    width: "9rem",
+    height: "9rem",
+    background: "#ccc",
+    perspective: "75rem",
+    marginTop: "1rem",
+    borderRadius: "3px",
+    [mq("md")]: {
+      width: "18rem",
+      height: "18rem",
+    },
+    "&:hover": {
+      cursor: "pointer",
+      background: "#FF4500",
     },
   },
   cover: {
-    position: 'absolute',
-    width: '8.7rem',
-    height: '100%',
-    background: '#FFFFFF',
-    backgroundImage: props => `url(${props.image})`,
-    backgroundSize: 'cover',
-    transformOrigin: 'left',
-    transform: 'rotateY(-15deg)',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#ddd',
-    boxShadow: 'inset 0 0 1.5rem #000',
-    borderRadius: '3px',
-    [mq('md')]: {
-      width: '17.4rem',
+    position: "absolute",
+    width: "8.7rem",
+    height: "100%",
+    background: "#FFFFFF",
+    backgroundImage: (props) => `url(${props.image})`,
+    backgroundSize: "cover",
+    transformOrigin: "left",
+    transform: "rotateY(-15deg)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#ddd",
+    boxShadow: "inset 0 0 1.5rem #000",
+    borderRadius: "3px",
+    [mq("md")]: {
+      width: "17.4rem",
     },
   },
   container: {
-    marginTop: '1rem',
-    width: '9rem',
-    '& h4': {
-      fontSize: '14px',
-      color: 'black',
-      fontFamily: 'NotoSerifDisplay_ExtraCondensed-BlackItalic',
-      fontStyle: 'normal',
+    marginTop: "1rem",
+    width: "9rem",
+    "& h4": {
+      fontSize: "14px",
+      color: "black",
+      fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
+      fontStyle: "normal",
     },
-    [mq('md')]: {
-      width: '18rem',
-      '& h4': {
-        fontSize: '28px',
+    [mq("md")]: {
+      width: "18rem",
+      "& h4": {
+        fontSize: "28px",
       },
     },
   },
-}))
+}));

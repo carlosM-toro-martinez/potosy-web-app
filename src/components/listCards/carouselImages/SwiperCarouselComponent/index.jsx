@@ -12,6 +12,7 @@ import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useParams } from "react-router-dom";
 import { SectionContext } from "../../../../context/SectionContext";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 function SwiperCarousel({ slidesData, listCardRef }) {
   const { id } = useParams();
   const idParam = id;
@@ -33,7 +34,7 @@ function SwiperCarousel({ slidesData, listCardRef }) {
       <div className="wrapper">
         <div className="container">
           <Swiper
-            spaceBetween={20}
+            spaceBetween={60}
             effect={"coverflow"}
             grabCursor={true}
             centeredSlides={true}
@@ -43,7 +44,7 @@ function SwiperCarousel({ slidesData, listCardRef }) {
               rotate: 0,
               stretch: 0,
               depth: 70,
-              modifier: 0.8,
+              modifier: 0.5,
             }}
             navigation={{
               nextEl: ".custom-swiper-button-next",
@@ -70,12 +71,25 @@ function SwiperCarousel({ slidesData, listCardRef }) {
                     )
                   }
                 >
-                  <div className="image-container">
+                  {/* <div className="image-container">
                     <img src={slide.icon_url} alt={slide.icon_url} />
-                  </div>
+                  </div> */}
                   <img src={slide.image_url} alt={slide.image_url} />
                   <p className="title">{slide.title}</p>
                   <p className="description">{slide.description}</p>
+                  <Button
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "#ff4500",
+                      marginBottom: "1rem",
+                      "&:hover": {
+                        backgroundColor: "#ff4500",
+                      },
+                    }}
+                    className="button-view-more"
+                  >
+                    Ver Mas
+                  </Button>
                 </div>
               </SwiperSlide>
             ))}

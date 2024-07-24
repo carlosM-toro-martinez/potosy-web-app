@@ -5,6 +5,8 @@ import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import { MapContext } from "../../../context/MapContext";
 import iconStart from "../../../assets/images/walkMan.png";
+import HikingIcon from "@mui/icons-material/Hiking";
+
 import iconEnd from "../../../assets/images/house.png";
 
 const CreateRoutineMachineLayer = ({ coordinates }) => {
