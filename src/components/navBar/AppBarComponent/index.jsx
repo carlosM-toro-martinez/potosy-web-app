@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import encuentra from "../../../assets/logos/1.png";
 import encuentraLogo from "../../../assets/logos/CircleLogo/0.png";
-
+import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import NotificationsIcon from "@mui/icons-material/Notifications";
@@ -146,14 +146,42 @@ export default function AppBarComponent(props) {
         </IconButton>
         <p>Inicio</p>
       </MenuItem>
-      <MenuItem
-        component="a"
-        href="#footer"
-        //onClick={() => handleNavigate("contacts")}
-      >
+      <MenuItem onClick={() => handleNavigate("section/1")}>
         <IconButton size="large" color="inherit">
           <Badge color="error">
-            <HomeIcon />
+            <ListAltIcon />
+          </Badge>
+        </IconButton>
+        <p>Apartados</p>
+      </MenuItem>
+      <MenuItem onClick={() => handleNavigate("about")}>
+        <IconButton size="large" color="inherit">
+          <Badge color="error">
+            <InfoIcon />
+          </Badge>
+        </IconButton>
+        <p>Quienes Somos</p>
+      </MenuItem>
+      <MenuItem onClick={() => handleNavigate("chutillos")}>
+        <IconButton size="large" color="inherit">
+          <Badge color="error">
+            <CelebrationIcon />
+          </Badge>
+        </IconButton>
+        <p>Chutillos</p>
+      </MenuItem>
+      <MenuItem onClick={() => handleNavigate("routes")}>
+        <IconButton size="large" color="inherit">
+          <Badge color="error">
+            <MapIcon />
+          </Badge>
+        </IconButton>
+        <p>Rutas Turisticas</p>
+      </MenuItem>
+      <MenuItem component="a" href="#footer">
+        <IconButton size="large" color="inherit" href="#footer">
+          <Badge color="error">
+            <ContactPhoneIcon />
           </Badge>
         </IconButton>
         <p>Contactos</p>
@@ -181,13 +209,13 @@ export default function AppBarComponent(props) {
     window.open(url, "_blank");
   };
   const classes = useStyles();
-
+  const location = useLocation();
   const [appBarBackground, setAppBarBackground] = React.useState("transparent");
 
   React.useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      if (currentScroll > 50) {
+      if (currentScroll > 50 || location.pathname !== "/") {
         setAppBarBackground("rgba(0, 0, 0, .5)");
       } else {
         setAppBarBackground("transparent");
@@ -199,7 +227,7 @@ export default function AppBarComponent(props) {
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, []);
+  }, [location.pathname]);
 
   return (
     <Box>
@@ -207,16 +235,21 @@ export default function AppBarComponent(props) {
         <AppBar
           open={open}
           sx={{
-            backgroundColor: appBarBackground,
+            backgroundColor:
+              location.pathname !== "/"
+                ? "rgba(0, 0, 0, .5)"
+                : appBarBackground,
           }}
         >
           <Box
             sx={{
               display: "flex",
-              height: "5rem",
+              height: "4rem",
               justifyContent: "space-between",
-              paddingLeft: "4rem",
-              backgroundColor: appBarBackground,
+              backgroundColor:
+                location.pathname !== "/"
+                  ? "rgba(0, 0, 0, .5)"
+                  : appBarBackground,
             }}
           >
             {/* <IconButton
@@ -232,7 +265,7 @@ export default function AppBarComponent(props) {
               <img
                 src={encuentra}
                 alt="encuentra"
-                width="80px"
+                width="60px"
                 style={{
                   borderRadius: "1rem",
                   hover: {

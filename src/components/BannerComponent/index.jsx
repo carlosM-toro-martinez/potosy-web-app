@@ -15,7 +15,7 @@ import moneda from "../../assets/images/moneda.jpg";
 import salar from "../../assets/images/salar.jpg";
 import cerro from "../../assets/images/cerro.jpg";
 import map from "../../assets/icons/conexion.svg";
-import { Divider, Slide, Zoom } from "@mui/material";
+import { Box, Divider, Slide, Zoom } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import useOnScreen from "../../hocks/useOnScreen";
 
@@ -95,21 +95,9 @@ function BannerComponent() {
       <div className={classes.shadow} ref={ref}>
         <Slide direction="right" in={isVisible} timeout={600}>
           <div>
-            <div
-              style={{
-                displa: "flex",
-                flexDirection: "column",
-                height: "78vh",
-                width: "30rem",
-                marginBottom: "2rem",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
+            <div className={classes.titleContainer}>
               <Zoom in={true} timeout={200}>
-                <Typography style={{ textAlign: "center" }} variant="h3">
-                  potosi.encuentra.lat
-                </Typography>
+                <Typography component="h1">potosi.encuentra.lat</Typography>
               </Zoom>
               <Zoom in={true} timeout={200}>
                 <Typography variant="body" className={classes.subTitle}>
@@ -127,7 +115,7 @@ function BannerComponent() {
                   marginTop: "1rem",
                 }}
               >
-                <img src={map} width={250} />
+                <img src={map} className={classes.worldImage} />
                 <Button
                   variant="contained"
                   style={{ backgroundColor: "#FF4500" }}
@@ -145,7 +133,14 @@ function BannerComponent() {
           </div>
         </Slide>
         <Slide direction="left" in={isVisible} timeout={600}>
-          <div>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                sm: "block",
+              },
+            }}
+          >
             <div style={{ display: "flex", gap: "1rem", marginBottom: "2rem" }}>
               <Zoom in={true} timeout={200}>
                 <div className={classes.imageContainer}>
@@ -219,7 +214,7 @@ function BannerComponent() {
                 </div>
               </Zoom>
             </div>
-          </div>
+          </Box>
         </Slide>
       </div>
       <Divider />

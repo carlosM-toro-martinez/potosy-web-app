@@ -12,6 +12,11 @@ export const useStyles = makeStyles((theme) => ({
   flexCol: {
     display: "flex",
     flexDirection: "column",
+    alignItems: "center",
+    textAlign: "center",
+    "& h6": {
+      fontSize: "1.5rem",
+    },
   },
   title: {
     color: "#fff",
@@ -19,12 +24,13 @@ export const useStyles = makeStyles((theme) => ({
   },
   list: {
     color: "#fff",
-    listStyleType: "disc",
-    paddingInlineStart: theme.spacing(2),
+    listStyleType: "none",
+    paddingInlineStart: 0,
+    "& li": {
+      marginBottom: theme.spacing(1),
+    },
   },
   mt2: {
-    marginTop: "-2rem",
-    marginTop: theme.spacing(2),
     color: "#fff",
   },
   container: {
@@ -35,14 +41,24 @@ export const useStyles = makeStyles((theme) => ({
   spaceBetween: {
     display: "flex",
     flexDirection: "column",
-    [theme.breakpoints.up("md")]: {
+    alignItems: "center",
+    textAlign: "center",
+    gap: "1rem",
+    [mq("md")]: {
       flexDirection: "row",
       justifyContent: "space-between",
+      alignItems: "flex-start",
     },
   },
   iconContainer: {
     display: "flex",
     gap: theme.spacing(2),
     marginTop: theme.spacing(2),
+  },
+  logo: {
+    borderRadius: "2rem",
+    marginBottom: "1rem",
+    width: "100%",
+    maxWidth: "200px",
   },
 }));

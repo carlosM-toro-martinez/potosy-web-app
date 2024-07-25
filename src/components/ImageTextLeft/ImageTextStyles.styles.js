@@ -6,7 +6,10 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "center",
     width: "100%",
-    height: "100vh",
+    height: "65vh",
+    [mq("md")]: {
+      height: "100vh",
+    },
   },
   wrapper: {
     width: "85%",

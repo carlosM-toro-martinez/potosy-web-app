@@ -83,11 +83,23 @@ const ImageTextLeft = () => {
         <div className={classes.wrapper}>
           <h2 className={classes.h2}>Opiniones de nuestros visitantes</h2>
           <Swiper
-            slidesPerView={3}
-            spaceBetween={10}
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+                spaceBetween: 10,
+              },
+              768: {
+                slidesPerView: 2,
+                spaceBetween: 10,
+              },
+              1024: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+              },
+            }}
             centeredSlides={true}
             autoplay={{
-              delay: 2500,
+              delay: 3500,
               disableOnInteraction: false,
             }}
             loop={true}

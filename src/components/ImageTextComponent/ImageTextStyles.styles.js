@@ -11,15 +11,17 @@ export const useStyles = makeStyles((theme) => ({
   },
   container: {
     display: "flex",
+    flexDirection: "column-reverse",
     justifyContent: "space-around",
     padding: "1rem",
     maxWidth: "68rem",
+    [mq("md")]: {
+      flexDirection: "row",
+    },
   },
   carouselContainer: {
-    display: "none",
     flex: 0.5,
     [mq("md")]: {
-      display: "flex",
       flex: 0.5,
     },
   },
@@ -88,6 +90,18 @@ export const useStyles = makeStyles((theme) => ({
     backgroundColor: "#CC3700",
     "&:hover": {
       backgroundColor: "#CC3700",
+    },
+  },
+  imageContainer: {
+    display: "flex",
+    justifyContent: "center",
+    marginTop: "3rem",
+  },
+  image: {
+    width: 200,
+
+    [mq("md")]: {
+      width: 400,
     },
   },
 }));

@@ -16,22 +16,18 @@ function FooterContentComponent() {
             src={encuentra}
             alt="Encuentra!"
             width={200}
-            style={{
-              borderRadius: "2rem",
-              marginTop: "-2rem",
-              marginBottom: "1rem",
-            }}
+            className={classes.logo}
           />
-          <Typography variant="body" className={classes.title}>
+          <Typography variant="body1" className={classes.title}>
             Síguenos en:
           </Typography>
           <Box className={classes.iconContainer}>
             <SocialNetworksComponent
-              face="https://www.facebook.com/infoturpotosi/"
-              wpp="https://wa.me/+5916231021/"
-              inst="https://t.me/+5916231021/"
-              tube="https://wa.me/+5916231021/"
-              twit="https://t.me/+5916231021/"
+              face="https://www.facebook.com/profile.php?id=100087789513331"
+              wpp="https://wa.me/+59178635209/"
+              inst="https://www.instagram.com/encuentrapotosi?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
+              tube="https://wa.me/+59178635209/"
+              twit="https://wa.me/+59178635209/"
             />
           </Box>
         </Box>
@@ -51,7 +47,7 @@ const LinksOfInterest = ({ classes }) => {
   };
   return (
     <Box className={classes.flexCol}>
-      <Typography variant="h4" className={classes.title}>
+      <Typography variant="h6" className={classes.title}>
         Links de interés
       </Typography>
       <ul className={`${classes.list} ${classes.mt2}`}>
@@ -65,10 +61,10 @@ const LinksOfInterest = ({ classes }) => {
           <Link className={classes.primaryText}>Chutillos</Link>
         </li>
         <li onClick={() => handleRoute("routes")}>
-          <Link className={classes.primaryText}>Rutas Turisticas</Link>
+          <Link className={classes.primaryText}>Rutas Turísticas</Link>
         </li>
         <li onClick={() => handleRoute("login")}>
-          <Link className={classes.primaryText}>Iniciar Sesion</Link>
+          <Link className={classes.primaryText}>Iniciar Sesión</Link>
         </li>
       </ul>
     </Box>
@@ -83,7 +79,7 @@ const MoreInfo = ({ classes }) => {
   };
   return (
     <Box className={classes.flexCol}>
-      <Typography variant="h4" className={classes.title}>
+      <Typography variant="h6" className={classes.title}>
         Conoce más
       </Typography>
       <ul className={`${classes.list} ${classes.mt2}`}>
@@ -94,7 +90,7 @@ const MoreInfo = ({ classes }) => {
           <Link className={classes.primaryText}>Mercados</Link>
         </li>
         <li onClick={() => handleRoute("section/3")}>
-          <Link className={classes.primaryText}>¿Sabias que?</Link>
+          <Link className={classes.primaryText}>¿Sabías que?</Link>
         </li>
         <li onClick={() => handleRoute("section/4")}>
           <Link className={classes.primaryText}>Terminales</Link>
@@ -107,14 +103,20 @@ const MoreInfo = ({ classes }) => {
 const ContactUs = ({ classes }) => {
   return (
     <Box className={classes.flexCol}>
-      <Typography variant="h4" className={classes.title}>
+      <Typography variant="h6" className={classes.title}>
         Contáctanos
       </Typography>
       <Typography variant="body1" className={classes.mt2}>
         Correo:
       </Typography>
-      <Typography className={classes.primaryText}>
-        EncuentraPotosi@gmail.com
+      <Typography variant="body" className={classes.primaryText}>
+        encuentra.po@gmail.com
+      </Typography>
+      <Typography variant="body1" className={classes.mt2}>
+        Telefono:
+      </Typography>
+      <Typography variant="body" className={classes.primaryText}>
+        +59178635209
       </Typography>
     </Box>
   );

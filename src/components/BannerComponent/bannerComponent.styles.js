@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core";
 import mq from "../../config/mq";
+import { colors } from "@mui/material";
 
 export const useStyles = makeStyles((theme) => ({
   containerStyle: {
@@ -29,7 +30,7 @@ export const useStyles = makeStyles((theme) => ({
       top: 0,
       left: 0,
       right: 0,
-      height: "80px",
+      height: "4rem",
       background:
         "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, .1))",
       pointerEvents: "none",
@@ -75,7 +76,7 @@ export const useStyles = makeStyles((theme) => ({
     margin: "6rem 0 0 6rem",
     zIndex: 100,
     "& h4": {
-      fontSize: "1rem",
+      fontSize: "1.8rem",
       color: "#fff",
       textAlign: "center",
       fontWeight: "bold",
@@ -83,7 +84,7 @@ export const useStyles = makeStyles((theme) => ({
       textShadow: "4px 4px 6px rgba(0, 0, 0, 0.7)",
     },
     "& h3": {
-      fontSize: "1rem",
+      fontSize: ".8rem",
       color: "#fff",
       textAlign: "center",
       fontWeight: "bold",
@@ -168,6 +169,32 @@ export const useStyles = makeStyles((theme) => ({
     width: "90px",
     height: "90px",
     borderRadius: "100%",
+  },
+  titleContainer: {
+    displa: "flex",
+    flexDirection: "column",
+    height: "40vh",
+    width: "25rem",
+    marginBottom: "2rem",
+    justifyContent: "center",
+    alignItems: "center",
+    "& h1": {
+      fontSize: "2rem",
+      textAlign: "center",
+    },
+    [mq("md")]: {
+      height: "78vh",
+      width: "30rem",
+      "& h1": {
+        fontSize: "2.5rem",
+      },
+    },
+  },
+  worldImage: {
+    width: 150,
+    [mq("md")]: {
+      width: 250,
+    },
   },
   "@global": {
     ".image-gallery-bullets .image-gallery-bullet": {

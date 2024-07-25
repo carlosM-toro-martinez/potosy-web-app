@@ -2,7 +2,6 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Box, useScrollTrigger } from "@mui/material";
 import { useStyles } from "./footer.styles";
-import CarouselFooterComponent from "./CarouselFooterComponent";
 import logosRandomService from "../../async/services/logosRandomService";
 import { useQuery } from "react-query";
 import SocialNetworksComponent from "./SocialNetworksComponent";

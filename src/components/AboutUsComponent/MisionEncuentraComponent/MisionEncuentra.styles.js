@@ -4,12 +4,16 @@ import background from "../../../assets/logos/3.png";
 
 export const useStyles = makeStyles((theme) => ({
   root: {
-    padding: "5rem 3rem 3rem 3rem",
+    padding: "5rem 1rem 3rem 1rem",
+    [mq("md")]: {
+      padding: "5rem 3rem 3rem 3rem",
+    },
   },
   container: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
+    alignItems: "center",
     [mq("md")]: {
       flexDirection: "row",
     },
@@ -34,6 +38,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   title: {
+    textAlign: "center",
     marginBottom: theme.spacing(1),
     textTransform: "capitalize",
   },

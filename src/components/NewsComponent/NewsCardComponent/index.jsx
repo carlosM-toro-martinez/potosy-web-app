@@ -14,56 +14,24 @@ function NewsCardComponent({ data }) {
     navigate("/news/details", { state: data });
   };
   const classes = useStyles();
+
   return (
-    <Card
-      sx={{
-        display: "flex",
-        width: "20rem",
-        cursor: "pointer",
-        height: "10rem",
-      }}
-      onClick={handleNavigate}
-    >
-      <CardMedia
-        component="img"
-        sx={{ width: "50%", height: "auto" }}
-        image={correctedUrl}
-        alt="Live from space album cover"
-      />
-      <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
-        <CardContent>
-          <Box
-            className={classes.containerText}
-            sx={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "-webkit-box",
-              WebkitBoxOrient: "vertical",
-              WebkitLineClamp: 2,
-            }}
-          >
-            <Typography
-              variant="h5"
-              sx={{
-                color: "red",
-                fontWeight: "bold",
-                textTransform: "uppercase",
-              }}
-            >
-              {data.title}
-            </Typography>
+    <Card className={classes.card} onClick={handleNavigate}>
+      <Box className={classes.mediaBox}>
+        <CardMedia
+          component="img"
+          className={classes.image}
+          image={correctedUrl}
+          alt="News Image"
+        />
+      </Box>
+      <Box className={classes.contentBox}>
+        <CardContent className={classes.containerText}>
+          <Box className={classes.titleText}>
+            <Typography variant="h5">{data.title}</Typography>
           </Box>
-          <Box
-            className={classes.containerText}
-            sx={{
-              overflow: "hidden",
-              textOverflow: "ellipsis",
-              display: "-webkit-box",
-              WebkitBoxOrient: "vertical",
-              WebkitLineClamp: 3,
-            }}
-          >
-            <Typography sx={{ color: "black" }}>{data.description}</Typography>
+          <Box className={classes.descriptionText}>
+            <Typography>{data.description}</Typography>
           </Box>
         </CardContent>
       </Box>

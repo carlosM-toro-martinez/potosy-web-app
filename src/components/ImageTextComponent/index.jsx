@@ -80,7 +80,6 @@ const ImageTextComp = () => {
       <div className={classes.container} ref={ref}>
         <Slide direction="right" in={isVisible} timeout={600}>
           <div className={classes.carouselContainer}>
-            {/* <BannerCarouselComponent /> */}
             {selectedTour ? (
               <Card className={classes.card}>
                 <CardMedia
@@ -159,14 +158,8 @@ const ImageTextComp = () => {
                 </Button>
               ))}
             </div>
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                marginTop: "3rem",
-              }}
-            >
-              <img src={route} width={400} />
+            <div className={classes.imageContainer}>
+              <img src={route} className={classes.image} />
             </div>
           </div>
         </Slide>

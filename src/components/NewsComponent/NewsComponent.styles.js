@@ -3,7 +3,7 @@ import mq from "../../config/mq";
 
 export const useStyles = makeStyles((theme) => ({
   Container: {
-    margin: "1rem 0 2rem 0",
+    padding: "5rem 0 2rem 0",
     color: "#FFDAB9",
     "& h2": {
       color: "black",
@@ -30,7 +30,6 @@ export const useStyles = makeStyles((theme) => ({
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      paddingBottom: "2rem",
     },
   },
   containerMovile: {
