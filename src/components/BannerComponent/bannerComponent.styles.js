@@ -23,6 +23,17 @@ export const useStyles = makeStyles((theme) => ({
       flexDirection: "row",
     },
     position: "relative",
+    "&::before": {
+      content: '""',
+      position: "absolute",
+      top: 0,
+      left: 0,
+      right: 0,
+      height: "80px",
+      background:
+        "linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, .1))",
+      pointerEvents: "none",
+    },
   },
   backgroundImage: {
     overflowX: "hidden",
@@ -61,7 +72,7 @@ export const useStyles = makeStyles((theme) => ({
   },
   containerTitle: {
     position: "absolute",
-    margin: "4rem 0 0 2rem",
+    margin: "6rem 0 0 6rem",
     zIndex: 100,
     "& h4": {
       fontSize: "1rem",

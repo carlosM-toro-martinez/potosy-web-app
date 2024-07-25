@@ -36,6 +36,7 @@ import ImageTextLeft from "./components/ImageTextLeft";
 import AdminControlComponent from "./components/AdminControlComponent";
 import AddAdminComponent from "./components/AdminControlComponent/AddAdminComponent";
 import Section from "./pages/Section";
+import AboutUs from "./components/AboutUsComponent";
 
 const AdminRoutes = () => {
   return (
@@ -172,6 +173,16 @@ function App() {
                       <Home />
                       <ImageTextComponent />
                       <ImageTextLeft />
+                      <Footer />
+                    </>
+                  }
+                />
+                <Route
+                  path="/about"
+                  element={
+                    <>
+                      <NavBar />
+                      <AboutUs />
                       <Footer />
                     </>
                   }

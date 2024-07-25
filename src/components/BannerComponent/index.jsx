@@ -13,6 +13,7 @@ import friendsSalar from "../../assets/images/friendsSalar.jpg";
 import catedral from "../../assets/images/5potosi.jpg";
 import moneda from "../../assets/images/moneda.jpg";
 import salar from "../../assets/images/salar.jpg";
+import cerro from "../../assets/images/cerro.jpg";
 import map from "../../assets/icons/conexion.svg";
 import { Divider, Slide, Zoom } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -42,6 +43,10 @@ function BannerComponent() {
     {
       original: salar,
       thumbnail: salar,
+    },
+    {
+      original: cerro,
+      thumbnail: cerro,
     },
   ];
 

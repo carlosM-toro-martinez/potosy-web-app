@@ -28,7 +28,12 @@ import { useQuery } from "react-query";
 import { MainContext } from "../../../context/MainContext";
 import mq from "../../../config/mq";
 import { useStyles } from "./AppBar.styles.js";
-import SocialNetworksComponent from "../../Footer/SocialNetworksComponent/index.jsx";
+import ListAltIcon from "@mui/icons-material/ListAlt";
+import InfoIcon from "@mui/icons-material/Info";
+import CelebrationIcon from "@mui/icons-material/Celebration";
+import MapIcon from "@mui/icons-material/Map";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+
 function HideOnScroll(props) {
   const { children, window, threshold } = props;
   const trigger = useScrollTrigger({
@@ -177,73 +182,75 @@ export default function AppBarComponent(props) {
   };
   const classes = useStyles();
 
+  const [appBarBackground, setAppBarBackground] = React.useState("transparent");
+
+  React.useEffect(() => {
+    const handleScroll = () => {
+      const currentScroll = window.scrollY;
+      if (currentScroll > 50) {
+        setAppBarBackground("rgba(0, 0, 0, .5)");
+      } else {
+        setAppBarBackground("transparent");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <Box>
       <HideOnScroll {...props}>
         <AppBar
           open={open}
           sx={{
-            backgroundColor: "rgba(0, 0, 0, .5)",
+            backgroundColor: appBarBackground,
           }}
         >
           <Box
             sx={{
               display: "flex",
-              height: "3rem",
+              height: "5rem",
               justifyContent: "space-between",
-              paddingLeft: "1rem",
-              backgroundColor: "rgba(0, 0, 0, .5)",
+              paddingLeft: "4rem",
+              backgroundColor: appBarBackground,
             }}
           >
             {/* <IconButton
-              size="large"
-              edge="start"
-              color="#fff"
-              onClick={handleDrawerOpen}
-              aria-label="open drawer"
-            >
-              <MenuIcon sx={{ color: "#fff" }} />
-            </IconButton> */}
-            <img
-              src={encuentra}
-              alt="encuentra"
-              width="50px"
-              //onClick={() => handleNavigate("")}
-              style={{
-                borderRadius: "1rem",
-                hover: {
-                  cursor: "pointer",
-                },
-              }}
-            />
-            {/* <img
-              src={encuentraLogo}
-              alt="encuentra"
-              width="110px"
-              style={{
-                borderRadius: "1rem",
-              }}
-            /> */}
+        size="large"
+        edge="start"
+        color="#fff"
+        onClick={handleDrawerOpen}
+        aria-label="open drawer"
+      >
+        <MenuIcon sx={{ color: "#fff" }} />
+      </IconButton> */}
+            <IconButton onClick={() => handleNavigate("")}>
+              <img
+                src={encuentra}
+                alt="encuentra"
+                width="80px"
+                style={{
+                  borderRadius: "1rem",
+                  hover: {
+                    cursor: "pointer",
+                  },
+                }}
+              />
+            </IconButton>
 
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
-              <SocialNetworksComponent
-                face="https://www.facebook.com/infoturpotosi/"
-                wpp="https://wa.me/+5916231021/"
-                inst="https://t.me/+5916231021/"
-                tube="https://wa.me/+5916231021/"
-                twit="https://t.me/+5916231021/"
-              />
-            </Box>
-            <Box
-              sx={{
-                display: { xs: "none", md: "flex" },
-                mr: "2rem",
-              }}
-            >
               <IconButton
                 size="large"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
@@ -251,12 +258,14 @@ export default function AppBarComponent(props) {
                 }}
                 onClick={() => handleNavigate("")}
               >
+                <HomeIcon />
+
                 <Typography
                   sx={{
-                    height: "80%",
-                    fontSize: ".93rem",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Inicio
@@ -266,6 +275,10 @@ export default function AppBarComponent(props) {
                 size="large"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
@@ -273,12 +286,13 @@ export default function AppBarComponent(props) {
                 }}
                 onClick={() => handleNavigate("section/1")}
               >
+                <ListAltIcon />
                 <Typography
                   sx={{
-                    height: "80%",
-                    fontSize: ".93rem",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Apartados
@@ -288,19 +302,24 @@ export default function AppBarComponent(props) {
                 size="large"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
                   },
                 }}
-                onClick={() => handleNavigate("")}
+                onClick={() => handleNavigate("about")}
               >
+                <InfoIcon />
                 <Typography
                   sx={{
-                    height: "80%",
-                    fontSize: ".93rem",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Quienes Somos
@@ -310,6 +329,10 @@ export default function AppBarComponent(props) {
                 size="large"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
@@ -317,12 +340,13 @@ export default function AppBarComponent(props) {
                 }}
                 onClick={() => handleNavigate("chutillos")}
               >
+                <CelebrationIcon />
                 <Typography
                   sx={{
-                    height: "80%",
-                    fontSize: ".93rem",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Chutillos
@@ -332,6 +356,10 @@ export default function AppBarComponent(props) {
                 size="large"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
@@ -339,23 +367,27 @@ export default function AppBarComponent(props) {
                 }}
                 onClick={() => handleNavigate("routes")}
               >
+                <MapIcon />
                 <Typography
                   sx={{
-                    height: "80%",
-                    fontSize: ".93rem",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
-                  Rutas
+                  Rutas Turisticas
                 </Typography>
               </IconButton>
               <IconButton
                 size="large"
-                component="a"
                 href="#footer"
                 sx={{
                   color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
                   borderRadius: 0,
                   "&:hover": {
                     borderBottom: "2px solid #FF4500",
@@ -363,44 +395,52 @@ export default function AppBarComponent(props) {
                 }}
                 //onClick={() => handleNavigate("contacts")}
               >
+                <ContactPhoneIcon />
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontSize: ".93rem",
-                    height: "80%",
+                    fontSize: "1rem",
                     color: "#fff",
-                    textTransform: "capitalize",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
                   }}
                 >
                   Contactos
                 </Typography>
               </IconButton>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: "none", md: "flex" },
+                mr: "2rem",
+              }}
+            >
               {/* <Button
-                variant="contained"
-                onClick={() => navigate("/establishmentAdmin")}
-                sx={{
-                  backgroundColor: "#FF4500",
-                  color: "#fff",
-                  
-                  //height: "90%",
-                  fontSize: ".93rem",
-                  marginLeft: "1rem",
-                  padding: " 0 .5rem 0 .5rem",
-                  "&:hover": {
-                    backgroundColor: "#FF4500",
-                  },
-                }}
-              >
-                <Typography
-                  textAlign="center"
-                  sx={{
-                    
-                    fontSize: ".93rem",
-                  }}
-                >
-                  REGISTRA TU ESTABLECIMIENTO
-                </Typography>
-              </Button> */}
+          variant="contained"
+          onClick={() => navigate("/establishmentAdmin")}
+          sx={{
+            backgroundColor: "#FF4500",
+            color: "#fff",
+            
+            //height: "90%",
+            fontSize: ".93rem",
+            marginLeft: "1rem",
+            padding: " 0 .5rem 0 .5rem",
+            "&:hover": {
+              backgroundColor: "#FF4500",
+            },
+          }}
+        >
+          <Typography
+            textAlign="center"
+            sx={{
+              
+              fontSize: ".93rem",
+            }}
+          >
+            REGISTRA TU ESTABLECIMIENTO
+          </Typography>
+        </Button> */}
               <IconButton
                 size="large"
                 edge="end"
@@ -409,9 +449,9 @@ export default function AppBarComponent(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="#fff"
-                style={{ marginLeft: "1.5rem", color: "#fff" }}
+                style={{ marginRight: "1.5rem", color: "#fff" }}
               >
-                <PersonIcon />
+                <PersonIcon sx={{ fontSize: "2rem" }} />
               </IconButton>
             </Box>
             <Box sx={{ display: { xs: "flex", md: "none" } }}>

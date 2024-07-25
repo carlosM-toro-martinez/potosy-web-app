@@ -3,6 +3,7 @@ import mq from "../../config/mq";
 
 export const useStyles = makeStyles((theme) => ({
   title: {
+    marginTop: "2rem",
     width: "100%",
     "& h5": {
       fontSize: 20,
