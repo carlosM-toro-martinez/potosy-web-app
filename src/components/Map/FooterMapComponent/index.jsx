@@ -6,8 +6,10 @@ import { useStyles } from "./FooterMap.styles";
 import travel from "../../../assets/icons/travel.svg";
 import RouteIcon from "@mui/icons-material/Route";
 import HikingIcon from "@mui/icons-material/Hiking";
+import { useTranslation } from "react-i18next";
 
 function FooterMapComponent({ calle, coordinates, logo_url, name }) {
+  const { t } = useTranslation();
   const classes = useStyles();
   const playStoreLink =
     "https://play.google.com/store/apps/details?id=com.encuentra.potosi";
@@ -32,7 +34,7 @@ function FooterMapComponent({ calle, coordinates, logo_url, name }) {
       <div className={classes.content}>
         <div className={classes.address}>
           <Typography variant="h6" className={classes.heading}>
-            <RoomIcon className={classes.icon} /> Dirección: {calle}
+            {t("address")}: {calle}
           </Typography>
           {/* <Typography className={classes.coordinates}>
             Coordenadas: {coordinates}
@@ -40,8 +42,8 @@ function FooterMapComponent({ calle, coordinates, logo_url, name }) {
         </div>
       </div>
       <div className={classes.downloadText}>
-        <Typography variant="body1">
-          Para una mejor experiencia descargue nuestra app de la playstore
+        <Typography variant="body1" sx={{ textAlign: "center", width: "100%" }}>
+          {t("downloadApp")}
         </Typography>
         <PhoneIphoneIcon sx={{ fontSize: "6rem" }} className={classes.icon} />
         <Link
@@ -49,6 +51,7 @@ function FooterMapComponent({ calle, coordinates, logo_url, name }) {
           target="_blank"
           rel="noopener noreferrer"
           className={classes.link}
+          sx={{ color: "red", textDecorationColor: "red" }}
         >
           Encuentra Potosi
         </Link>

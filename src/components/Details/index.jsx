@@ -420,7 +420,7 @@ function Details() {
                       marginBottom: "3rem",
                       color: "white",
                       backgroundColor: "#FF4500",
-                      width: "30%",
+                      width: "50%",
                       height: "3rem",
                       marginTop: "1rem",
                       "&:hover": {

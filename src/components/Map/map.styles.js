@@ -5,9 +5,10 @@ export const useStyles = makeStyles((theme) => ({
   wrapper: {
     display: "flex",
     flexDirection: "column",
-    marginTop: "2rem",
+    marginTop: "3rem",
     gap: 10,
     [mq("md")]: {
+      marginTop: "2.5rem",
       flexDirection: "row",
     },
   },
@@ -15,24 +16,28 @@ export const useStyles = makeStyles((theme) => ({
     top: 0,
     zIndex: 1,
     flex: 1,
-    width: "90%",
+    width: "100%",
     height: "50vh",
-    margin: "1rem 0 1rem 1rem",
+    margin: "0 0 0 0",
     [mq("md")]: {
       width: "20rem",
       height: "20rem",
+      margin: "1rem 0 1rem 1rem",
     },
   },
   footerContainer: {
-    width: "40rem",
+    width: "25rem",
+    [mq("md")]: {
+      width: "40rem",
+    },
   },
   map: {
     marginTop: "1rem",
     zIndex: 1,
-    height: "100vh",
-    width: "95%",
+    height: "60vh",
+    width: "100%",
     [mq("md")]: {
-      height: "80vh",
+      height: "85vh",
       width: "100%",
     },
   },

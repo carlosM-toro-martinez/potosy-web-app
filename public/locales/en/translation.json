@@ -35,7 +35,7 @@
   "recalculate": "RECALCULATE ROUTE",
   "calculate": "GET MY LOCATION",
   "howToGet": "GET THERE",
-  "newsTitle": "News",
+  "newsTitle": "News and events",
   "slogan": "Sections",
   "viewMore": "view more",
   "information": "Information",
@@ -74,5 +74,7 @@
   "knowMore": "Learn more",
   "whyVisit": "Why Visit Potosí",
   "moreFind": "Find More",
-  "opinionsTitle": "Visitor Opinions"
+  "opinionsTitle": "Visitor Opinions",
+  "downloadApp": "For a better experience with the map, download our app from the Play Store",
+  "return": "Return"
 }

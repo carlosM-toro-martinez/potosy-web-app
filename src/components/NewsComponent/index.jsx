@@ -11,8 +11,10 @@ import { useStyles } from "./NewsComponent.styles";
 import NewsCardComponent from "./NewsCardComponent";
 import newsService from "../../async/services/newsService";
 import { useQuery } from "react-query";
+import { useTranslation } from "react-i18next";
 
 function NewsComponent() {
+  const { t } = useTranslation();
   const { data, isLoading, refetch, error } = useQuery(`newsAdmin`, () =>
     newsService()
   );
@@ -29,7 +31,7 @@ function NewsComponent() {
   return (
     <Box className={classes.Container}>
       <Typography variant="h2" component="h2">
-        Noticias y Novedades
+        {t("newsTitle")}
       </Typography>
       <Box className={classes.containerDesktop}>
         <ImageList cols={2} gap={50}>

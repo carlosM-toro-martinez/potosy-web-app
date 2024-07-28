@@ -6,8 +6,10 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useStyles } from "./newsDetails.styles";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const NewsDetailsComponent = () => {
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const novelty = useLocation().state;
   const classes = useStyles();
@@ -24,11 +26,13 @@ const NewsDetailsComponent = () => {
             <IconButton onClick={handleGoBack} className={classes.backButton}>
               <ArrowBackIcon style={{ marginRight: ".5rem", color: "#000" }} />
               <Typography variant="h6" className={classes.icon}>
-                Volver
+                {t("return")}
               </Typography>
             </IconButton>
             <Typography variant="h5" gutterBottom>
-              {novelty.title || "Título no disponible"}
+              {i18n.language === "en"
+                ? novelty.title_en
+                : novelty.title || "Título no disponible"}
             </Typography>
             <div>
               <img
@@ -39,7 +43,9 @@ const NewsDetailsComponent = () => {
               />
             </div>
             <Typography variant="h6">
-              {novelty.description || "Descripción no disponible"}
+              {i18n.language === "en"
+                ? novelty.description_en
+                : novelty.description || "Descripción no disponible"}
             </Typography>
             {novelty.date && (
               <Typography variant="h6" className={classes.icon}>

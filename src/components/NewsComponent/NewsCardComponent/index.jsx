@@ -6,8 +6,11 @@ import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import { useStyles } from "./NewsCard.styles";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function NewsCardComponent({ data }) {
+  const { t, i18n } = useTranslation();
+
   const correctedUrl = data.promotional_image_url.replace(/\\/g, "/");
   const navigate = useNavigate();
   const handleNavigate = () => {
@@ -28,10 +31,14 @@ function NewsCardComponent({ data }) {
       <Box className={classes.contentBox}>
         <CardContent className={classes.containerText}>
           <Box className={classes.titleText}>
-            <Typography variant="h5">{data.title}</Typography>
+            <Typography variant="h5">
+              {i18n.language === "en" ? data.title_en : data.title}
+            </Typography>
           </Box>
           <Box className={classes.descriptionText}>
-            <Typography>{data.description}</Typography>
+            <Typography>
+              {i18n.language === "en" ? data.description_en : data.description}
+            </Typography>
           </Box>
         </CardContent>
       </Box>

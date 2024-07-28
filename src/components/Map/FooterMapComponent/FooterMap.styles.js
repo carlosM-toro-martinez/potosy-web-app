@@ -7,10 +7,13 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     alignItems: "center",
     padding: "1rem",
-    margin: "2rem 0",
+    margin: ".5rem 0",
     boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.1)",
     borderRadius: "8px",
     backgroundColor: "#fff",
+    [mq("md")]: {
+      margin: "2rem 0",
+    },
   },
   logo: {
     width: "8rem",
@@ -29,11 +32,12 @@ export const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    justifyContent: "center",
     color: "#000",
   },
   link: {
     marginLeft: "5px",
-    color: "#000",
+    color: "red",
     textDecoration: "none",
     fontWeight: "bold",
   },
