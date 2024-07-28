@@ -75,7 +75,7 @@ export const useStyles = makeStyles((theme) => ({
     position: "absolute",
     margin: "6rem 0 0 6rem",
     zIndex: 100,
-    "& h4": {
+    "& h1": {
       fontSize: "1.8rem",
       color: "#fff",
       textAlign: "center",
@@ -93,7 +93,7 @@ export const useStyles = makeStyles((theme) => ({
     },
     [mq("md")]: {
       gap: "3rem",
-      "& h4": {
+      "& h1": {
         fontSize: "3rem",
       },
       "& h3": {

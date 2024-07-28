@@ -18,8 +18,10 @@ import map from "../../assets/icons/conexion.svg";
 import { Box, Divider, Slide, Zoom } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import useOnScreen from "../../hocks/useOnScreen";
+import { useTranslation } from "react-i18next";
 
 function BannerComponent() {
+  const { t, i18n } = useTranslation();
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const ref = useRef();
@@ -61,14 +63,12 @@ function BannerComponent() {
       <div className={classes.containerStyle}>
         <div className={classes.containerTitle}>
           <Slide in={true} timeout={800}>
-            <Typography variant="h4">
+            <Typography variant="h1" component="h1">
               Encuentra <span className={classes.titleHighlight}>Potosi</span>
             </Typography>
           </Slide>
           <Slide in={true} timeout={800}>
-            <Typography variant="h3">
-              Conectate, Encuentra y Disfruta
-            </Typography>
+            <Typography variant="h3">{t("sloganWeb")}</Typography>
           </Slide>
         </div>
         <ImageGallery
@@ -101,8 +101,7 @@ function BannerComponent() {
               </Zoom>
               <Zoom in={true} timeout={200}>
                 <Typography variant="body" className={classes.subTitle}>
-                  Un espacio donde poder encontrar todo lo que necesites en esta
-                  hermosa ciudad
+                  {t("descEncuentra")}
                 </Typography>
               </Zoom>
               <div
@@ -125,7 +124,7 @@ function BannerComponent() {
                     variant="body"
                     style={{ textTransform: "capitalize", color: "white" }}
                   >
-                    Encontrar !
+                    {t("encuentra")}
                   </Typography>
                 </Button>
               </div>
@@ -152,7 +151,7 @@ function BannerComponent() {
                     }}
                   >
                     <Typography variant="h4" className={classes.title}>
-                      Conectate
+                      {t("sloganC")}
                     </Typography>
                     <div className={classes.iconContainer}>
                       <img
@@ -175,7 +174,7 @@ function BannerComponent() {
                     }}
                   >
                     <Typography variant="h4" className={classes.title}>
-                      Encuentra
+                      {t("sloganE")}
                     </Typography>
                     <div className={classes.iconContainer}>
                       <img
@@ -201,7 +200,7 @@ function BannerComponent() {
                     }}
                   >
                     <Typography variant="h4" className={classes.title}>
-                      Disfruta
+                      {t("sloganD")}
                     </Typography>
                     <div className={classes.iconContainer}>
                       <img

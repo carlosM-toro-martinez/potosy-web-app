@@ -18,19 +18,18 @@ import businessFindOne from "../../async/services/businessFindOneService";
 function EstablishmentDashbord() {
   const { user } = useContext(MainContext);
   const location = useLocation();
-  const { data, isLoading, error } = useQuery(`businessOne`, () =>
-    businessFindOne(location?.state)
-  );
+  const business_id = location?.state ? location?.state : user?.business_id;
   const navigate = useNavigate();
+  if (!business_id) {
+    navigate("/admin");
+  }
+  const { data, isLoading, error } = useQuery(`businessOne`, () =>
+    businessFindOne(business_id)
+  );
   const handleEditData = (uri, id) => {
-    console.log(location.state);
     navigate(`/establishmentAdmin${uri}/${id}`, { state: data });
   };
   const clasess = useStyles();
-
-  if (!location?.state || !user) {
-    return <Navigate to="/" />;
-  }
 
   return (
     <Box className={clasess.box}>

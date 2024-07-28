@@ -16,7 +16,7 @@ export const useStyles = makeStyles((theme) => ({
     textAlign: "center",
     "& h5": {
       marginTop: "1rem",
-      fontSize: ".8rem",
+      fontSize: "1.5rem",
       width: "50%",
       padding: "1rem 0 1rem 0",
       textAlign: "center",
@@ -34,14 +34,14 @@ export const useStyles = makeStyles((theme) => ({
   },
   description: {
     color: "#5B5B5B",
-    fontSize: ".8rem",
-    width: "70%",
+    fontSize: ".7rem",
+    width: "80%",
     padding: "1rem 0 1rem 0",
     textAlign: "center",
-    padding: theme.spacing(1),
     color: "black",
     textTransform: "capitalze",
     [mq("md")]: {
+      width: "75%",
       fontSize: "1.2rem",
       letterSpacing: ".1rem",
     },

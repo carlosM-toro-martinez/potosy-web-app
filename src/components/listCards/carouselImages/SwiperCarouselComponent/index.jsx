@@ -13,21 +13,22 @@ import { useParams } from "react-router-dom";
 import { SectionContext } from "../../../../context/SectionContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import { useTranslation } from "react-i18next";
+
 function SwiperCarousel({ slidesData, listCardRef }) {
+  const { t, i18n } = useTranslation();
   const { id } = useParams();
   const idParam = id;
   const { setRoute, route, setSection, setDescSection, index, setIndex } =
     useContext(SectionContext);
   const navigate = useNavigate();
   const updateData = (title, id, desc, indexSlide) => {
-    if (!idParam) {
-      navigate(`/section/${id}`);
-    }
     setIndex(indexSlide);
     listCardRef.current.scrollIntoView({ behavior: "smooth" });
     setRoute(title);
     setSection(id);
     setDescSection(desc);
+    navigate(`/section/${id}`);
   };
   return (
     <div className="center">
@@ -64,9 +65,11 @@ function SwiperCarousel({ slidesData, listCardRef }) {
                   className="card-container"
                   onClick={() =>
                     updateData(
-                      slide.title,
+                      i18n.language === "en" ? slide.title_en : slide.title,
                       slide.section_id,
-                      slide.description,
+                      i18n.language === "en"
+                        ? slide.description_en
+                        : slide.description,
                       index
                     )
                   }
@@ -75,8 +78,14 @@ function SwiperCarousel({ slidesData, listCardRef }) {
                     <img src={slide.icon_url} alt={slide.icon_url} />
                   </div> */}
                   <img src={slide.image_url} alt={slide.image_url} />
-                  <p className="title">{slide.title}</p>
-                  <p className="description">{slide.description}</p>
+                  <p className="title">
+                    {i18n.language === "en" ? slide.title_en : slide.title}
+                  </p>
+                  <p className="description">
+                    {i18n.language === "en"
+                      ? slide.description_en
+                      : slide.description}
+                  </p>
                   <Button
                     variant="contained"
                     sx={{
@@ -88,7 +97,7 @@ function SwiperCarousel({ slidesData, listCardRef }) {
                     }}
                     className="button-view-more"
                   >
-                    Ver Mas
+                    {t("viewMore")}
                   </Button>
                 </div>
               </SwiperSlide>

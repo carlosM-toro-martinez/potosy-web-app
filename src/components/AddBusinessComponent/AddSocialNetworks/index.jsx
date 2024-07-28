@@ -1,55 +1,54 @@
-import React, { useState } from 'react';
-import { styled } from '@mui/material/styles';
+import React, { useEffect, useState } from "react";
+import { styled } from "@mui/material/styles";
+import { TextField, Button, Container, Typography, Box } from "@mui/material";
+import { useStyles } from "./AddSocialNetworks.styles";
 import {
-  TextField,
-  Button,
-  Container,
-  Typography,
-  Box,
-} from '@mui/material';
-import { useStyles } from './AddSocialNetworks.styles';
-import { Navigate, useLocation, useNavigate, useParams } from 'react-router-dom';
-import socialNetUpdateService from '../../../async/services/put/socialNetUpdateService';
-import socialNetAddServices from '../../../async/services/post/socialNetAddServices';
-import MuiAlert from '@mui/material/Alert';
-import { Snackbar, LinearProgress } from '@mui/material';
+  Navigate,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
+import socialNetUpdateService from "../../../async/services/put/socialNetUpdateService";
+import socialNetAddServices from "../../../async/services/post/socialNetAddServices";
+import MuiAlert from "@mui/material/Alert";
+import { Snackbar, LinearProgress } from "@mui/material";
 
 const ValidationTextField = styled(TextField)({
-  '& input:valid + fieldset': {
-    borderColor: 'black',
+  "& input:valid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
-    color: 'black'
+    color: "black",
   },
-  '& input:invalid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  '& .MuiInputBase-input': {
-    color: 'black',
-  },
-  '& .MuiInputLabel-root': {
-    color: 'black',
-  },
-  '& textarea:valid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-    color: 'black'
-  },
-  '& textarea:invalid + fieldset': {
-    borderColor: 'black',
+  "& input:invalid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
   },
-  '& .MuiInputBase-multiline': {
-    color: 'black',
+  "& .MuiInputBase-input": {
+    color: "black",
   },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: 'black',
+  "& .MuiInputLabel-root": {
+    color: "black",
   },
-  '& .MuiFormHelperText-root': {
-    color: 'black',
+  "& textarea:valid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+    color: "black",
   },
-  '& fieldset': {
-    borderColor: 'black !important',
+  "& textarea:invalid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+  },
+  "& .MuiInputBase-multiline": {
+    color: "black",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "black",
+  },
+  "& .MuiFormHelperText-root": {
+    color: "black",
+  },
+  "& fieldset": {
+    borderColor: "black !important",
   },
 });
 
@@ -65,15 +64,15 @@ const AddSocialNetworks = () => {
   const location = useLocation();
   const navigation = useNavigate();
   const [socialNetworksData, setSocialNetworksData] = useState({
-    facebook_url: '',
-    instagram_url: '',
-    twitter_url: '',
-    tiktok_url: '',
-    whatsapp_number: '',
+    facebook_url: "",
+    instagram_url: "",
+    twitter_url: "",
+    tiktok_url: "",
+    whatsapp_number: "",
   });
 
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
@@ -91,20 +90,43 @@ const AddSocialNetworks = () => {
     event.preventDefault();
     try {
       setLoading(true);
-      const newData = { ...socialNetworksData, business_id: location.state };
-      const promiseResult = await id ? socialNetUpdateService(id, newData) : socialNetAddServices(newData);
-      promiseResult.then((data) => {
-        id ? navigation('/establishmentAdmin/home') : navigation('/establishmentAdmin/promotions', { state: location.state })
-      }).catch((error) => {
-        console.error('Error al resolver la promesa:', error);
-      });
-
+      const business_id = Array.isArray(location.state)
+        ? location?.state[0]?.business_id
+        : location.state;
+      const newData = { ...socialNetworksData, business_id: business_id };
+      const promiseResult = (await id)
+        ? socialNetUpdateService(id, newData)
+        : socialNetAddServices(newData);
+      promiseResult
+        .then((data) => {
+          id
+            ? navigation("/establishmentAdmin/home", {
+                state: business_id,
+              })
+            : navigation("/establishmentAdmin/promotions", {
+                state: location.state,
+              });
+        })
+        .catch((error) => {
+          console.error("Error al resolver la promesa:", error);
+        });
     } catch (error) {
       console.error(error);
       setSnackbarOpen(true);
     }
   };
 
+  useEffect(() => {
+    if (location?.state) {
+      setSocialNetworksData({
+        facebook_url: location?.state[0]?.socialnetworks[0]?.facebook_url,
+        instagram_url: location?.state[0]?.socialnetworks[0]?.instagram_url,
+        twitter_url: location?.state[0]?.socialnetworks[0]?.twitter_url,
+        tiktok_url: location?.state[0]?.socialnetworks[0]?.tiktok_url,
+        whatsapp_number: location?.state[0]?.socialnetworks[0]?.whatsapp_number,
+      });
+    }
+  }, []);
   if (!location.state) {
     return <Navigate to="/establishmentAdmin" />;
   }
@@ -113,15 +135,17 @@ const AddSocialNetworks = () => {
     <Container maxWidth="sm" className={classes.formContainer}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'black' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: "black" }} variant="h6">
+            Cargando...
+          </Typography>
           <LinearProgress />
         </div>
       )}
       <Typography variant="h4" align="center" gutterBottom>
-        {id ? 'Editar Redes Sociales' : 'Agregar Nuevas Redes Sociales'}
+        {id ? "Editar Redes Sociales" : "Agregar Nuevas Redes Sociales"}
       </Typography>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
           <ValidationTextField
             fullWidth
             label="Facebook URL"
@@ -159,14 +183,14 @@ const AddSocialNetworks = () => {
           />
         </Box>
         <Button type="submit" variant="contained" className={classes.button}>
-          {id ? 'Actualizar Datos' : 'Agregar Nuevas'}
+          {id ? "Actualizar Datos" : "Agregar Nuevas"}
         </Button>
       </form>
       <Snackbar
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleSnackbarClose} severity="error">
           Error al ingresar las redes sociales.

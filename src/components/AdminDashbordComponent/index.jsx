@@ -25,8 +25,8 @@ function AdminDashbord() {
     () => businessService()
   );
   const navigate = useNavigate();
-  const handleNavigate = (business_id) => {
-    navigate(`/admin/detailBusiness/${business_id}`);
+  const handleNavigate = (route) => {
+    navigate(`${route}`);
   };
   const handleDelete = async (idBusiness) => {
     try {
@@ -56,7 +56,7 @@ function AdminDashbord() {
                 }}
               >
                 <TableCell sx={{ color: "black" }} className={clasess.row}>
-                  Logo
+                  Imagen
                 </TableCell>
                 <TableCell sx={{ color: "black" }} className={clasess.row}>
                   Nombre
@@ -72,6 +72,9 @@ function AdminDashbord() {
                 </TableCell>
                 <TableCell sx={{ color: "black" }} className={clasess.row}>
                   Eliminar
+                </TableCell>
+                <TableCell sx={{ color: "black" }} className={clasess.row}>
+                  Editar
                 </TableCell>
                 <TableCell sx={{ color: "black" }} className={clasess.row}>
                   Estado
@@ -113,7 +116,11 @@ function AdminDashbord() {
                       <TableCell sx={{ color: "black" }}>
                         <Button
                           variant="contained"
-                          onClick={() => handleNavigate(item.business_id)}
+                          onClick={() =>
+                            handleNavigate(
+                              `/admin/detailBusiness/${item?.business_id}`
+                            )
+                          }
                           sx={{
                             backgroundColor: "#FF4500",
                             color: "#fff",
@@ -132,10 +139,31 @@ function AdminDashbord() {
                         <Button
                           color="error"
                           variant="contained"
-                          startIcon={<DeleteIcon />}
-                          onClick={() => handleDelete(item.business_id)}
+                          onClick={() => handleDelete(item?.business_id)}
                         >
-                          Delete
+                          <DeleteIcon />
+                        </Button>
+                      </TableCell>
+                      <TableCell sx={{ color: "black" }}>
+                        <Button
+                          variant="contained"
+                          onClick={() =>
+                            navigate(`/establishmentAdmin/home`, {
+                              state: item?.business_id,
+                            })
+                          }
+                          sx={{
+                            backgroundColor: "#FF4500",
+                            color: "#fff",
+                            fontWeight: "bold",
+                            fontSize: ".8rem",
+                            "&:hover": {
+                              backgroundColor: "#FF4500",
+                              color: "#fff",
+                            },
+                          }}
+                        >
+                          Editar
                         </Button>
                       </TableCell>
                       <TableCell
@@ -152,6 +180,43 @@ function AdminDashbord() {
                 : null}
             </TableBody>
           </Table>
+          <Box
+            sx={{
+              width: "100%",
+              height: "10rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "-8rem",
+            }}
+          >
+            <Button
+              variant="contained"
+              onClick={() => navigate("/establishmentAdmin")}
+              sx={{
+                backgroundColor: "#FF4500",
+                color: "#fff",
+
+                height: "40%",
+                fontSize: ".93rem",
+                marginLeft: "1rem",
+                padding: " 0 1.5rem 0 1.5rem",
+                "&:hover": {
+                  backgroundColor: "#FF4500",
+                },
+              }}
+            >
+              <Typography
+                textAlign="center"
+                sx={{
+                  fontSize: ".93rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Agregar Nuevo
+              </Typography>
+            </Button>
+          </Box>
         </Box>
       </TableContainer>
     </Box>

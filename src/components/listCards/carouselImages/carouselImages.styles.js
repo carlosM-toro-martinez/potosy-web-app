@@ -3,12 +3,13 @@ import mq from "../../../config/mq";
 
 export const useStyles = makeStyles((theme) => ({
   container: {
+    marginTop: "4rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     width: "100%",
     "& h3": {
-      marginTop: "1rem",
+      margin: "1rem 0 -2rem 0",
       fontSize: "1.5rem",
       color: "black",
       textAlign: "center",
@@ -16,14 +17,17 @@ export const useStyles = makeStyles((theme) => ({
       letterSpacing: ".1rem",
       width: "50%",
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
-      textTransform: "uppercase",
+      textTransform: "capitalize",
     },
     [mq("md")]: {
+      marginTop: "3rem",
+
       "& h3": {
-        marginTop: "3rem",
+        margin: "3rem 0 0 0",
         fontSize: "2.8rem",
         letterSpacing: ".2rem",
         fontWeight: "bold",
+        textTransform: "uppercase",
       },
     },
   },

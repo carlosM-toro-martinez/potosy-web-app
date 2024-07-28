@@ -13,6 +13,7 @@ export const useStyles = makeStyles((theme) => ({
     },
   },
   box: {
+    marginTop: "3rem",
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
@@ -42,7 +43,7 @@ export const useStyles = makeStyles((theme) => ({
       fontFamily: "NotoSerifDisplay_ExtraCondensed-BlackItalic",
     },
     [mq("md")]: {
-      marginTop: "2.5rem",
+      marginTop: "4rem",
       padding: "0 1rem 0 1rem",
       alignItems: "center",
       "& h2": {

@@ -37,6 +37,7 @@ import AdminControlComponent from "./components/AdminControlComponent";
 import AddAdminComponent from "./components/AdminControlComponent/AddAdminComponent";
 import Section from "./pages/Section";
 import AboutUs from "./components/AboutUsComponent";
+import PrivateAdminUserRoute from "./PrivateAdminUserRoute";
 
 const AdminRoutes = () => {
   return (
@@ -147,6 +148,142 @@ const AdminRoutes = () => {
           <>
             <NavBar />
             <AddAdminComponent />
+            <Footer />
+          </>
+        }
+      />
+    </Routes>
+  );
+};
+const AdminUserRoutes = () => {
+  return (
+    <Routes>
+      <Route
+        path=""
+        element={
+          <>
+            <NavBar />
+            <AddBusinessComponent />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="home"
+        element={
+          <>
+            <NavBar />
+            <EstablishmentDashbord />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="socialNet"
+        element={
+          <>
+            <NavBar />
+            <AddSocialNetworks />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="promotions"
+        element={
+          <>
+            <NavBar />
+            <AddPromotions />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="products"
+        element={
+          <>
+            <NavBar />
+            <AddProducts />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="openinghours"
+        element={
+          <>
+            <NavBar />
+            <AddHours />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="images"
+        element={
+          <>
+            <NavBar />
+            <AddImages />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path=":id"
+        element={
+          <>
+            <NavBar />
+            <AddBusinessComponent />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="socialNet/:id"
+        element={
+          <>
+            <NavBar />
+            <AddSocialNetworks />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="promotions/:id"
+        element={
+          <>
+            <NavBar />
+            <AddPromotions />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="products/:id"
+        element={
+          <>
+            <NavBar />
+            <AddProducts />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="openinghours/:id"
+        element={
+          <>
+            <NavBar />
+            <AddHours />
+            <Footer />
+          </>
+        }
+      />
+      <Route
+        path="images/:id"
+        element={
+          <>
+            <NavBar />
+            <AddImages />
             <Footer />
           </>
         }
@@ -289,138 +426,15 @@ function App() {
                     </PrivateAdminRoute>
                   }
                 />
-                <Route path="/establishmentAdmin">
-                  <Route
-                    path=""
-                    element={
-                      <>
-                        <NavBar />
-                        <AddBusinessComponent />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="home"
-                    element={
-                      <>
-                        <NavBar />
-                        <EstablishmentDashbord />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="socialNet"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddSocialNetworks />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="promotions"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddPromotions />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="products"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddProducts />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="openinghours"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddHours />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="images"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddImages />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path=":id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddBusinessComponent />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="socialNet/:id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddSocialNetworks />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="promotions/:id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddPromotions />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="products/:id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddProducts />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="openinghours/:id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddHours />
-                        <Footer />
-                      </>
-                    }
-                  />
-                  <Route
-                    path="images/:id"
-                    element={
-                      <>
-                        <NavBar />
-                        <AddImages />
-                        <Footer />
-                      </>
-                    }
-                  />
-                </Route>
+                <Route
+                  path="/establishmentAdmin/*"
+                  element={
+                    <PrivateAdminUserRoute redirectPath="/">
+                      <AdminUserRoutes />
+                    </PrivateAdminUserRoute>
+                  }
+                />
+
                 <Route
                   path="/login"
                   element={

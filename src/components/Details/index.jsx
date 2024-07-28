@@ -25,14 +25,18 @@ import { useContext, useState } from "react";
 import { MainContext } from "../../context/MainContext";
 import businessStateUpdateService from "../../async/services/put/businessStateUpdateServices";
 import BreadrumbComponent from "./BreadcrumbComponent";
+import { useTranslation } from "react-i18next";
 
 const OpeningHours = ({ openinghours }) => {
+  const { t } = useTranslation();
   const classes = useStyles();
   return (
     <Box className={classes.openingHours}>
       {!openinghours[0].morning_hours[0] == "" ? (
         <Typography variant="h3" component="h3">
-          {`Mañana:\n ${openinghours[0].morning_hours[0]} -  ${openinghours[0].morning_hours[1]}`}
+          {`${t("morging")}:\n ${openinghours[0].morning_hours[0]} -  ${
+            openinghours[0].morning_hours[1]
+          }`}
         </Typography>
       ) : null}
       {openinghours[0].weekend ? (
@@ -42,7 +46,9 @@ const OpeningHours = ({ openinghours }) => {
       ) : null}
       {!openinghours[0].afternoon_hours[0] == "" ? (
         <Typography variant="h3" component="h3">
-          {`Tarde:\n ${openinghours[0].afternoon_hours[0]} - ${openinghours[0].afternoon_hours[1]}`}
+          {`${t("affternoon")}:\n ${openinghours[0].afternoon_hours[0]} - ${
+            openinghours[0].afternoon_hours[1]
+          }`}
         </Typography>
       ) : null}
     </Box>
@@ -74,7 +80,7 @@ const BusinessContact = ({ data }) => {
           onClick={() => handleRedirect(data.website_url)}
           startIcon={<PublicIcon />}
         >
-          sitio web
+          web
         </Button>
       ) : null}
     </Box>
@@ -158,6 +164,7 @@ const SocialNetworks = ({ socialnetworks }) => {
 };
 
 const Products = ({ products }) => {
+  const { t } = useTranslation();
   const [showTable, setShowTable] = useState(false);
 
   const handleToggleTable = () => {
@@ -171,11 +178,11 @@ const Products = ({ products }) => {
         onClick={handleToggleTable}
         sx={{ marginBottom: "1rem", color: "#FF4500" }}
       >
-        {showTable ? "Ocultar Productos" : "Mostrar Productos"}
+        {showTable ? t("seeProducts") : t("hiddenProducts")}
       </Button>
       {showTable && products[0]?.product_id ? (
         <Typography variant="h4" component="h4">
-          Productos
+          {t("products")}
         </Typography>
       ) : null}
       {showTable && products[0]?.product_id ? (
@@ -192,8 +199,8 @@ const Products = ({ products }) => {
                 color: "black",
               }}
             >
-              <TableCell sx={{ color: "black" }}>Detalle</TableCell>
-              <TableCell sx={{ color: "black" }}>Precio</TableCell>
+              <TableCell sx={{ color: "black" }}>{t("detail")}</TableCell>
+              <TableCell sx={{ color: "black" }}>{t("price")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -225,6 +232,7 @@ const Products = ({ products }) => {
 };
 
 const Promotions = ({ promotions }) => {
+  const { t } = useTranslation();
   const [showTable, setShowTable] = useState(false);
   const handleToggleTable = () => {
     setShowTable(!showTable);
@@ -237,11 +245,11 @@ const Promotions = ({ promotions }) => {
         onClick={handleToggleTable}
         sx={{ marginBottom: "1rem", alignItems: "center", color: "#FF4500" }}
       >
-        {showTable ? "Ocultar Promociones" : "Mostrar Promociones"}
+        {showTable ? t("seePromotions") : t("hiddenPromotions")}
       </Button>
       {showTable && promotions[0]?.promotion_id ? (
         <Typography variant="h4" component="h4">
-          Promociones
+          {t("promotions")}
         </Typography>
       ) : null}
       {showTable && promotions[0]?.promotion_id ? (
@@ -258,8 +266,8 @@ const Promotions = ({ promotions }) => {
                 color: "black",
               }}
             >
-              <TableCell sx={{ color: "black" }}>Detalle</TableCell>
-              <TableCell sx={{ color: "black" }}>Precio</TableCell>
+              <TableCell sx={{ color: "black" }}>{t("detail")}</TableCell>
+              <TableCell sx={{ color: "black" }}>{t("price")}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -291,6 +299,7 @@ const Promotions = ({ promotions }) => {
 };
 
 function Details() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const { state } = location;
   const navigate = useNavigate();
@@ -331,26 +340,24 @@ function Details() {
                 <CarouselImagesDetailsComponent images={data.images} />
               ) : null}
             </Box>
-            <Typography component="h3">información</Typography>
+            <Typography component="h3">{t("information")}</Typography>
             <OpeningHours openinghours={data.openinghours} />
             <Box className={classes.dataContainer}>
               <Box sx={{ flexDirection: "column" }}>
                 {data.phone_number ? (
                   <p className={classes.infoText}>
-                    Telefono
-                    <PhoneIcon sx={{ color: "#3498db" }} />: {data.phone_number}{" "}
+                    {t("phoneNumber")}: {data.phone_number}
                   </p>
                 ) : null}
                 {data.address ? (
                   <p className={classes.infoText}>
-                    Direccion
-                    <LocationOnIcon sx={{ color: "#f39c12" }} />:{data.address}
+                    {t("address")}: {data.address}
                   </p>
                 ) : null}
                 {data.mail ? (
                   <p className={classes.infoText}>
-                    Correo
-                    <EmailIcon sx={{ color: "#e74c3c" }} />:{data.mail}
+                    {t("mail")}
+                    <EmailIcon sx={{ color: "#e74c3c" }} />: {data.mail}
                   </p>
                 ) : null}
               </Box>
@@ -359,7 +366,9 @@ function Details() {
             <Box className={classes.information}>
               <Box sx={{ flex: 0.8 }}>
                 <Typography component="h6">
-                  {data.business_description}
+                  {i18n.language === "en"
+                    ? data.business_description_en
+                    : data.business_description}
                 </Typography>
               </Box>
               <Box sx={{ flex: 0.2 }}>
@@ -398,23 +407,30 @@ function Details() {
                   width: "55%",
                 }}
               >
-                <Button
-                  variant="contained"
-                  startIcon={<MapIcon />}
+                <Box
                   sx={{
-                    marginBottom: "3rem",
-                    color: "white",
-                    backgroundColor: "#FF4500",
-                    width: "100%",
-                    height: "3rem",
-                    marginTop: "1rem",
-                    "&:hover": {
-                      backgroundColor: "#FF4500",
-                    },
+                    display: "flex",
+                    justifyContent: "center",
                   }}
                 >
-                  Como Llegar
-                </Button>
+                  <Button
+                    variant="contained"
+                    startIcon={<MapIcon />}
+                    sx={{
+                      marginBottom: "3rem",
+                      color: "white",
+                      backgroundColor: "#FF4500",
+                      width: "30%",
+                      height: "3rem",
+                      marginTop: "1rem",
+                      "&:hover": {
+                        backgroundColor: "#FF4500",
+                      },
+                    }}
+                  >
+                    {t("howToGet")}
+                  </Button>
+                </Box>
               </Link>
             ) : null}
           </div>

@@ -164,30 +164,30 @@
 
   .wrapper {
     /* transform: scale(0.4); */
-    height: 260px;
-  }
-
-  .container {
-    max-width: 64.5rem;
+    height: 300px;
   }
 
   .swiper-slide-container {
-    height: 47rem;
-    width: 60rem;
-  }
-
-  .swiper-slide-container {
-    width: 28rem !important;
-    height: 36rem !important;
+    width: 8rem !important;
+    height: 20rem !important;
   }
 
   .swiper-slide-container img {
-    width: 28rem !important;
-    height: 36rem !important;
+    width: 10rem !important;
+    height: 8rem !important;
   }
 
   .title {
-    font-size: 1.5rem;
+    font-size: 0.7rem;
+  }
+
+  .description {
+    margin-top: -0.5rem;
+    font-size: 0.5rem;
+  }
+
+  .button-view-more {
+    margin-bottom: 0.5rem;
   }
 
   .image-container {
@@ -200,5 +200,11 @@
     width: 200px !important;
     height: 200px !important;
     border-radius: 200px !important;
+  }
+  .card-container {
+    width: 10rem;
+  }
+  .swiper-navigation {
+    display: none;
   }
 }

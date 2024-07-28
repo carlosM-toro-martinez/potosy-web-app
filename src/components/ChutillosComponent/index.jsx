@@ -6,8 +6,10 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import { Autoplay, EffectCoverflow, Pagination } from "swiper/modules";
+import { useTranslation } from "react-i18next";
 
 function ChutillosComponent() {
+  const { t } = useTranslation();
   const videoId = "Nd1ROm0bXcg?si=TBvYhvQl_Ix_WMok";
   const classes = useStyles();
   const imageNumbers = Array.from({ length: 7 }, (_, i) => i + 1);
@@ -16,7 +18,7 @@ function ChutillosComponent() {
       <Paper elevation={8}>
         <div className={classes.box}>
           <Box className={classes.textContainer}>
-            <Typography variant="h4">Chutillos la fiesta grande</Typography>
+            <Typography variant="h4">{t("chutillosTitle")}</Typography>
             <Box className={classes.newBox}>
               <Swiper
                 effect={"coverflow"}
@@ -50,27 +52,9 @@ function ChutillosComponent() {
               </Swiper>
             </Box>
             <Box className={classes.textWrapper}>
-              <Typography variant="h5">
-                Ch’utilos, patrimonio cultural e inmaterial de la humanidad.
-              </Typography>
-              <Typography variant="h6">
-                Potosí celebra con júbilo que la “Festividad de San Bartolomé y
-                San Ignacio de Loyola Ch’utillos” fue declarada como patrimonio
-                inmaterial de la humanidad en la XVIII SESIÓN DEL Comité
-                intergubernamental para la Salvaguarda del Patrimonio Cultural e
-                Inmaterial de la UNESCO (Organización de las Naciones Unidas
-                para la Educación, la Ciencia y la Cultura, que se desarrolló el
-                Botsuana el 6 de diciembre.
-              </Typography>
-              <Typography variant="h6">
-                Ya sea con la ritualidad, la muestra de la cultura potosina en
-                repostería, gastronomía, usos y costumbres, la festividad de
-                Ch’utillos tiene elementos religiosos, como la visita al
-                santuario de La Puerta, donde están las imágenes de San
-                Bartolomé y San Ignacio de Loyola, mientras en la capital se
-                desarrollan las entradas autóctonas y folclóricas a finales del
-                mes de agosto.
-              </Typography>
+              <Typography variant="h5">{t("chutillos")}</Typography>
+              <Typography variant="h6">{t("chutillosDesc1")}</Typography>
+              <Typography variant="h6">{t("chutillosDesc2")}</Typography>
             </Box>
             <div>
               <iframe

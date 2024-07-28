@@ -4,8 +4,10 @@ import { Typography, Link, Box } from "@material-ui/core";
 import encuentra from "../../../assets/logos/8.png";
 import SocialNetworksComponent from "../SocialNetworksComponent";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 function FooterContentComponent() {
+  const { t, i18n } = useTranslation();
   const classes = useStyles();
 
   return (
@@ -19,7 +21,7 @@ function FooterContentComponent() {
             className={classes.logo}
           />
           <Typography variant="body1" className={classes.title}>
-            Síguenos en:
+            {t("followUs")}
           </Typography>
           <Box className={classes.iconContainer}>
             <SocialNetworksComponent
@@ -40,6 +42,8 @@ function FooterContentComponent() {
 }
 
 const LinksOfInterest = ({ classes }) => {
+  const { t } = useTranslation();
+
   const navigate = useNavigate();
 
   const handleRoute = (route) => {
@@ -48,23 +52,23 @@ const LinksOfInterest = ({ classes }) => {
   return (
     <Box className={classes.flexCol}>
       <Typography variant="h6" className={classes.title}>
-        Links de interés
+        {t("interestLinks")}
       </Typography>
       <ul className={`${classes.list} ${classes.mt2}`}>
         <li onClick={() => handleRoute("section/1")}>
-          <Link className={classes.primaryText}>Apartados</Link>
+          <Link className={classes.primaryText}>{t("list")}</Link>
         </li>
         <li onClick={() => handleRoute("about")}>
-          <Link className={classes.primaryText}>Quienes Somos</Link>
+          <Link className={classes.primaryText}>{t("about")}</Link>
         </li>
         <li onClick={() => handleRoute("chutillos")}>
           <Link className={classes.primaryText}>Chutillos</Link>
         </li>
         <li onClick={() => handleRoute("routes")}>
-          <Link className={classes.primaryText}>Rutas Turísticas</Link>
+          <Link className={classes.primaryText}>{t("touristRoute")}</Link>
         </li>
         <li onClick={() => handleRoute("login")}>
-          <Link className={classes.primaryText}>Iniciar Sesión</Link>
+          <Link className={classes.primaryText}>{t("login")}</Link>
         </li>
       </ul>
     </Box>
@@ -72,6 +76,7 @@ const LinksOfInterest = ({ classes }) => {
 };
 
 const MoreInfo = ({ classes }) => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleRoute = (route) => {
@@ -80,20 +85,20 @@ const MoreInfo = ({ classes }) => {
   return (
     <Box className={classes.flexCol}>
       <Typography variant="h6" className={classes.title}>
-        Conoce más
+        {t("knowMore")}
       </Typography>
       <ul className={`${classes.list} ${classes.mt2}`}>
         <li onClick={() => handleRoute("section/1")}>
-          <Link className={classes.primaryText}>Museos</Link>
+          <Link className={classes.primaryText}>{t("museums")}</Link>
         </li>
         <li onClick={() => handleRoute("section/2")}>
-          <Link className={classes.primaryText}>Mercados</Link>
+          <Link className={classes.primaryText}>{t("stores")}</Link>
         </li>
         <li onClick={() => handleRoute("section/3")}>
-          <Link className={classes.primaryText}>¿Sabías que?</Link>
+          <Link className={classes.primaryText}>{t("didYouKnow")}</Link>
         </li>
         <li onClick={() => handleRoute("section/4")}>
-          <Link className={classes.primaryText}>Terminales</Link>
+          <Link className={classes.primaryText}>{t("stations")}</Link>
         </li>
       </ul>
     </Box>
@@ -101,19 +106,20 @@ const MoreInfo = ({ classes }) => {
 };
 
 const ContactUs = ({ classes }) => {
+  const { t } = useTranslation();
   return (
     <Box className={classes.flexCol}>
       <Typography variant="h6" className={classes.title}>
-        Contáctanos
+        {t("contacts")}
       </Typography>
       <Typography variant="body1" className={classes.mt2}>
-        Correo:
+        {t("mail")}:
       </Typography>
       <Typography variant="body" className={classes.primaryText}>
         encuentra.po@gmail.com
       </Typography>
       <Typography variant="body1" className={classes.mt2}>
-        Telefono:
+        {t("phoneNumber")}:
       </Typography>
       <Typography variant="body" className={classes.primaryText}>
         +59178635209

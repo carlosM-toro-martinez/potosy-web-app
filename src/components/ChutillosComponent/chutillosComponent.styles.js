@@ -18,7 +18,7 @@ export const useStyles = makeStyles((theme) => ({
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    margin: "3rem 0 2rem 0rem",
+    margin: "5rem 0 2rem 0rem",
     "& h4": {
       fontSize: "1.8rem",
       margin: "0 0 4rem 0",

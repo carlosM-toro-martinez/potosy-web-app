@@ -116,6 +116,7 @@ const AddBusinessComponent = () => {
   const [businessData, setBusinessData] = useState({
     name: "",
     description: "",
+    description_en: "",
     days_attention: "",
     logo_url: "",
     phone_number: "",
@@ -148,6 +149,7 @@ const AddBusinessComponent = () => {
       setBusinessData({
         name: location.state[0].business_name,
         description: location.state[0].business_description,
+        description_en: location.state[0].business_description_en,
         days_attention: location.state[0].days_attention,
         logo_url: "",
         phone_number: location.state[0].phone_number,
@@ -228,7 +230,11 @@ const AddBusinessComponent = () => {
           : businessAddService(formData);
         promiseResult
           .then((data) => {
-            navigation("/signup", { state: data.business_id });
+            id
+              ? navigation("/establishmentAdmin/home", {
+                  state: data?.business_id,
+                })
+              : navigation("/signup", { state: data?.business_id });
           })
           .catch((error) => {
             console.error("Error al resolver la promesa:", error);
@@ -335,6 +341,17 @@ const AddBusinessComponent = () => {
               onChange={handleChange}
               sx={{ marginBottom: 2 }}
               helperText="Ingrese una breve descripción de su negocio."
+            />
+
+            <ValidationTextField
+              required
+              fullWidth
+              label="Descripción en ingles"
+              name="description_en"
+              value={businessData.description_en}
+              onChange={handleChange}
+              sx={{ marginBottom: 2 }}
+              helperText="Ingrese una breve descripción de su negocio en ingles."
             />
             <FormControl fullWidth sx={{ marginBottom: 2, color: "black" }}>
               <InputLabel id="section-label" style={{ color: "black" }}>

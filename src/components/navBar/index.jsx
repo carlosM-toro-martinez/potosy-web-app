@@ -86,66 +86,6 @@ const NavBar = (props) => {
           </IconButton>
         </DrawerHeader>
         <Divider sx={{ backgroundColor: "white" }} />
-        <List>
-          {/* <ListItem sx={{ marginTop: -1, marginBottom: -1 }} >
-            <ListItemButton sx={{ color: '#FFDAB9' }} onClick={() => handleNavigate('')} >
-              <ListItemIcon>
-                <HomeIcon sx={{ color: '#FFDAB9' }} />
-              </ListItemIcon>
-              <Typography sx={{ fontWeight: 'bold', textTransform: 'uppercase' }} >
-                Inicio
-              </Typography>
-            </ListItemButton>
-          </ListItem> */}
-          <ListItem sx={{ marginTop: -1, marginBottom: -1 }}>
-            <ListItemButton
-              sx={{ color: "#FFDAB9" }}
-              onClick={() => handleNavigate("chutillos")}
-            >
-              <ListItemIcon>
-                <CelebrationIcon sx={{ color: "#FFDAB9" }} />
-              </ListItemIcon>
-              <Typography
-                sx={{ fontWeight: "bold", textTransform: "uppercase" }}
-              >
-                Chutillos
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-          <ListItem sx={{ marginTop: -1, marginBottom: -1 }}>
-            <ListItemButton
-              sx={{ color: "#FFDAB9" }}
-              onClick={() => handleNavigate("routes")}
-            >
-              <ListItemIcon>
-                <RouteIcon sx={{ color: "#FFDAB9" }} />
-              </ListItemIcon>
-              <Typography
-                sx={{ fontWeight: "bold", textTransform: "uppercase" }}
-              >
-                Rutas Turisticas
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-          <ListItem sx={{ marginTop: -1, marginBottom: -1 }}>
-            <ListItemButton
-              sx={{ color: "#FFDAB9" }}
-              component="a"
-              href="#footer"
-              // onClick={() => handleNavigate("footer")}
-            >
-              <ListItemIcon>
-                <ContactsIcon sx={{ color: "#FFDAB9" }} />
-              </ListItemIcon>
-              <Typography
-                sx={{ fontWeight: "bold", textTransform: "uppercase" }}
-              >
-                Contactos
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        </List>
-        <Divider sx={{ backgroundColor: "white" }} />
         {auth && !user ? (
           <List>
             <ListItem sx={{ marginTop: -1, marginBottom: -1 }}>

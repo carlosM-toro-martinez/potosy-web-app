@@ -82,7 +82,9 @@ const AddPromotions = () => {
     promotionsService(id ? id : location.state)
   );
   const navigation = useNavigate();
-  const item = location?.state?.item;
+  const business_id = Array.isArray(location.state)
+    ? location?.state[0]?.business_id
+    : location.state;
   const [promotionsData, setPromotionsData] = useState({
     promotion_details: "",
     price: "",
@@ -107,22 +109,13 @@ const AddPromotions = () => {
     event.preventDefault();
     try {
       setLoading(true);
-      const newData = { ...promotionsData, business_id: location.state };
-      const promiseResult = (await id)
-        ? promotionsUpdateService(id, newData)
-        : promotionsAddServices(newData);
-      promiseResult
-        .then((data) => {
-          setLoading(false);
-          refetch();
-          setPromotionsData({
-            promotion_details: "",
-            price: "",
-          });
-        })
-        .catch((error) => {
-          console.error("Error al resolver la promesa:", error);
-        });
+      const newData = { ...promotionsData, business_id: business_id };
+
+      await promotionsAddServices(newData);
+      setLoading(false);
+      alert("promocion agregada correctamente");
+      event.target.reset();
+      refetch();
     } catch (error) {
       console.error(error);
       setSnackbarOpen(true);
@@ -131,7 +124,9 @@ const AddPromotions = () => {
 
   const handleNavigation = () => {
     id
-      ? navigation("/establishmentAdmin/home")
+      ? navigation("/establishmentAdmin/home", {
+          state: business_id,
+        })
       : navigation("/establishmentAdmin/products", { state: location.state });
   };
 
@@ -241,10 +236,10 @@ const AddPromotions = () => {
           />
         </Box>
         <Button type="submit" variant="contained" className={classes.button}>
-          {id ? "Actualizar Datos" : "Agregar"}
+          Agregar
         </Button>
         <Button className={classes.buttonFinish} onClick={handleNavigation}>
-          Siguiente
+          {id ? "Terminar" : "Siguiente"}
         </Button>
       </form>
       <Snackbar

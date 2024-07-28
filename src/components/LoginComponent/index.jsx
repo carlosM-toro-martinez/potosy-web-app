@@ -47,7 +47,7 @@ const ValidationTextField = styled(TextField)({
 
 function LoginComponent() {
   const [loading, setLoading] = useState(false);
-  const { setToken, setAuth, setUser } = useContext(MainContext);
+  const { setToken, setAuth, setUser, setSuperAdmin } = useContext(MainContext);
   const navigate = useNavigate();
 
   const classes = useStyles();
@@ -72,6 +72,7 @@ function LoginComponent() {
       setLoading(false);
       if (promiseResult?.user?.business_id) {
         setUser(promiseResult?.user);
+        setSuperAdmin(false);
         navigate("/establishmentAdmin/home", {
           state: promiseResult?.user?.business_id,
         });

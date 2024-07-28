@@ -77,6 +77,9 @@ const AddProducts = () => {
   const classes = useStyles();
   const { id } = useParams();
   const location = useLocation();
+  const business_id = Array.isArray(location.state)
+    ? location?.state[0]?.business_id
+    : location.state;
   const navigation = useNavigate();
   const { data, isLoading, error, refetch } = useQuery("products", () =>
     productsService(id ? id : location.state)
@@ -106,22 +109,12 @@ const AddProducts = () => {
     event.preventDefault();
     try {
       setLoading(true);
-      const newData = { ...productsData, business_id: location.state };
-      const promiseResult = (await id)
-        ? productsUpdateService(productsData.product_id, newData)
-        : productsAddServices(newData);
-      promiseResult
-        .then((data) => {
-          setLoading(false);
-          refetch();
-          setProductsData({
-            product_details: "",
-            price: "",
-          });
-        })
-        .catch((error) => {
-          console.error("Error al resolver la promesa:", error);
-        });
+      const newData = { ...productsData, business_id: business_id };
+      await productsAddServices(newData);
+      setLoading(false);
+      alert("producto agregada correctamente");
+      event.target.reset();
+      refetch();
     } catch (error) {
       console.error(error);
     }
@@ -129,7 +122,9 @@ const AddProducts = () => {
 
   const handleNavigation = () => {
     id
-      ? navigation("/establishmentAdmin/home")
+      ? navigation("/establishmentAdmin/home", {
+          state: business_id,
+        })
       : navigation("/establishmentAdmin/openinghours", {
           state: location.state,
         });
@@ -229,10 +224,10 @@ const AddProducts = () => {
           />
         </Box>
         <Button type="submit" variant="contained" className={classes.button}>
-          {id ? "Actualizar Datos" : "Agregar"}
+          Agregar
         </Button>
         <Button className={classes.buttonFinish} onClick={handleNavigation}>
-          Siguiente
+          {id ? "Terminar" : "Siguiente"}
         </Button>
       </form>
       <Snackbar
