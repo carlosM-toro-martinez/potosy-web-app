@@ -10,6 +10,7 @@ import {
   TableHead,
   TableRow,
 } from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { useStyles } from "./AddImages.styles";
 import {
   Navigate,
@@ -17,7 +18,6 @@ import {
   useNavigate,
   useParams,
 } from "react-router-dom";
-import imagesUpdateService from "../../../async/services/put/imagesUpdateService";
 import imagesAddServices from "../../../async/services/post/imagesAddServices";
 import loginSession from "../../../async/services/post/loginSession";
 import { MainContext } from "../../../context/MainContext";
@@ -38,10 +38,25 @@ const AddImages = () => {
   const [imagesData, setImagesData] = useState({
     image: null,
   });
-
+  const [loading, setLoading] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
+  const [previewUrl, setPreviewUrl] = useState(null);
   const handleChange = (event) => {
     const { name, files } = event.target;
-
+    if (name === "image") {
+      const file = files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+          setPreviewUrl(reader.result);
+        };
+        reader.readAsDataURL(file);
+        setSelectedImage(file);
+      } else {
+        setSelectedImage(null);
+        setPreviewUrl(null);
+      }
+    }
     setImagesData((prevData) => ({
       ...prevData,
       [name]: files[0],
@@ -50,15 +65,19 @@ const AddImages = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+    setLoading(true);
     try {
       const formData = new FormData();
       formData.append("image", imagesData.image);
       formData.append("business_id", id ? id : location.state);
       await imagesAddServices(formData);
+      setLoading(false);
       alert("Imagen agregada correctamente");
       event.target.reset();
       refetch();
     } catch (error) {
+      alert("Error al agregar la imagen");
+      setLoading(false);
       console.error(error);
     }
   };
@@ -116,7 +135,7 @@ const AddImages = () => {
                       alt={`Image ${item.image_id}`}
                       style={{
                         width: "150px",
-                        height: "150px",
+                        height: "100px",
                         objectFit: "cover",
                       }}
                     />
@@ -127,8 +146,14 @@ const AddImages = () => {
                     <Button
                       variant="contained"
                       onClick={() => deleteImage(item.image_id, item.image_url)}
+                      sx={{
+                        backgroundColor: "#FF4500",
+                        "&:hover": {
+                          backgroundColor: "#FF4500",
+                        },
+                      }}
                     >
-                      Eliminar Imagen
+                      <DeleteIcon />
                     </Button>
                   </TableCell>
                 </TableRow>
@@ -137,20 +162,69 @@ const AddImages = () => {
         </TableBody>
       </Table>
       <form className={classes.form} onSubmit={handleSubmit}>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "20px",
+            borderWidth: "2px",
+            borderRadius: "2px",
+            borderColor: "#eeeeee",
+            borderStyle: "dashed",
+            backgroundColor: "#fafafa",
+            color: "#bdbdbd",
+            transition: "border .24s ease-in-out",
+            cursor: "pointer",
+            marginBottom: "1rem",
+          }}
+          onClick={() => document.getElementById("fileInput").click()}
+        >
           <input
+            id="fileInput"
             type="file"
             accept="image/*"
             onChange={handleChange}
             name="image"
             required
-            style={{ marginBottom: "30px", color: "black" }}
+            style={{ display: "none" }}
           />
+          <Typography variant="body1" color="textSecondary">
+            Hacer clic para seleccionar
+          </Typography>
         </Box>
-        <Button type="submit" variant="contained" className={classes.button}>
-          Agregar Nueva
-        </Button>
-        <Button className={classes.buttonFinish} onClick={handleNavigation}>
+        {previewUrl && (
+          <div>
+            <img
+              src={previewUrl}
+              alt="Selected Preview"
+              style={{ width: "300px", height: "auto" }}
+            />
+          </div>
+        )}
+        {loading ? (
+          <Button disabled={true}>cargando ...</Button>
+        ) : (
+          <Button
+            type="submit"
+            variant="contained"
+            className={classes.button}
+            sx={{
+              backgroundColor: "#FF4500",
+              "&:hover": {
+                backgroundColor: "#FF4500",
+              },
+            }}
+          >
+            Agregar
+          </Button>
+        )}
+        <Button
+          className={classes.buttonFinish}
+          onClick={handleNavigation}
+          sx={{ color: "#FF4500" }}
+        >
           Terminar
         </Button>
       </form>

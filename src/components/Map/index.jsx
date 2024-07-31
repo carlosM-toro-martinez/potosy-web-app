@@ -53,13 +53,6 @@ function Map() {
     return null;
   };
 
-  const customMarkerIconPoint = new L.Icon({
-    iconUrl: mapPoint,
-    iconSize: [42, 42],
-    iconAnchor: [32, 32],
-    popupAnchor: [0, -32],
-  });
-
   const customMarkerIcon = new L.Icon({
     iconUrl: iconEnd,
     iconSize: [42, 42],
@@ -90,15 +83,13 @@ function Map() {
         >
           <TileLayer
             attribution="CMTM"
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+            //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {currentLocation ? (
             <>
-              {/* <Marker position={currentLocation} icon={customMarkerIconPoint}>
-                <Popup>Tu ubicación actual</Popup>
-              </Marker> */}
               <AdjustMap />
-              <RoutingMachine coordinates={coordinates} />
+              <RoutingMachine coordinates={coordinates} img={logo_url} />
             </>
           ) : (
             <Marker

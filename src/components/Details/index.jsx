@@ -11,7 +11,7 @@ import { Twitter, WhatsApp, Facebook, Instagram } from "@mui/icons-material";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import PublicIcon from "@mui/icons-material/Public";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+import LoadersComponent from "../LoadersComponent";
 import {
   Grid,
   Snackbar,
@@ -436,9 +436,9 @@ function Details() {
           </div>
         ))
       ) : (
-        <Typography variant="h2" component="h2">
-          Cargando...
-        </Typography>
+        <div className={classes.box}>
+          <LoadersComponent />
+        </div>
       )}
     </Box>
   );

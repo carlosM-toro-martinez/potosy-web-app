@@ -26,7 +26,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   backgroundColor: "rgba(0, 0, 0)",
   justifyContent: "flex-end",
-  height: "3rem",
+  height: "4.5rem",
 }));
 
 const NavBar = (props) => {

@@ -51,6 +51,7 @@ const AddSection = () => {
   const location = useLocation();
   const navigation = useNavigate();
   const item = location?.state?.item;
+  const [loading, setLoading] = useState(false);
   const [sectionData, setSectionData] = useState({
     title: item ? item?.title : "",
     title_en: item ? item?.title_en : "",
@@ -70,6 +71,7 @@ const AddSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const formData = new FormData();
       for (const key in sectionData) {
@@ -79,20 +81,22 @@ const AddSection = () => {
           formData.append(key, sectionData[key]);
         }
       }
-      for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
       const promiseResult = (await id)
         ? sectionsUpdateServices(id, formData)
         : sectionsAddServices(formData);
       promiseResult
         .then((data) => {
+          setLoading(false);
           navigation("/admin/sections");
         })
         .catch((error) => {
+          setLoading(false);
+          alert("Error");
           console.error("Error al resolver la promesa:", error);
         });
     } catch (error) {
+      alert("Error");
+      setLoading(false);
       console.error(error);
     }
   };
@@ -176,9 +180,13 @@ const AddSection = () => {
             width: "25rem",
           }}
         />
-        <Button type="submit" variant="contained" className={classes.button}>
-          {id ? "ACTUALIZAR DATOS" : "AGREGAR NUEVO"}
-        </Button>
+        {loading ? (
+          <Button disabled={true}>cargando ...</Button>
+        ) : (
+          <Button type="submit" variant="contained" className={classes.button}>
+            {id ? "ACTUALIZAR DATOS" : "AGREGAR NUEVO"}
+          </Button>
+        )}
       </form>
     </Container>
   );

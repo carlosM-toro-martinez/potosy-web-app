@@ -4,12 +4,11 @@ import L from "leaflet";
 import "leaflet-routing-machine/dist/leaflet-routing-machine.css";
 import "leaflet-routing-machine";
 import { MapContext } from "../../../context/MapContext";
-import iconStart from "../../../assets/images/walkMan.png";
-import HikingIcon from "@mui/icons-material/Hiking";
+import iconStart from "../../../assets/images/inicial.png";
 
-import iconEnd from "../../../assets/images/house.png";
+import iconEnd from "../../../assets/images/destino.png";
 
-const CreateRoutineMachineLayer = ({ coordinates }) => {
+const CreateRoutineMachineLayer = ({ coordinates, logo_url }) => {
   const { positionStart } = useContext(MapContext);
 
   const instance = L.Routing.control({

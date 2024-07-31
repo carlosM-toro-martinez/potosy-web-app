@@ -1,50 +1,56 @@
-import React, { useContext, useState } from 'react';
-import { styled } from '@mui/material/styles';
-import { Container, Typography, TextField, Button, IconButton } from '@mui/material';
-import { useStyles } from './Signup.styles';
-import registerSession from '../../../async/services/post/registerSession';
-import { useLocation, useNavigate } from 'react-router-dom';
-import MuiAlert from '@mui/material/Alert';
-import { Snackbar, LinearProgress, InputAdornment } from '@mui/material';
-import VisibilityIcon from '@mui/icons-material/Visibility';
-import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
+import React, { useContext, useState } from "react";
+import { styled } from "@mui/material/styles";
+import {
+  Container,
+  Typography,
+  TextField,
+  Button,
+  IconButton,
+} from "@mui/material";
+import { useStyles } from "./Signup.styles";
+import registerSession from "../../../async/services/post/registerSession";
+import { useLocation, useNavigate } from "react-router-dom";
+import MuiAlert from "@mui/material/Alert";
+import { Snackbar, LinearProgress, InputAdornment } from "@mui/material";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 const ValidationTextField = styled(TextField)({
-  '& input:valid + fieldset': {
-    borderColor: 'black',
+  "& input:valid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
-    color: 'black'
+    color: "black",
   },
-  '& input:invalid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-  },
-  '& .MuiInputBase-input': {
-    color: 'black',
-  },
-  '& .MuiInputLabel-root': {
-    color: 'black',
-  },
-  '& textarea:valid + fieldset': {
-    borderColor: 'black',
-    borderWidth: 1,
-    color: 'black'
-  },
-  '& textarea:invalid + fieldset': {
-    borderColor: 'black',
+  "& input:invalid + fieldset": {
+    borderColor: "black",
     borderWidth: 1,
   },
-  '& .MuiInputBase-multiline': {
-    color: 'black',
+  "& .MuiInputBase-input": {
+    color: "black",
   },
-  '& .MuiInputLabel-root.Mui-focused': {
-    color: 'black',
+  "& .MuiInputLabel-root": {
+    color: "black",
   },
-  '& .MuiFormHelperText-root': {
-    color: 'black',
+  "& textarea:valid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+    color: "black",
   },
-  '& fieldset': {
-    borderColor: 'black !important',
+  "& textarea:invalid + fieldset": {
+    borderColor: "black",
+    borderWidth: 1,
+  },
+  "& .MuiInputBase-multiline": {
+    color: "black",
+  },
+  "& .MuiInputLabel-root.Mui-focused": {
+    color: "black",
+  },
+  "& .MuiFormHelperText-root": {
+    color: "black",
+  },
+  "& fieldset": {
+    borderColor: "black !important",
   },
 });
 
@@ -61,13 +67,13 @@ function AddAdminComponent() {
   const location = useLocation();
   const { state } = location;
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-    business_id: state ? state : null
+    username: "",
+    password: "",
+    business_id: state ? state : null,
   });
 
   const handleSnackbarClose = (event, reason) => {
-    if (reason === 'clickaway') {
+    if (reason === "clickaway") {
       return;
     }
     setSnackbarOpen(false);
@@ -89,12 +95,11 @@ function AddAdminComponent() {
         setLoading(true);
         const newData = formData;
         const promiseResult = await registerSession(newData);
-        navigation('/admin/admins')
+        navigation("/admin/admins");
       } else {
-        console.error('La contraseña debe tener al menos 6 caracteres.');
-        alert('La contraseña debe tener al menos 6 caracteres.');
+        console.error("La contraseña debe tener al menos 6 caracteres.");
+        alert("La contraseña debe tener al menos 6 caracteres.");
       }
-
     } catch (error) {
       console.error(error);
       setSnackbarOpen(true);
@@ -105,7 +110,9 @@ function AddAdminComponent() {
     <Container maxWidth="xs" className={classes.container}>
       {loading && (
         <div className={classes.loadingOverlay}>
-          <Typography style={{ color: 'white' }} variant="h6">Cargando...</Typography>
+          <Typography style={{ color: "white" }} variant="h6">
+            Cargando...
+          </Typography>
           <LinearProgress />
         </div>
       )}
@@ -127,7 +134,7 @@ function AddAdminComponent() {
           label="Contraseña"
           variant="outlined"
           fullWidth
-          type={showPassword ? 'text' : 'password'}
+          type={showPassword ? "text" : "password"}
           name="password"
           value={formData.password}
           required
@@ -151,7 +158,7 @@ function AddAdminComponent() {
         open={snackbarOpen}
         autoHideDuration={6000}
         onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: 'top', horizontal: 'center' }}
+        anchorOrigin={{ vertical: "top", horizontal: "center" }}
       >
         <Alert onClose={handleSnackbarClose} severity="error">
           Error al ingresar el establecimiento.
@@ -159,6 +166,6 @@ function AddAdminComponent() {
       </Snackbar>
     </Container>
   );
-};
+}
 
-export default AddAdminComponent
+export default AddAdminComponent;

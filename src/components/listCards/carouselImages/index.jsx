@@ -7,6 +7,7 @@ import { Paper } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import LoadersComponent from "../../LoadersComponent";
 
 const CarouselImagesComponent = ({ listCardRef }) => {
   const { t } = useTranslation();
@@ -34,9 +35,10 @@ const CarouselImagesComponent = ({ listCardRef }) => {
           </Paper>
         </div>
       ) : (
-        <Typography variant="h3" style={{ marginTop: "2rem" }}>
-          Cargando...
-        </Typography>
+        <div className={classes.container}>
+          <Typography variant="h3">{t("list")}</Typography>
+          <LoadersComponent />
+        </div>
       )}
     </>
   );

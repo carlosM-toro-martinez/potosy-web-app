@@ -11,6 +11,7 @@ import CarrouselImages from "./carouselImages";
 import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import LoadersComponent from "../LoadersComponent";
 
 function ListCard({ listCardRef }) {
   const { t, i18n } = useTranslation();
@@ -60,7 +61,7 @@ function ListCard({ listCardRef }) {
             <div className={classes.containerDesktop}>
               <ImageList cols={3} gap={50}>
                 {isLoading && error ? (
-                  <h1>Cargando...</h1>
+                  <LoadersComponent />
                 ) : (
                   items?.map((item) => (
                     <div key={item.business_id}>
@@ -85,7 +86,7 @@ function ListCard({ listCardRef }) {
                 gap={25}
               >
                 {isLoading && error ? (
-                  <h1>Cargando...</h1>
+                  <LoadersComponent />
                 ) : (
                   items?.map((item) => (
                     <div key={item.business_id}>

@@ -55,12 +55,7 @@ const ValidationTextField = styled(TextField)({
   },
 });
 
-function Alert(props) {
-  return <MuiAlert elevation={6} variant="filled" {...props} />;
-}
-
 function SignupComponent() {
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const { user, setUser } = useContext(MainContext);
@@ -73,13 +68,6 @@ function SignupComponent() {
     password: "",
     business_id: state ? state : null,
   });
-
-  const handleSnackbarClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    setSnackbarOpen(false);
-  };
 
   const handleTogglePasswordVisibility = () => {
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -97,15 +85,16 @@ function SignupComponent() {
         setLoading(true);
         const newData = formData;
         const promiseResult = await registerSession(newData);
-        //setUser(newData);
         navigation("/establishmentAdmin/socialNet", { state: state });
       } else {
+        setLoading(false);
         console.error("La contraseña debe tener al menos 6 caracteres.");
         alert("La contraseña debe tener al menos 6 caracteres.");
       }
     } catch (error) {
+      setLoading(false);
       console.error(error);
-      setSnackbarOpen(true);
+      alert("El nombre de usuario ya existe");
     }
   };
 
@@ -161,16 +150,6 @@ function SignupComponent() {
           Registrarse
         </Button>
       </form>
-      <Snackbar
-        open={snackbarOpen}
-        autoHideDuration={6000}
-        onClose={handleSnackbarClose}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-      >
-        <Alert onClose={handleSnackbarClose} severity="error">
-          Error al ingresar el establecimiento.
-        </Alert>
-      </Snackbar>
     </Container>
   );
 }

@@ -51,6 +51,7 @@ const AddNewsComponent = () => {
   const location = useLocation();
   const item = location?.state?.item;
   const navigation = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [newsData, setNewsData] = useState({
     title: item ? item?.title : "",
     title_en: item ? item?.title_en : "",
@@ -73,6 +74,7 @@ const AddNewsComponent = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
       const formData = new FormData();
       for (const key in newsData) {
@@ -82,20 +84,22 @@ const AddNewsComponent = () => {
           formData.append(key, newsData[key]);
         }
       }
-      for (const pair of formData.entries()) {
-        console.log(pair[0], pair[1]);
-      }
       const promiseResult = (await id)
         ? newsUpdateServices(id, formData)
         : newsAddService(formData);
       promiseResult
         .then((data) => {
+          setLoading(false);
           navigation("/admin/news");
         })
         .catch((error) => {
+          setLoading(false);
+
           console.error("Error al resolver la promesa:", error);
         });
     } catch (error) {
+      alert("Error");
+      setLoading(false);
       console.error(error);
     }
   };
@@ -215,9 +219,13 @@ const AddNewsComponent = () => {
           sx={{ width: "25rem" }}
         />
 
-        <Button type="submit" variant="contained" className={classes.button}>
-          {id ? "ACTUALIZAR DATOS" : "AGREGAR NUEVO"}
-        </Button>
+        {loading ? (
+          <Button disabled={true}>cargando ...</Button>
+        ) : (
+          <Button type="submit" variant="contained" className={classes.button}>
+            {id ? "ACTUALIZAR DATOS" : "AGREGAR NUEVO"}
+          </Button>
+        )}
         <Button className={classes.button} onClick={handleReturn}>
           Volver Atras
         </Button>

@@ -21,6 +21,8 @@ import { useLocation } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import PersonIcon from "@mui/icons-material/Person";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import NotificationsIcon from "@mui/icons-material/Notifications";
 import HomeIcon from "@mui/icons-material/Home";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useNavigate } from "react-router-dom";
@@ -69,7 +71,8 @@ export default function AppBarComponent(props) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [languageAnchorEl, setLanguageAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const { setAuth, setToken, setUser, auth, user } =
+  const [moreAnchorEl, setMoreAnchorEl] = React.useState(null);
+  const { setAuth, setToken, setUser, auth, user, setSuperAdmin } =
     React.useContext(MainContext);
   const navigate = useNavigate();
 
@@ -80,6 +83,7 @@ export default function AppBarComponent(props) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
   const isLanguageMenuOpen = Boolean(languageAnchorEl);
+  const isMoreMenuOpen = Boolean(moreAnchorEl);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -87,6 +91,10 @@ export default function AppBarComponent(props) {
 
   const handleLanguageMenuOpen = (event) => {
     setLanguageAnchorEl(event.currentTarget);
+  };
+
+  const handleMoreMenuOpen = (event) => {
+    setMoreAnchorEl(event.currentTarget);
   };
 
   const handleMobileMenuClose = () => {
@@ -97,10 +105,15 @@ export default function AppBarComponent(props) {
     setLanguageAnchorEl(null);
   };
 
+  const handleMoreMenuClose = () => {
+    setMoreAnchorEl(null);
+  };
+
   const handleLogout = () => {
     setAuth(false);
-    setToken();
+    setToken("");
     setUser();
+    setSuperAdmin(true);
   };
 
   const handleMenuClose = (url) => {
@@ -165,6 +178,51 @@ export default function AppBarComponent(props) {
     </Menu>
   );
 
+  const menuMoreId = "primary-more-menu";
+
+  const renderMoreMenu = (
+    <Menu
+      anchorEl={moreAnchorEl}
+      anchorOrigin={{
+        vertical: "bottom",
+        horizontal: "right",
+      }}
+      id={menuMoreId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isMoreMenuOpen}
+      onClose={handleMoreMenuClose}
+    >
+      <MenuItem onClick={() => handleNavigate("chutillos")}>
+        <Typography
+          sx={{
+            fontSize: "1rem",
+            color: "#000",
+            textTransform: "uppercase",
+            fontWeight: "bold",
+          }}
+        >
+          Chutillos
+        </Typography>
+      </MenuItem>
+      <MenuItem onClick={() => handleNavigate("routes")}>
+        <Typography
+          sx={{
+            fontSize: "1rem",
+            color: "#000",
+            textTransform: "uppercase",
+            fontWeight: "bold",
+          }}
+        >
+          {t("touristRoute")}
+        </Typography>
+      </MenuItem>
+    </Menu>
+  );
+
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
     <Menu
@@ -182,6 +240,25 @@ export default function AppBarComponent(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
+      <MenuItem onClick={handleLanguageMenuOpen}>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          {languageAnchorEl ? (
+            <ArrowDropUpIcon sx={{ fontSize: "1.5rem" }} />
+          ) : (
+            <ArrowDropDownIcon sx={{ fontSize: "1.5rem" }} />
+          )}
+        </IconButton>
+        {i18n.language === "en" && (
+          <img src={england} alt="england" width={50} />
+        )}
+        {i18n.language === "es" && <img src={spain} alt="spain" width={50} />}
+      </MenuItem>
       <MenuItem onClick={() => handleNavigate("")}>
         <IconButton size="large" color="inherit">
           <Badge color="error">
@@ -190,6 +267,19 @@ export default function AppBarComponent(props) {
         </IconButton>
         <p>{t("home")}</p>
       </MenuItem>
+      {!isLoading && !error && data?.length > 0 ? (
+        <MenuItem onClick={() => handleNavigate("news")}>
+          <IconButton size="large" color="inherit">
+            <Badge
+              badgeContent={!isLoading && !error ? data.length : 1}
+              color="error"
+            >
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <p>{t("newsTitle")}</p>
+        </MenuItem>
+      ) : null}
       <MenuItem onClick={() => handleNavigate("section/1")}>
         <IconButton size="large" color="inherit">
           <Badge color="error">
@@ -230,7 +320,7 @@ export default function AppBarComponent(props) {
         </IconButton>
         <p>{t("contacts")}</p>
       </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
+      <MenuItem onClick={handleMoreMenuOpen}>
         <IconButton
           size="large"
           aria-label="account of current user"
@@ -238,9 +328,13 @@ export default function AppBarComponent(props) {
           aria-haspopup="true"
           color="inherit"
         >
-          <PersonIcon />
+          {moreAnchorEl ? (
+            <ArrowDropUpIcon sx={{ fontSize: "1.5rem" }} />
+          ) : (
+            <ArrowDropDownIcon sx={{ fontSize: "1.5rem" }} />
+          )}
         </IconButton>
-        <p>Sesion</p>
+        {t("more")}
       </MenuItem>
     </Menu>
   );
@@ -285,10 +379,6 @@ export default function AppBarComponent(props) {
                 : appBarBackground,
           }}
         >
-          {/* <h1>{t("welcome")}</h1>
-          <p>{t("description")}</p>
-          <button onClick={() => changeLanguage("en")}>English</button>
-          <button onClick={() => changeLanguage("es")}>Español</button> */}
           <Box
             sx={{
               display: "flex",
@@ -362,7 +452,7 @@ export default function AppBarComponent(props) {
 
                 <Typography
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -388,7 +478,7 @@ export default function AppBarComponent(props) {
                 <ListAltIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -414,7 +504,7 @@ export default function AppBarComponent(props) {
                 <InfoIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -423,7 +513,7 @@ export default function AppBarComponent(props) {
                   {t("about")}
                 </Typography>
               </IconButton>
-              <IconButton
+              {/* <IconButton
                 size="large"
                 sx={{
                   color: "#fff",
@@ -440,7 +530,7 @@ export default function AppBarComponent(props) {
                 <CelebrationIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -466,7 +556,7 @@ export default function AppBarComponent(props) {
                 <MapIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -474,7 +564,7 @@ export default function AppBarComponent(props) {
                 >
                   {t("touristRoute")}
                 </Typography>
-              </IconButton>
+              </IconButton> */}
               <IconButton
                 size="large"
                 href="#footer"
@@ -488,19 +578,87 @@ export default function AppBarComponent(props) {
                     borderBottom: "2px solid #FF4500",
                   },
                 }}
-                //onClick={() => handleNavigate("contacts")}
               >
                 <ContactPhoneIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontSize: ".8rem",
+                    fontSize: ".7rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
                   }}
                 >
                   {t("contacts")}
+                </Typography>
+              </IconButton>
+              {!isLoading && !error && data?.length > 0 ? (
+                <IconButton
+                  size="large"
+                  onClick={() => handleNavigate("news")}
+                  sx={{
+                    color: "#fff",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: ".1rem",
+                    borderRadius: 0,
+                    "&:hover": {
+                      borderBottom: "2px solid #FF4500",
+                    },
+                  }}
+                >
+                  <Badge
+                    badgeContent={!isLoading && !error ? data.length : 1}
+                    color="error"
+                  >
+                    <NotificationsIcon sx={{ fontSize: "1.5rem" }} />
+                  </Badge>
+                  <Typography
+                    textAlign="center"
+                    sx={{
+                      fontSize: ".7rem",
+                      color: "#fff",
+                      textTransform: "uppercase",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {t("newsTitle")}
+                  </Typography>
+                </IconButton>
+              ) : null}
+              <IconButton
+                size="large"
+                edge="end"
+                aria-label="account of current user"
+                aria-controls={menuMoreId}
+                aria-haspopup="true"
+                onClick={handleMoreMenuOpen}
+                sx={{
+                  color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: ".1rem",
+                  borderRadius: 0,
+                  "&:hover": {
+                    borderBottom: "2px solid #FF4500",
+                  },
+                }}
+              >
+                {moreAnchorEl ? (
+                  <ArrowDropUpIcon sx={{ fontSize: "1.5rem" }} />
+                ) : (
+                  <ArrowDropDownIcon sx={{ fontSize: "1.5rem" }} />
+                )}
+                <Typography
+                  textAlign="center"
+                  sx={{
+                    fontSize: ".7rem",
+                    color: "#fff",
+                    textTransform: "uppercase",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {t("more")}
                 </Typography>
               </IconButton>
             </Box>
@@ -557,35 +715,10 @@ export default function AppBarComponent(props) {
           </Box>
         </AppBar>
       </HideOnScroll>
-      {!isLoading && !error && data?.length > 0 ? (
-        <IconButton
-          size="large"
-          color="inherit"
-          onClick={() => handleNavigate("news")}
-          style={{
-            color: "#fff",
-            position: "fixed",
-            zIndex: "800",
-            top: 0,
-            right: 0,
-            marginTop: "5rem",
-            marginRight: ".5rem",
-            [mq("md")]: {
-              marginTop: "4rem",
-            },
-          }}
-        >
-          <Badge
-            badgeContent={!isLoading && !error ? data.length : 1}
-            color="error"
-          >
-            <Typography style={{ fontSize: "2rem" }}>🔔</Typography>
-          </Badge>
-        </IconButton>
-      ) : null}
       {renderMobileMenu}
       {renderMenu}
       {renderLanguageMenu}
+      {renderMoreMenu}
     </Box>
   );
 }

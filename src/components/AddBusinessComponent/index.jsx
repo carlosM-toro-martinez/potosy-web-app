@@ -38,7 +38,6 @@ const CoordinateMap = ({ selectedCoords, setSelectedCoords }) => {
   };
 
   const handleAcceptMap = (coordinates) => {
-    console.log("Coordenadas seleccionadas:", coordinates);
     setSelectedCoords(coordinates);
   };
 
@@ -146,6 +145,10 @@ const AddBusinessComponent = () => {
 
   useEffect(() => {
     if (location?.state) {
+      setSelectedCoords([
+        location?.state[0]?.coordinates?.x,
+        location?.state[0]?.coordinates?.y,
+      ]);
       setBusinessData({
         name: location.state[0].business_name,
         description: location.state[0].business_description,
@@ -210,6 +213,7 @@ const AddBusinessComponent = () => {
         ...businessData,
         coordinates: `(${selectedCoords[0]},${selectedCoords[1]})`,
         state: false,
+        phone_number: `+591${businessData.phone_number}`,
       };
       //handleEmailChange(NewData.mail);
       if (!emailRegex.test(NewData.mail) && NewData.mail) {
@@ -278,7 +282,8 @@ const AddBusinessComponent = () => {
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
-              justifyContent: "space-between",
+              justifyContent: "center",
+              alignItems: "center",
             }}
           >
             <Box
@@ -290,21 +295,48 @@ const AddBusinessComponent = () => {
                 alignItems: "center",
               }}
             >
+              <Box
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  padding: "20px",
+                  borderWidth: "2px",
+                  borderRadius: "2px",
+                  borderColor: "#eeeeee",
+                  borderStyle: "dashed",
+                  backgroundColor: "#fafafa",
+                  color: "#bdbdbd",
+                  transition: "border .24s ease-in-out",
+                  cursor: "pointer",
+                  marginBottom: "1rem",
+                }}
+                onClick={() => document.getElementById("logoInput").click()}
+              >
+                <input
+                  id="logoInput"
+                  type="file"
+                  accept="image/*"
+                  onChange={handleChange}
+                  name="image"
+                  required
+                  style={{ display: "none" }}
+                />
+                <Typography variant="body1" color="textSecondary">
+                  Hacer clic para seleccionar
+                </Typography>
+              </Box>
               <Typography
                 htmlFor="logoInput"
-                style={{ marginBottom: "8px", color: "black" }}
+                style={{
+                  marginBottom: "8px",
+                  color: "black",
+                  textAlign: "center",
+                }}
               >
                 Por favor, introduce el icono de su establecimiento:
               </Typography>
-              <input
-                id="logoInput"
-                type="file"
-                accept="image/*"
-                onChange={handleChange}
-                name="image"
-                required
-                style={{ marginBottom: "16px", color: "black" }}
-              />
               {imagePreview && (
                 <Box
                   sx={{
@@ -374,16 +406,31 @@ const AddBusinessComponent = () => {
                 Seleccione los días en que su negocio está abierto.
               </FormHelperText>
             </FormControl>
-            <ValidationTextField
-              fullWidth
-              label="Número de Teléfono"
-              name="phone_number"
-              required
-              value={businessData.phone_number}
-              onChange={handleChange}
-              sx={{ marginBottom: 2 }}
-              helperText="Ingrese el número de teléfono de contacto."
-            />
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                marginBottom: 2,
+                width: "100%",
+              }}
+            >
+              <TextField
+                label="Código"
+                value="+591"
+                disabled
+                sx={{ width: "80px" }}
+                helperText="codigo"
+              />
+              <ValidationTextField
+                fullWidth
+                label="Número de Teléfono"
+                name="phone_number"
+                required
+                value={businessData.phone_number}
+                onChange={handleChange}
+                helperText="Ingrese el número de teléfono de contacto."
+              />
+            </Box>
             <ValidationTextField
               fullWidth
               label="URL del Sitio Web"
