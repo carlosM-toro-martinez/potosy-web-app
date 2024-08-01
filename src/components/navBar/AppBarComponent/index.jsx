@@ -452,7 +452,7 @@ export default function AppBarComponent(props) {
 
                 <Typography
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -478,7 +478,7 @@ export default function AppBarComponent(props) {
                 <ListAltIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -504,7 +504,7 @@ export default function AppBarComponent(props) {
                 <InfoIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -513,7 +513,7 @@ export default function AppBarComponent(props) {
                   {t("about")}
                 </Typography>
               </IconButton>
-              {/* <IconButton
+              <IconButton
                 size="large"
                 sx={{
                   color: "#fff",
@@ -530,7 +530,7 @@ export default function AppBarComponent(props) {
                 <CelebrationIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -556,7 +556,7 @@ export default function AppBarComponent(props) {
                 <MapIcon sx={{ fontSize: "1.5rem" }} />
                 <Typography
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -564,7 +564,7 @@ export default function AppBarComponent(props) {
                 >
                   {t("touristRoute")}
                 </Typography>
-              </IconButton> */}
+              </IconButton>
               <IconButton
                 size="large"
                 href="#footer"
@@ -583,7 +583,7 @@ export default function AppBarComponent(props) {
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -592,7 +592,7 @@ export default function AppBarComponent(props) {
                   {t("contacts")}
                 </Typography>
               </IconButton>
-              {!isLoading && !error && data?.length > 0 ? (
+              {/* {!isLoading && !error && data?.length > 0 ? (
                 <IconButton
                   size="large"
                   onClick={() => handleNavigate("news")}
@@ -616,7 +616,7 @@ export default function AppBarComponent(props) {
                   <Typography
                     textAlign="center"
                     sx={{
-                      fontSize: ".7rem",
+                      fontSize: ".8rem",
                       color: "#fff",
                       textTransform: "uppercase",
                       fontWeight: "bold",
@@ -625,8 +625,8 @@ export default function AppBarComponent(props) {
                     {t("newsTitle")}
                   </Typography>
                 </IconButton>
-              ) : null}
-              <IconButton
+              ) : null} */}
+              {/* <IconButton
                 size="large"
                 edge="end"
                 aria-label="account of current user"
@@ -652,7 +652,7 @@ export default function AppBarComponent(props) {
                 <Typography
                   textAlign="center"
                   sx={{
-                    fontSize: ".7rem",
+                    fontSize: ".8rem",
                     color: "#fff",
                     textTransform: "uppercase",
                     fontWeight: "bold",
@@ -660,14 +660,32 @@ export default function AppBarComponent(props) {
                 >
                   {t("more")}
                 </Typography>
-              </IconButton>
+              </IconButton> */}
             </Box>
             <Box
               sx={{
                 display: { xs: "none", md: "flex" },
-                mr: "2rem",
               }}
             >
+              {!isLoading && !error && data?.length > 0 ? (
+                <IconButton
+                  size="large"
+                  onClick={() => handleNavigate("news")}
+                  sx={{
+                    color: "#fff",
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Badge
+                    badgeContent={!isLoading && !error ? data.length : 1}
+                    color="error"
+                  >
+                    <NotificationsIcon sx={{ fontSize: "2rem" }} />
+                  </Badge>
+                </IconButton>
+              ) : null}
+
               <IconButton
                 size="large"
                 edge="end"
@@ -676,7 +694,11 @@ export default function AppBarComponent(props) {
                 aria-haspopup="true"
                 onClick={handleLanguageMenuOpen}
                 color="#fff"
-                style={{ marginRight: "1.5rem", color: "#fff" }}
+                style={{
+                  marginRight: "1rem",
+                  marginLeft: "1.5rem",
+                  color: "#fff",
+                }}
               >
                 {i18n.language === "en" && (
                   <img src={england} alt="england" width={50} />
@@ -694,7 +716,7 @@ export default function AppBarComponent(props) {
                 aria-haspopup="true"
                 onClick={handleProfileMenuOpen}
                 color="#fff"
-                style={{ marginRight: "1.5rem", color: "#fff" }}
+                style={{ marginRight: "2rem", color: "#fff" }}
               >
                 <PersonIcon sx={{ fontSize: "2rem" }} />
               </IconButton>
