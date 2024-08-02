@@ -667,24 +667,22 @@ export default function AppBarComponent(props) {
                 display: { xs: "none", md: "flex" },
               }}
             >
-              {!isLoading && !error && data?.length > 0 ? (
-                <IconButton
-                  size="large"
-                  onClick={() => handleNavigate("news")}
-                  sx={{
-                    color: "#fff",
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
+              <IconButton
+                size="large"
+                onClick={() => handleNavigate("news")}
+                sx={{
+                  color: "#fff",
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+              >
+                <Badge
+                  badgeContent={!isLoading && !error ? data.length : 0}
+                  color="error"
                 >
-                  <Badge
-                    badgeContent={!isLoading && !error ? data.length : 1}
-                    color="error"
-                  >
-                    <NotificationsIcon sx={{ fontSize: "2rem" }} />
-                  </Badge>
-                </IconButton>
-              ) : null}
+                  <NotificationsIcon sx={{ fontSize: "2rem" }} />
+                </Badge>
+              </IconButton>
 
               <IconButton
                 size="large"

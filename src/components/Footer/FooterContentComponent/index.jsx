@@ -91,13 +91,13 @@ const MoreInfo = ({ classes }) => {
         <li onClick={() => handleRoute("section/1")}>
           <Link className={classes.primaryText}>{t("museums")}</Link>
         </li>
-        <li onClick={() => handleRoute("section/2")}>
+        <li onClick={() => handleRoute("section/21")}>
           <Link className={classes.primaryText}>{t("stores")}</Link>
         </li>
         <li onClick={() => handleRoute("section/3")}>
           <Link className={classes.primaryText}>{t("didYouKnow")}</Link>
         </li>
-        <li onClick={() => handleRoute("section/4")}>
+        <li onClick={() => handleRoute("section/22")}>
           <Link className={classes.primaryText}>{t("stations")}</Link>
         </li>
       </ul>

@@ -12,6 +12,7 @@ import { Box } from "@mui/material";
 import { useParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import LoadersComponent from "../LoadersComponent";
+import PotosiMap from "../PotosiMap";
 
 function ListCard({ listCardRef }) {
   const { t, i18n } = useTranslation();
@@ -23,7 +24,7 @@ function ListCard({ listCardRef }) {
     useContext(SectionContext);
   const { data, isLoading, error } = useQuery(
     [`section${section}`, section],
-    () => businessOneService(id)
+    () => businessOneService(idParam)
   );
 
   useEffect(() => {
@@ -49,7 +50,7 @@ function ListCard({ listCardRef }) {
       <Grid>
         <CarrouselImages listCardRef={listCardRef} />
         <Grid className={classes.boxShadow} ref={listCardRef}>
-          {route && idParam ? (
+          {!isLoading && route && idParam ? (
             <Box className={classes.descriptionSection}>
               <Typography component="h5">{route}</Typography>
               <Typography variant="body" className={classes.description}>
@@ -57,7 +58,7 @@ function ListCard({ listCardRef }) {
               </Typography>
             </Box>
           ) : null}
-          {route && idParam ? (
+          {!isLoading && route && idParam ? (
             <div className={classes.containerDesktop}>
               <ImageList cols={3} gap={50}>
                 {isLoading && error ? (
@@ -78,7 +79,7 @@ function ListCard({ listCardRef }) {
               </ImageList>
             </div>
           ) : null}
-          {route && idParam ? (
+          {!isLoading && route && idParam ? (
             <div className={classes.containerMovil}>
               <ImageList
                 sx={{ justifyContent: "center", textAlign: "center" }}
@@ -104,6 +105,22 @@ function ListCard({ listCardRef }) {
             </div>
           ) : null}
         </Grid>
+        {!isLoading && route && idParam ? (
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              marginTop: "2rem",
+            }}
+            className={classes.descriptionSection}
+          >
+            <Typography component="h5">Map</Typography>
+            <PotosiMap data={items} />
+          </div>
+        ) : null}
       </Grid>
     </>
   );
