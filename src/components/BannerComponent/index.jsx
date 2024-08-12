@@ -80,14 +80,18 @@ function BannerComponent() {
           showThumbnails={false}
           showBullets={false}
           showNav={true}
-          renderItem={(item) => {
+          timeout={1000}
+          renderItem={(item, index) => {
+            const isActive = document
+              .querySelectorAll(".image-gallery-slide")
+              [index]?.classList.contains("active");
             return (
               <div
-                className={classes.background}
+                className={`${classes.background} ${
+                  classes.zoomImageContainer
+                } ${isActive ? classes.zoomActive : ""}`}
                 style={{ backgroundImage: `url(${item.original})` }}
-              >
-                <div className={classes.backgroundImage}></div>
-              </div>
+              ></div>
             );
           }}
         />

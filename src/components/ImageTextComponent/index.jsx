@@ -13,6 +13,8 @@ import macuquina from "../../assets/images/macuquina.jpg";
 import salar from "../../assets/images/salar.jpg";
 import historia from "../../assets/images/historia.jpg";
 import cerro from "../../assets/images/cerro.jpg";
+import chutillos from "../../assets/images/chutillos2.jpg";
+import mascaron from "../../assets/images/mascaron.jpg";
 import route from "../../assets/icons/route.svg";
 import { useNavigate } from "react-router-dom";
 import useOnScreen from "../../hocks/useOnScreen";
@@ -80,6 +82,37 @@ const ImageTextComp = () => {
       title_en: "Salar de Uyuni",
       description_en:
         "The Salar de Uyuni is one of the most spectacular places in South America. The vast expanse of white, glistening salt stretches over 10,582 kilometers of the Altiplano and can even be seen from space. The salt layers are interspersed with sedimentary deposits that reach a great depth of 10 meters in the center of the plain. It is estimated that there are 10 billion tons of salt in total here. However, for the locals, the true treasure lies beneath the salt flat, where approximately 70% of the world's lithium reserves are found. An entire industry has been dedicated to the extraction of this lightweight metal that powers laptops, smartphones, and electric cars.",
+    },
+    {
+      image: chutillos,
+      titulo: "Ch'utillos",
+      descripcion:
+        "La fiesta de Ch’utillos (San Bartolomé y San Ignacio de Loyola) se celebra en agosto en Potosí, Bolivia. Parte integral de la identidad cultural local, se caracteriza por ferias gastronómicas, espectáculos de danza y una procesión hasta el santuario ubicado en la garganta de Mullu Punku, un sitio natural compuesto por formaciones rocosas. En la ciudad, feligreses y grupos musicales participan en el desfile de danzas autóctonas y populares de Ch’utillos, al que se unen comunidades rurales luciendo sus trajes tradicionales. Algunos vienen de ciudades vecinas de Argentina y recorren hasta 200 kilómetros para llegar a Potosí y participar en el desfile de danzas con sus propias tradiciones y expresiones orales. Grupos de danza de otros países de América Latina también se suman a las festividades, convirtiendo las calles de Potosí en una plataforma de intercambio cultural. Otros portadores son los fabricantes de instrumentos musicales tradicionales, ropa, accesorios y vajilla. Los conocimientos y habilidades de Ch’utillos se transmiten de manera informal, oralmente y participando en las festividades. Símbolo de fe y tradición, la fiesta de Ch’utillos es parte del patrimonio cultural de la nación indígena Q’ara Q’aras. Marca el comienzo de la preparación de la tierra y de un nuevo ciclo agrícola, con ofrendas a Pachamama (la Madre Tierra).",
+      fuente:
+        "https://ich.unesco.org/es/RL/ch-utillos-fiesta-de-san-bartolome-y-san-ignacio-de-loyola-encuentro-de-culturas-en-potosi-01958",
+      title_en: "Ch'utillos",
+      description_en:
+        "The festival of Ch'utillos (Saint Bartholomew and Saint Ignatius of Loyola) is celebrated in August in Potosí, Bolivia. An integral part of the local cultural identity, it is characterized by food fairs, dance performances and a procession to the sanctuary located in the Mullu Punku gorge, a natural site made up of rock formations. In the city, parishioners and musical groups participate in the parade of native and popular dances of Ch'utillos, which is joined by rural communities wearing their traditional costumes. Some come from neighboring cities in Argentina and travel up to 200 kilometers to reach Potosí and participate in the dance parade with their own traditions and oral expressions. Dance groups from other Latin American countries also join the festivities, turning the streets of Potosí into a platform for cultural exchange. Other carriers are manufacturers of traditional musical instruments, clothing, accessories and tableware. The knowledge and skills of Ch'utillos are transmitted informally, orally and by participating in the festivities. A symbol of faith and tradition, the Ch'utillos festival is part of the cultural heritage of the Q'ara Q'aras indigenous nation. It marks the beginning of the preparation of the land and a new agricultural cycle, with offerings to Pachamama (Mother Earth).",
+    },
+    {
+      image: mascaron,
+      titulo: "Mascaron casa de moneda",
+      descripcion:
+        "La bienvenida a quienes llegan hasta la Casa Nacional de Moneda la da el personaje que se encuentra hacia el segundo patio, sobre él ha sido muy difícil brindar una versión definitiva acerca de su significado. Sin embargo dentro, de las diversas interpretaciones se pueden consignar las siguientes: Dios Baco, Deidad de los indígenas, Rostro de Diego Huallpa, Burla a la codicia. Dentro de esos análisis, hay quienes se atreven a afirmar que el autor fue instrumento de fuerzas superiores y del destino para representar el rostro de la raza indígena con los pómulos abultados, la frente estrecha, los ojos rasgados, la nariz recta y el cabello largo y oscuro. La corona de uvas que ostenta, en varias culturas es símbolo de riqueza espiritual y por lo tanto sería la representación indígena. La sonrisa irónica podría significar una burla a los conquistadores, quienes jactándose de su religiosidad demostraron con sus actos estar lejos de la religiosidad espiritual de los Andes. Lo cierto es que fue tallado en 1856 por Eujenio Mulon, tallador francés quien trabajo en la Casa Nacional de Moneda gravando troqueles, punzones y matrices para sellar monedas y medallas conmemorativas.",
+      fuente: "https://www.casanacionaldemoneda.bo/mascaron.html",
+      title_en: "Mascaron mint",
+      description_en:
+        "The welcome to those who arrive at the National Mint is given by the character who is towards the second patio; it has been very difficult to provide a definitive version about its meaning. However, within the various interpretations the following can be recorded: God Bacchus, Deity of the indigenous people, Face of Diego Huallpa, Mockery of greed. Within these analyses, there are those who dare to affirm that the author was an instrument of higher forces and destiny to represent the face of the indigenous race with bulging cheekbones, narrow forehead, slanted eyes, straight nose and long hair. and dark. The crown of grapes that it displays, in several cultures, is a symbol of spiritual wealth and therefore would be the indigenous representation. The ironic smile could mean a mockery of the conquerors, who, by boasting about their religiosity, demonstrated with their actions that they were far from the spiritual religiosity of the Andes. The truth is that it was carved in 1856 by Eujenio Mulon, a French carver who worked at the National Mint engraving dies, punches and matrices to seal coins and commemorative medals.",
+    },
+    {
+      image: cerro,
+      titulo: "mayor mina de plata",
+      descripcion:
+        "Se dice que con todo el metal extraído de la mina de Potosí, se podría construir un puente de plata desde los Andes a España. Sin embargo, también se cuenta que los mares del mundo podrían teñirse de rojo con la sangre derramada por los indígenas que murieron en las duras condiciones de trabajo del Cerro Rico. Desde luego, la plata de América supone un elemento clave a la par que controvertido para entender la historia de España y del mundo durante los siglos modernos.",
+      fuente: "https://www.muyinteresante.com/historia/36565.html",
+      title_en: "largest silver mine",
+      description_en:
+        "It is said that with all the metal extracted from the Potosí mine, a silver bridge could be built from the Andes to Spain. However, it is also said that the seas of the world could be dyed red with the blood shed by the indigenous people who died in the harsh working conditions of Cerro Rico. Of course, American silver is a key as well as controversial element in understanding the history of Spain and the world during modern centuries.",
     },
   ];
 
@@ -180,6 +213,23 @@ const ImageTextComp = () => {
                   {i18n.language === "en" ? tour.title_en : tour.titulo}
                 </Button>
               ))}
+              <Button
+                variant="contained"
+                onClick={() => handleViewMore()}
+                className={classes.button}
+                sx={{
+                  textOverflow: "ellipsis",
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  backgroundColor: "#fff",
+                  color: "#000",
+                  "&:hover": {
+                    backgroundColor: "#fff",
+                  },
+                }}
+              >
+                {t("more")}...
+              </Button>
             </div>
             <div className={classes.imageContainer}>
               <img src={route} className={classes.image} />

@@ -11,6 +11,21 @@ export const useStyles = makeStyles((theme) => ({
     },
     position: "relative",
   },
+  zoomImageContainer: {
+    transition: "transform 0.5s ease-in-out",
+    transformOrigin: "center center",
+  },
+  zoomActive: {
+    animation: "$zoomAnimation 10s infinite",
+  },
+  "@keyframes zoomAnimation": {
+    "0%, 100%": {
+      transform: "scale(1)",
+    },
+    "50%": {
+      transform: "scale(1.1)",
+    },
+  },
   background: {
     top: 0,
     left: 0,

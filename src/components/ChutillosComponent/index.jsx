@@ -34,7 +34,7 @@ function ChutillosComponent() {
                   slideShadows: true,
                 }}
                 initialSlide={3}
-                pagination={true}
+                pagination={false}
                 autoplay={{
                   delay: 2500,
                 }}
